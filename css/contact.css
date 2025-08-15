@@ -1135,4 +1135,146 @@
             padding: 1.5rem;
         }
     }
+  /* Mobile navbar adjustments */
+        nav {
+            padding: 0.5rem 4%;
+            min-height: 60px;
+        }
+        
+        .logo img {
+            height: 32px;
+        }
+        
+        .logo-text {
+            font-size: 1.2rem;
+        }
+        
+        .theme-toggle {
+            width: 32px;
+            height: 32px;
+            font-size: 1rem;
+        }
+        
+        .nav-cta {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .mobile-menu-btn {
+            width: 32px;
+            height: 32px;
+            font-size: 1.2rem;
+        }
+        
+        .nav-actions {
+            gap: 0.5rem;
+        }
+        
+        .hero {
+            padding-top: 70px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero {
+            padding: 5rem 5% 3rem;
+            padding-top: 65px;
+        }
+        
+        .rotating-text-item {
+            font-size: 1.2rem;
+        }
+        
+        .stats-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+        }
+        
+        .footer-links-container {
+            grid-template-columns: 1fr;
+        }
+        
+        /* Extra small mobile adjustments */
+        nav {
+            padding: 0.4rem 3%;
+            min-height: 55px;
+        }
+        
+        .logo img {
+            height: 28px;
+        }
+        
+        .logo-text {
+            font-size: 1.1rem;
+        }
+        
+        .theme-toggle, .mobile-menu-btn {
+            width: 28px;
+            height: 28px;
+            font-size: 0.9rem;
+        }
+        
+        .nav-cta {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        .theme-toggle {
+            display: none;
+        }
+        
+        nav {
+            padding: 0.3rem 2%;
+            min-height: 48px;
+        }
+    }
+    /* Add this to your existing CSS */
+.split-text-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.text-part {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: textReveal 0.8s forwards;
+}
+
+.text-part.left {
+    color: var(--primary);
+    animation-delay: 0.3s;
+}
+
+.text-part.right {
+    animation-delay: 0.6s;
+}
+
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add a subtle hover effect for "GOOD WAY" */
+.text-part.left:hover {
+    display: inline-block;
+    animation: goodWayHover 0.8s;
+}
+
   
