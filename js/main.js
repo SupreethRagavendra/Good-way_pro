@@ -1,6 +1,5 @@
-// Performance-optimized main.js
+// Performance-optimized main.js with FOUC prevention
 
-// Critical resource loading optimization
 (function() {
     'use strict';
     
@@ -14,8 +13,8 @@
         return link;
     }
     
-    // Load non-critical resources after page load
-    window.addEventListener('load', function() {
+    // Load non-critical resources after initial render
+    function loadNonCriticalResources() {
         // Use requestIdleCallback for better performance
         if ('requestIdleCallback' in window) {
             requestIdleCallback(() => {
@@ -28,31 +27,35 @@
                 loadCSS('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
             }, 100);
         }
-    });
-
-    // Theme toggle with performance optimization
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const themeIcon = themeToggle?.querySelector('i');
-
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-        body.classList.add('dark-mode');
-        if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
 
-    themeToggle?.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        if (body.classList.contains('dark-mode')) {
-            themeIcon?.classList.replace('fa-moon', 'fa-sun');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            themeIcon?.classList.replace('fa-sun', 'fa-moon');
-            localStorage.setItem('theme', 'light');
+    // Theme toggle with performance optimization
+    function initializeThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const themeIcon = themeToggle?.querySelector('i');
+
+        if (!themeToggle) return;
+
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            body.classList.add('dark-mode');
+            if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
         }
-    });
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeIcon?.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon?.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
 
     // Optimized timeline animation with performance considerations
     function initializeTimelineAnimation() {
@@ -312,8 +315,17 @@
         }, { passive: true });
     }
 
-    // Initialize hero animations on DOM ready
+    // Initialize hero animations with proper timing
     function initializeHeroAnimations() {
+        // Wait for CSS to be fully loaded
+        if (document.readyState === 'complete') {
+            startHeroAnimations();
+        } else {
+            window.addEventListener('load', startHeroAnimations);
+        }
+    }
+
+    function startHeroAnimations() {
         const heroElements = document.querySelectorAll('.split-text-container, .hero-subtitle, .hero-cta, .hero-stats');
         
         heroElements.forEach((el, i) => {
@@ -336,8 +348,12 @@
         });
     }
 
-    // Main initialization
+    // Main initialization function
     function initialize() {
+        // Initialize theme immediately to prevent flash
+        initializeThemeToggle();
+        
+        // Initialize other components
         initializeTimelineAnimation();
         initializeMobileMenu();
         initializeScrollAnimations();
@@ -345,11 +361,14 @@
         initializeSmoothScroll();
         initializeResizeHandler();
         
-        // Create particles after initial layout
+        // Create particles and hero animations after DOM is ready
         requestAnimationFrame(() => {
             createParticles();
             initializeHeroAnimations();
         });
+
+        // Load non-critical resources after initial paint
+        loadNonCriticalResources();
     }
 
     // Initialize when DOM is ready
@@ -358,9 +377,6 @@
     } else {
         initialize();
     }
-
-    // Remove security restrictions that hurt performance and user experience
-    // These were blocking legitimate user interactions
     
 })();
    
