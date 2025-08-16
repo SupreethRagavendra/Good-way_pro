@@ -1568,6 +1568,12 @@ nav {
         display: flex;
         align-items: flex-start;
         gap: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .contact-item i {
+        color: #FF6600;
+        margin-top: 0.2rem;
     }
     
     .contact-icon {
