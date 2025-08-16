@@ -29,7 +29,7 @@
         }
     }
 
-    // Theme toggle with performance optimization
+    // Theme toggle with performance optimization and no blinking
     function initializeThemeToggle() {
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
@@ -40,20 +40,31 @@
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+        // Apply theme immediately without transitions to prevent blinking
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
             body.classList.add('dark-mode');
             if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
         }
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                themeIcon?.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon?.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
+        themeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Use requestAnimationFrame for smooth theme switching
+            requestAnimationFrame(() => {
+                const isDark = body.classList.contains('dark-mode');
+                
+                if (isDark) {
+                    // Switching to light mode
+                    body.classList.remove('dark-mode');
+                    themeIcon?.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    // Switching to dark mode
+                    body.classList.add('dark-mode');
+                    themeIcon?.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
         });
     }
 

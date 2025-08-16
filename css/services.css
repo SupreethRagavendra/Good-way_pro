@@ -83,28 +83,45 @@
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
+            transition: none;
             opacity: 1;
             visibility: visible;
-        }
-        
-        /* Prevent navbar blinking and flickering */
-        nav, nav * {
+            /* Prevent blinking and flickering */
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             -moz-backface-visibility: hidden;
             -ms-backface-visibility: hidden;
+            /* Hardware acceleration */
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
         }
         
-        /* Ensure immediate visibility */
-        nav {
-            will-change: auto;
+        /* Prevent all nav elements from blinking */
+        nav * {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            transition: none;
         }
         
-        nav.loading {
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: flex !important;
+        /* Smooth transitions only for specific elements */
+        .nav-links a {
+            transition: color 0.2s ease !important;
+        }
+        
+        .theme-toggle {
+            transition: all 0.3s ease !important;
+        }
+        
+        .nav-cta {
+            transition: all 0.3s ease !important;
+        }
+        
+        .mobile-menu-btn {
+            transition: all 0.3s ease !important;
         }
         
         body.dark-mode nav {

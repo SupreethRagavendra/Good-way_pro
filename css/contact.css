@@ -73,7 +73,45 @@ nav {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    transition: none;
+    opacity: 1;
+    visibility: visible;
+    /* Prevent blinking and flickering */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    /* Hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+}
+
+/* Prevent all nav elements from blinking */
+nav * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    transition: none;
+}
+
+/* Smooth transitions only for specific elements */
+.nav-links a {
+    transition: color 0.2s ease !important;
+}
+
+.theme-toggle {
+    transition: all 0.3s ease !important;
+}
+
+.nav-cta {
+    transition: all 0.3s ease !important;
+}
+
+.mobile-menu-btn {
+    transition: all 0.3s ease !important;
 }
 
 body.dark-mode nav {
