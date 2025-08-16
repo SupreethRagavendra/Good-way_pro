@@ -84,6 +84,27 @@
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Prevent navbar blinking and flickering */
+        nav, nav * {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+        }
+        
+        /* Ensure immediate visibility */
+        nav {
+            will-change: auto;
+        }
+        
+        nav.loading {
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: flex !important;
         }
         
         body.dark-mode nav {

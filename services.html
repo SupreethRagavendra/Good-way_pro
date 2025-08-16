@@ -133,68 +133,106 @@
     <!-- Skip to Content Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
-    <!-- Navigation -->
-    <nav class="sticky-nav">
-    <a href="index.html" class="logo">
-    <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40" loading="lazy">
-    <span class="logo-text">Good Way</span>
-    </a>
-    <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="services.html" class="active">Services</a> 
-    <a href="inquiry.html">Inquiry</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    </div>
-    <div class="nav-actions">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-    <i class="fas fa-moon"></i>
-    </button>
-    <button class="nav-cta">Get Started</button>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
-    <i class="fas fa-bars"></i>
-    </button>
-    </div>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40" loading="eager" decoding="async">
+            <span class="logo-text">Good Way</span>
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html" class="active">Services</a> 
+            <a href="inquiry.html">Inquiry</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="inquiry.html" class="nav-cta" id="cta">Get Started</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
+
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
-    <i class="fas fa-times"></i>
-    </button>
-    <div class="mobile-menu-links">
-    <a href="index.html">Home</a>
-    <a href="services.html" class="active">Services</a> 
-    <a href="inquiry.html">Inquiry</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    </div>
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="mobile-menu-links">
+            <a href="index.html">Home</a>
+            <a href="services.html" class="active">Services</a> 
+            <a href="inquiry.html">Inquiry</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        
+        <a href="inquiry.html" class="nav-cta">Get Started</a>
     </div>
     <!-- Hero Section -->
-    <section class="inquiry-hero" id="home">
-    <div class="particles" id="particles"></div>
-    <div class="inquiry-hero-content" id="main-content">
-    <!-- Breadcrumb without animation -->
-    <div class="breadcrumb" style="animation: none; opacity: 1;">
-    <a href="index.html">Home</a>
-    <span class="breadcrumb-separator">/</span>
-    <span>Services</span>
-    </div>
-    <!-- Animated Title -->
-    <h1 class="inquiry-hero-title">
-    <span class="text-part left">Our &nbsp;</span>
-    <span class="text-part right">Services</span>
-    </h1>
-    <!-- Animated Subtitle -->
-    <p class="inquiry-hero-subtitle" style="animation: fadeIn 1s ease-out 1.5s forwards; opacity: 0;">
-Complete solutions for all your travel and government service needs
-    </p>
-    </div>
-    <!-- 3D Elements -->
-    <div class="airplane">
-    <img src="https://img.icons8.com/color/480/airplane-mode-on.png" alt="Airplane" width="150" height="150" loading="lazy">
-    </div>
-    <div class="document-icon doc3">
-    </div>
+    <section class="hero" id="home">
+        <div class="particles" id="particles"></div>
+        
+        <div class="hero-content" id="main-content">
+            <div class="split-text-container">
+                <span class="text-part left">OUR</span>
+                <span class="text-part right">SERVICES</span>
+            </div>
+            <p class="hero-subtitle">Complete solutions for all your travel and government service needs</p>
+            
+            <div class="rotating-text">
+                <div class="rotating-text-item">Passport & Government Services</div>
+                <div class="rotating-text-item">Train & Bus Ticket Booking</div>
+                <div class="rotating-text-item">Hajj & Umrah Packages</div>
+                <div class="rotating-text-item">Document Processing Made Easy</div>
+            </div>
+            
+            <div class="hero-cta">
+                <a class="btn-primary" href="#service-filters">
+                    <i class="fas fa-search"></i> Explore Services
+                </a>
+                <a class="btn-secondary" href="inquiry.html">
+                    <i class="fas fa-phone"></i> Get Quote
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-text">Verified Services</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                    <div class="stat-text">Fast Processing</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-headset"></i></div>
+                    <div class="stat-text">24/7 Support</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 3D Elements -->
+        <div class="airplane" style="will-change: transform;">
+            <img src="https://img.icons8.com/color/480/airplane-mode-on.png" alt="Airplane" width="150" height="150" loading="lazy" decoding="async">
+        </div>
+        
+        <div class="document-icon doc1" style="will-change: transform;">
+            <i class="fas fa-passport"></i>
+        </div>
+        
+        <div class="document-icon doc2" style="will-change: transform;">
+            <i class="fas fa-id-card"></i>
+        </div>
+        
+        <div class="document-icon doc3" style="will-change: transform;">
+            <i class="fas fa-ticket-alt"></i>
+        </div>
     </section>
     <!-- Service Categories Filter -->
     <section class="section" id="service-filters">
