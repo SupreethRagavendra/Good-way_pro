@@ -29,55 +29,45 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    
-
-     <link rel="icon" type="image/x-icon" href="logo3.png">
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <!-- Preconnect to important origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <link rel="icon" type="image/x-icon" href="logo3.png">
 
- <link rel="stylesheet" href="css/about.css">
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Load main CSS immediately -->
+    <link rel="stylesheet" href="css/about.css">
     
+    <!-- Preload critical fonts -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
     
+    <!-- Preload Font Awesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "TravelAgency",
-        "name": "Good Way Travels & Online Services",
-        "description": "Your trusted partner for seamless travel bookings and government document services.",
-        "url": "https://goodwaytravels.com",
-        "logo": "https://goodwaytravels.com/logo.png",
-        "telephone": "+919994120140",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "KPM BUILDING, 20/4,opp. WAHAB PETROL BUNK, Kuniyamuthur Coimbatore Tamil Nadu 641008<",
-            "addressLocality": "Palakkad",
-            "addressRegion": "Kerala",
-            "postalCode": "678001",
-            "addressCountry": "IN"
-        },
-
-        "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-20:00",
-        "priceRange": "₹₹",
-        "sameAs": [
-            "https://www.facebook.com/goodwaytravels",
-            "https://www.instagram.com/goodwaytravels",
-            "https://www.linkedin.com/company/goodwaytravels"
-        ],
-        "foundingDate": "2021",
-        "founder": {
-            "@type": "Person",
-            "name": "Founder Name"
+        "@type": "AboutPage",
+        "name": "About Good Way Travels & Online Services",
+        "description": "Learn about Good Way Travels & Online Services - Our story, mission, team, and journey as Kerala's trusted travel and government service provider since 2021.",
+        "url": "https://goodwaytravels.com/about.html",
+        "mainEntity": {
+            "@type": "TravelAgency",
+            "name": "Good Way Travels & Online Services",
+            "foundingDate": "2021",
+            "description": "Trusted travel and government service provider",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "KPM BUILDING, 20/4, opp. WAHAB PETROL BUNK, Kuniyamuthur, Coimbatore, Tamil Nadu 641008",
+                "addressLocality": "Palakkad",
+                "addressRegion": "Kerala",
+                "postalCode": "678001",
+                "addressCountry": "IN"
+            }
         }
     }
     </script>
@@ -89,7 +79,7 @@
     <!-- Navigation -->
     <nav>
         <a href="index.html" class="logo">
-            <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40">
+            <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40" loading="eager" decoding="async">
             <span class="logo-text">Good Way</span>
         </a>
         
@@ -147,7 +137,7 @@
         </div>
         
         <div class="airplane">
-            <img src="https://img.icons8.com/color/480/airplane-mode-on.png" alt="Airplane" width="150" height="150" loading="lazy">
+            <img src="https://img.icons8.com/color/480/airplane-mode-on.png" alt="Airplane" width="150" height="150" loading="lazy" decoding="async">
         </div>
         
         <div class="document-icon doc1">
