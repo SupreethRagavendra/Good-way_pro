@@ -25,12 +25,18 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="canonical" href="https://goodwaytravels.com/services.html">
     <link rel="icon" type="image/x-icon" href="logo3.png">
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <!-- Load main CSS immediately -->
+    <link rel="preconnect" href="https://img.icons8.com">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="logo3.png" as="image" fetchpriority="high">
+    <link rel="preload" href="css/main.css" as="style">
+    
+    <!-- Load main CSS immediately to prevent FOUC -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/services.css">
     <!-- Preload critical fonts -->
@@ -160,7 +166,7 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
             <i class="fas fa-times"></i>
         </button>
