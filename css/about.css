@@ -1559,14 +1559,14 @@ nav {
         color: var(--primary);
     }
 
-    /* Contact info section styling */
+    /* Clean contact info section styling */
     .contact-info {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 102, 0, 0.2);
+        background: transparent;
+        border-radius: 0;
+        padding: 2rem 0;
+        box-shadow: none;
+        backdrop-filter: none;
+        border: none;
     }
 
     .contact-info h3 {
@@ -1590,55 +1590,23 @@ nav {
         border-radius: 2px;
     }
 
-    body.dark-mode .contact-info {
-        background: rgba(45, 55, 72, 0.8);
-        border-color: rgba(255, 255, 255, 0.1);
-    }
-
     body.dark-mode .contact-info h3 {
         color: var(--gray);
     }
 
-    /* Enhanced contact item styling for better visibility */
+    /* Clean contact item styling without boxes */
     .contact-item {
         display: flex;
         align-items: flex-start;
         gap: 1rem;
-        padding: 1rem;
-        border-radius: 12px;
+        padding: 0.5rem 0;
         transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 102, 0, 0.15);
+        background: transparent;
+        border: none;
     }
 
     .contact-item:hover {
-        background: rgba(255, 102, 0, 0.08);
-        border-color: rgba(255, 102, 0, 0.25);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(255, 102, 0, 0.15);
-    }
-
-    /* Light theme specific contact item styling */
-    body:not(.dark-mode) .contact-item {
-        background: rgba(255, 255, 255, 0.3);
-        border-color: rgba(255, 102, 0, 0.2);
-    }
-
-    body:not(.dark-mode) .contact-item:hover {
-        background: rgba(255, 102, 0, 0.1);
-        border-color: rgba(255, 102, 0, 0.3);
-        box-shadow: 0 4px 12px rgba(255, 102, 0, 0.2);
-    }
-
-    /* Dark theme specific contact item styling */
-    body.dark-mode .contact-item {
-        background: rgba(255, 255, 255, 0.02);
-        border-color: rgba(255, 102, 0, 0.2);
-    }
-
-    body.dark-mode .contact-item:hover {
-        background: rgba(255, 102, 0, 0.1);
-        border-color: rgba(255, 102, 0, 0.3);
+        transform: translateX(5px);
     }
 
     /* Contact details container styling */
