@@ -125,7 +125,7 @@
 
         // Initialize particles
         window.addEventListener('load', createParticles);
-        window.addEventListener('resize', createParticles);
+        let resizeTimer; window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(createParticles, 120); }, { passive: true });
     })();
 
     // === AIRPLANE ANIMATION ===
