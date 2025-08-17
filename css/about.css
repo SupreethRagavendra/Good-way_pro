@@ -900,11 +900,20 @@ nav {
         padding: 3rem;
         border-radius: 15px;
         box-shadow: var(--shadow-md);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         position: relative;
         overflow: hidden;
         opacity: 0;
         transform: translateY(20px);
         animation: fadeInUp 1s ease-out forwards;
+    }
+
+    /* Ensure proper contrast in light mode */
+    body:not(.dark-mode) .mission-card,
+    body:not(.dark-mode) .vision-card {
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
     }
     
     body.dark-mode .mission-card,
@@ -972,10 +981,18 @@ nav {
         border-radius: 15px;
         overflow: hidden;
         box-shadow: var(--shadow-md);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         opacity: 0;
         transform: translateY(20px);
         animation: fadeInUp 1s ease-out forwards;
+    }
+
+    /* Ensure proper contrast for team members in light mode */
+    body:not(.dark-mode) .team-member {
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
     }
     
     body.dark-mode .team-member {
@@ -1196,10 +1213,18 @@ nav {
         padding: 2rem;
         text-align: center;
         box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         opacity: 0;
         transform: translateY(20px);
         animation: fadeInUp 1s ease-out forwards;
+    }
+
+    /* Ensure proper contrast for value cards in light mode */
+    body:not(.dark-mode) .value-card {
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.08);
     }
     
     body.dark-mode .value-card {
@@ -1391,7 +1416,7 @@ nav {
     .contact-icon {
         width: 50px;
         height: 50px;
-        background-color: var(--primary);
+        background-color: var(--primary) !important;
         color: white;
         border-radius: 50%;
         display: flex;
@@ -1399,6 +1424,51 @@ nav {
         justify-content: center;
         font-size: 1.2rem;
         flex-shrink: 0;
+        border: 2px solid rgba(255, 102, 0, 0.2);
+    }
+
+    /* Ensure FontAwesome icons display properly in About page */
+    .contact-icon i {
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+        font-style: normal !important;
+        font-variant: normal !important;
+        text-rendering: auto;
+        line-height: 1;
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-width: 16px;
+        min-height: 16px;
+    }
+
+    /* Fallback when FontAwesome is not loaded */
+    .fontawesome-fallback .contact-icon .fa-map-marker-alt::after {
+        content: "📍";
+        font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+        font-size: 1.2rem;
+    }
+
+    .fontawesome-fallback .contact-icon .fa-phone-alt::after {
+        content: "📞";
+        font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+        font-size: 1.2rem;
+    }
+
+    .fontawesome-fallback .contact-icon .fa-envelope::after {
+        content: "✉️"; 
+        font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+        font-size: 1.2rem;
+    }
+
+    .fontawesome-fallback .contact-icon .fa-clock::after {
+        content: "🕒";
+        font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+        font-size: 1.2rem;
+    }
+
+    .fontawesome-fallback .contact-icon i {
+        display: none;
     }
     
     .contact-text h4 {
