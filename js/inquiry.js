@@ -70,6 +70,64 @@ function getServiceFromUrl() {
 
 // Call this function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', getServiceFromUrl);
+    // === WHATSAPP SUBMISSION FUNCTION ===
+    function submitToWhatsApp() {
+        // Get form data
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value.trim();
+        
+        // Validate form data
+        if (!name || !phone || !service || !message) {
+            alert('Please fill in all required fields before submitting.');
+            return;
+        }
+        
+        // Validate phone number
+        const phonePattern = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
+        if (!phonePattern.test(phone)) {
+            alert('Please enter a valid Indian mobile number.');
+            return;
+        }
+        
+        // Create WhatsApp message
+        const whatsappMessage = `*Good Way Travels - Service Inquiry*
+
+*Customer Details:*
+• Name: ${name}
+• Phone: ${phone}
+• Service Required: ${service}
+
+*Inquiry Details:*
+${message}
+
+*Contact Information:*
+• Business Hours: 9:00 AM - 8:00 PM
+• Response Time: Within 2 hours
+
+Please assist me with this inquiry. Thank you!`;
+        
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        
+        // Create WhatsApp URL
+        const whatsappUrl = `https://wa.me/919994120140?text=${encodedMessage}`;
+        
+        // Open WhatsApp in new tab
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        
+        // Show success message
+        const successDiv = document.getElementById('formSuccess');
+        successDiv.style.display = 'block';
+        successDiv.textContent = 'WhatsApp opened! Please send the message to complete your inquiry.';
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+            successDiv.style.display = 'none';
+        }, 5000);
+    }
+
     // === FORM VALIDATION ===
     const inquiryForm = document.getElementById('inquiryForm');
     const submitBtn = document.getElementById('submitBtn');
