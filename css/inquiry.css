@@ -903,6 +903,8 @@
         align-items: center;
         justify-content: center;
         gap: 0.75rem;
+        text-decoration: none;
+        text-align: center;
     }
     
     .form-submit-btn:hover {
