@@ -77,13 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Close all items first
             document.querySelectorAll('.faq-item').forEach(el => {
                 el.classList.remove('active');
-                el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
             });
             
             // Open current if not active
             if (!isActive) {
                 item.classList.add('active');
-                this.setAttribute('aria-expanded', 'true');
             }
         });
     });
