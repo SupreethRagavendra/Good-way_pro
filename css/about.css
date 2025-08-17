@@ -18,52 +18,26 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* Mobile-specific navbar adjustments */
-@media (max-width: 768px) {
-    nav {
-        padding: 0.5rem 4%; /* Reduce padding significantly */
-        min-height: 60px; /* Set a fixed smaller height */
+    /* Mobile-specific navbar adjustments */
+    @media (max-width: 768px) {
+        nav {
+            padding: 0.5rem 4%; /* Align with main.css */
+            min-height: 60px; /* Align with main.css */
+        }
+        
+        .logo img { height: 32px; }
+        .logo-text { font-size: 1.2rem; }
+        .theme-toggle { width: 32px; height: 32px; font-size: 1rem; }
+        .nav-cta { padding: 0.5rem 1rem; font-size: 0.85rem; }
+        .mobile-menu-btn { width: 32px; height: 32px; font-size: 1.2rem; }
+        .nav-actions { gap: 0.5rem; }
     }
-    
-    /* Reduce logo size */
-    .logo img {
-        height: 32px; /* Smaller logo */
-        width: auto;
-    }
-    
-    .logo-text {
-        font-size: 1.2rem; /* Smaller text */
-    }
-    
-    /* Make nav action buttons smaller */
-    .theme-toggle {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-    }
-    
-    .nav-cta {
-        padding: 0.5rem 1rem; /* Smaller padding */
-        font-size: 0.85rem; /* Smaller font */
-        display: none; /* Hide CTA button on very small screens */
-    }
-    
-    .mobile-menu-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 1.2rem;
-    }
-    
-    .nav-actions {
-        gap: 0.5rem; /* Reduce gap between elements */
-    }
-}
 
 /* Extra small mobile devices */
-@media (max-width: 480px) {
+    @media (max-width: 480px) {
     nav {
         padding: 0.4rem 3%;
-        min-height: 55px; /* Even smaller height */
+        min-height: 55px; /* Align with other pages */
     }
     
     .logo img {
@@ -87,15 +61,15 @@ nav {
 }
 
 /* Adjust hero section padding to compensate for smaller navbar */
-@media (max-width: 768px) {
-    .hero {
-        padding-top: 70px; /* Adjust based on new navbar height */
+    @media (max-width: 768px) {
+        .hero {
+            padding-top: 70px; /* Align with other pages */
+        }
     }
-}
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 65px; /* Even less padding needed */
+        padding-top: 65px; /* Align with main.css */
     }
 }
 
@@ -1923,6 +1897,9 @@ nav {
     }
     
     .cookie-actions {
+        display: flex;
+        gap: 1rem;
+    }
     
     /* Mobile Responsive Styles */
     @media (max-width: 768px) {
@@ -2042,9 +2019,6 @@ nav {
             padding: 0.5rem 1rem;
             font-size: 0.8rem;
         }
-    }
-        display: flex;
-        gap: 1rem;
     }
     
     .cookie-btn {

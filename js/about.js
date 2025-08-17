@@ -87,7 +87,7 @@
             container.innerHTML = '';
             document.querySelectorAll('[data-generated="particle-style"]').forEach(s => s.remove());
 
-            const count = window.innerWidth < 768 ? 20 : 50;
+            const count = window.innerWidth < 768 ? 10 : 25;
 
             for (let i = 0; i < count; i++) {
                 const p = document.createElement('div');
@@ -125,7 +125,7 @@
 
         // Initialize particles
         window.addEventListener('load', createParticles);
-        window.addEventListener('resize', createParticles);
+        let resizeTimer; window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(createParticles, 120); }, { passive: true });
     })();
 
     // === AIRPLANE ANIMATION ===
