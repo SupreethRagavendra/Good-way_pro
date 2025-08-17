@@ -633,6 +633,58 @@ body.dark-mode .contact-card:hover {
     transition: all 0.3s;
 }
 
+/* Ensure FontAwesome icons display properly */
+.contact-icon i {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto;
+    line-height: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+/* Force display of contact icons background and visibility */
+.contact-icon {
+    position: relative;
+    background-color: rgba(255, 102, 0, 0.1) !important;
+    border: 2px solid rgba(255, 102, 0, 0.2);
+}
+
+/* Fallback when FontAwesome is not loaded - show text instead of empty circles */
+.fontawesome-fallback .contact-icon .fa-phone-alt::after,
+.fontawesome-fallback .contact-icon .fa-phone::after {
+    content: "📞";
+    font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+    font-size: 1.75rem;
+}
+
+.fontawesome-fallback .contact-icon .fa-envelope::after {
+    content: "✉️"; 
+    font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+    font-size: 1.75rem;
+}
+
+.fontawesome-fallback .contact-icon .fa-map-marker-alt::after {
+    content: "📍";
+    font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+    font-size: 1.75rem;
+}
+
+.fontawesome-fallback .contact-icon .fa-comments::after {
+    content: "💬";
+    font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+    font-size: 1.75rem;
+}
+
+.fontawesome-fallback .contact-icon i {
+    display: none;
+}
+
 .contact-card:hover .contact-icon {
     background-color: var(--primary);
     color: white;

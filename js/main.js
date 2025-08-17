@@ -21,15 +21,14 @@
     
     // Load non-critical resources after initial render with better scheduling
     function loadNonCriticalResources() {
-        // Use requestIdleCallback for better performance
+        // FontAwesome is now loaded directly in HTML for immediate icon display
+        // Only load additional fonts if needed
         if ('requestIdleCallback' in window) {
             requestIdleCallback(() => {
-                loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
                 loadCSS('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
             }, { timeout: 2000 });
         } else {
             setTimeout(() => {
-                loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
                 loadCSS('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
             }, 100);
         }

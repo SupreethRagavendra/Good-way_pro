@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if FontAwesome loaded properly for icons
+    function checkFontAwesome() {
+        // Create a test element to check if FontAwesome is loaded
+        const testElement = document.createElement('i');
+        testElement.className = 'fas fa-phone';
+        testElement.style.position = 'absolute';
+        testElement.style.left = '-9999px';
+        testElement.style.fontSize = '16px';
+        document.body.appendChild(testElement);
+        
+        // Check if the icon has proper width (FontAwesome loaded)
+        const iconWidth = testElement.offsetWidth;
+        document.body.removeChild(testElement);
+        
+        // If FontAwesome didn't load properly, add fallback class
+        if (iconWidth === 0 || iconWidth < 10) {
+            document.body.classList.add('fontawesome-fallback');
+            console.warn('FontAwesome not loaded properly, using emoji fallbacks');
+        }
+    }
+    
+    // Check FontAwesome after a short delay to ensure CSS is loaded
+    setTimeout(checkFontAwesome, 500);
+    
     // Theme Toggle
     const themeToggle = document.querySelector('.theme-toggle');
     const body = document.body;
