@@ -98,6 +98,42 @@
         -ms-transform: translateZ(0);
     }
     
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .nav-links a {
+        color: var(--secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: var(--primary);
+    }
+    
+    .nav-links a.active::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 1px;
+    }
+    
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
     /* Prevent all nav elements from blinking */
     nav * {
         backface-visibility: hidden;
@@ -1481,6 +1517,53 @@ body.dark-mode .template-btn:hover {
     }
 
     @media (max-width: 768px) {
+        /* Mobile navbar adjustments */
+        nav {
+            padding: 0.5rem 4%;
+            min-height: 60px;
+        }
+        
+        .logo img {
+            height: 32px;
+        }
+        
+        .logo-text {
+            font-size: 1.2rem;
+        }
+        
+        .nav-links {
+            display: none;
+        }
+        
+        .mobile-menu-btn {
+            display: flex;
+        }
+        
+        .theme-toggle {
+            width: 32px;
+            height: 32px;
+            font-size: 1rem;
+        }
+        
+        .nav-cta {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .mobile-menu-btn {
+            width: 32px;
+            height: 32px;
+            font-size: 1.2rem;
+        }
+        
+        .nav-actions {
+            gap: 0.5rem;
+        }
+        
+        .hero {
+            padding-top: 70px;
+        }
+        
         .footer-top {
             grid-template-columns: 1fr;
         }
@@ -1502,6 +1585,36 @@ body.dark-mode .template-btn:hover {
     }
 
     @media (max-width: 480px) {
+        /* Extra small mobile adjustments */
+        nav {
+            padding: 0.4rem 3%;
+            min-height: 55px;
+        }
+        
+        .logo img {
+            height: 28px;
+        }
+        
+        .logo-text {
+            font-size: 1.1rem;
+        }
+        
+        .theme-toggle, .mobile-menu-btn {
+            width: 28px;
+            height: 28px;
+            font-size: 0.9rem;
+        }
+        
+        .nav-cta {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+        
+        .hero {
+            padding: 5rem 5% 3rem;
+            padding-top: 65px;
+        }
+        
         .footer-links-container {
             grid-template-columns: 1fr;
         }
@@ -1809,6 +1922,16 @@ nav {
         .airplane {
             animation-duration: 4s !important;
         }
+        
+        /* Form mobile adjustments */
+        .inquiry-form-container {
+            padding: 2rem;
+            margin-top: -30px;
+        }
+        
+        .section {
+            padding: 4rem 5%;
+        }
     }
     
     @media (max-width: 480px) {
@@ -1856,6 +1979,29 @@ nav {
         
         .airplane {
             animation-duration: 3s !important;
+        }
+        
+        /* Form mobile adjustments */
+        .inquiry-form-container {
+            padding: 1.5rem;
+            margin-top: -20px;
+        }
+        
+        .section {
+            padding: 3rem 5%;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-label {
+            font-size: 1rem;
+        }
+        
+        .form-input {
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
         }
     }
 
