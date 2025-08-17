@@ -776,6 +776,16 @@ body.dark-mode .form-control {
     box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
 }
 
+.form-control.error {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.form-control.valid {
+    border-color: var(--success);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
 textarea.form-control {
     min-height: 150px;
     resize: vertical;

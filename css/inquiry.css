@@ -515,6 +515,16 @@
         outline: none;
     }
     
+    .form-input.error {
+        border-color: var(--error);
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+    
+    .form-input.valid {
+        border-color: var(--success);
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+    }
+    
     body.dark-mode .form-input {
         background-color: var(--secondary);
         border-color: rgba(255, 255, 255, 0.1);
@@ -523,6 +533,14 @@
     
     body.dark-mode .form-input:focus {
         border-color: var(--primary);
+    }
+    
+    body.dark-mode .form-input.error {
+        border-color: var(--error);
+    }
+    
+    body.dark-mode .form-input.valid {
+        border-color: var(--success);
     }
     
     .form-select {
