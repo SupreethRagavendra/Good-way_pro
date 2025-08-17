@@ -43,7 +43,12 @@
         const body = document.body;
         const themeIcon = themeToggle?.querySelector('i');
 
-        if (!themeToggle || !themeIcon) return;
+        console.log('Theme toggle initialization:', { themeToggle, themeIcon });
+
+        if (!themeToggle || !themeIcon) {
+            console.warn('Theme toggle elements not found');
+            return;
+        }
 
         // Check for saved theme or system preference
         const savedTheme = localStorage.getItem('theme');
@@ -57,17 +62,21 @@
 
         // Optimized theme toggle with better debouncing
         const debouncedToggle = debounce(() => {
+            console.log('Theme toggle clicked, current theme:', body.classList.contains('dark-mode') ? 'dark' : 'light');
             body.classList.toggle('dark-mode');
             if (body.classList.contains('dark-mode')) {
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
                 localStorage.setItem('theme', 'dark');
+                console.log('Switched to dark mode');
             } else {
                 themeIcon.classList.replace('fa-sun', 'fa-moon');
                 localStorage.setItem('theme', 'light');
+                console.log('Switched to light mode');
             }
         }, 50);
         
         themeToggle.addEventListener('click', debouncedToggle, { passive: true });
+        console.log('Theme toggle event listener added');
     };
 
     // === OPTIMIZED MOBILE MENU ===

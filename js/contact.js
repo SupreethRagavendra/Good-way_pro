@@ -23,27 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check FontAwesome after a short delay to ensure CSS is loaded
     setTimeout(checkFontAwesome, 500);
     
-    // Theme Toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    const body = document.body;
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    
-    // Set initial theme
-    if (currentTheme === 'dark') {
-        body.classList.add('dark-mode');
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-    } else {
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    }
-    
-    // Theme toggle event
-    themeToggle.addEventListener('click', function() {
-        body.classList.toggle('dark-mode');
-        const isDarkMode = body.classList.contains('dark-mode');
-        
-        themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    });
+    // Theme toggle is handled by shared-utils.js
     
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');

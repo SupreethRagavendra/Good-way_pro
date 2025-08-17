@@ -1,27 +1,5 @@
 
-    // === THEME TOGGLE ===
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const themeIcon = themeToggle.querySelector('i');
-
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-        body.classList.add('dark-mode');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        if (body.classList.contains('dark-mode')) {
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-            localStorage.setItem('theme', 'light');
-        }
-    });
+    // Theme toggle is handled by shared-utils.js
 
     // === MOBILE MENU TOGGLE ===
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
