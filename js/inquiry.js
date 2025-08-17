@@ -92,21 +92,13 @@ document.addEventListener('DOMContentLoaded', getServiceFromUrl);
         }
         
         // Create WhatsApp message
-        const whatsappMessage = `*Good Way Travels - Service Inquiry*
-
-*Customer Details:*
+        const whatsappMessage = `*Customer Details:*
 • Name: ${name}
 • Phone: ${phone}
 • Service Required: ${service}
 
 *Inquiry Details:*
-${message}
-
-*Contact Information:*
-• Business Hours: 9:00 AM - 8:00 PM
-• Response Time: Within 2 hours
-
-Please assist me with this inquiry. Thank you!`;
+${message}`;
         
         // Encode the message for URL
         const encodedMessage = encodeURIComponent(whatsappMessage);
