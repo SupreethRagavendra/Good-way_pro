@@ -7,9 +7,39 @@
     // Create namespace
     window.GoodWayUtils = window.GoodWayUtils || {};
     
+    // Performance optimizations - Cache DOM elements
+    let cachedElements = {};
+    
+    // Optimized DOM element getter with caching
+    function getElement(selector, useCache = true) {
+        if (useCache && cachedElements[selector]) {
+            return cachedElements[selector];
+        }
+        const element = document.querySelector(selector);
+        if (useCache && element) {
+            cachedElements[selector] = element;
+        }
+        return element;
+    }
+    
+    // Optimized debounce function
+    function debounce(func, wait, immediate) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                timeout = null;
+                if (!immediate) func.apply(this, args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(this, args);
+        };
+    }
+    
     // === PERFORMANCE OPTIMIZED THEME TOGGLE ===
     GoodWayUtils.initThemeToggle = function() {
-        const themeToggle = document.getElementById('themeToggle');
+        const themeToggle = getElement('#themeToggle');
         const body = document.body;
         const themeIcon = themeToggle?.querySelector('i');
 
@@ -25,241 +55,216 @@
             themeIcon.classList.replace('fa-moon', 'fa-sun');
         }
 
-        // Optimized theme toggle with debouncing
-        let toggleTimeout;
-        themeToggle.addEventListener('click', () => {
-            clearTimeout(toggleTimeout);
-            toggleTimeout = setTimeout(() => {
-                body.classList.toggle('dark-mode');
-                if (body.classList.contains('dark-mode')) {
-                    themeIcon.classList.replace('fa-moon', 'fa-sun');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    themeIcon.classList.replace('fa-sun', 'fa-moon');
-                    localStorage.setItem('theme', 'light');
-                }
-            }, 100);
-        });
+        // Optimized theme toggle with better debouncing
+        const debouncedToggle = debounce(() => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }, 50);
+        
+        themeToggle.addEventListener('click', debouncedToggle, { passive: true });
     };
 
     // === OPTIMIZED MOBILE MENU ===
     GoodWayUtils.initMobileMenu = function() {
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenuBtn = getElement('#mobileMenuBtn');
+        const mobileMenu = getElement('#mobileMenu');
+        const mobileMenuClose = getElement('#mobileMenuClose');
 
-        if (!mobileMenuBtn || !mobileMenu || !mobileMenuClose) return;
+        if (!mobileMenuBtn || !mobileMenu) return;
 
-        const toggleMenu = (show) => {
-            if (show) {
-                mobileMenu.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                // Focus trap for accessibility
-                mobileMenuClose.focus();
-            } else {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-                mobileMenuBtn.focus();
-            }
-        };
+                 function toggleMenu(show) {
+             requestAnimationFrame(() => {
+                 if (show) {
+                     mobileMenu.classList.add('active');
+                     mobileMenu.setAttribute('aria-hidden', 'false');
+                     mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                     document.body.style.overflow = 'hidden';
+                 } else {
+                     mobileMenu.classList.remove('active');
+                     mobileMenu.setAttribute('aria-hidden', 'true');
+                     mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                     document.body.style.overflow = '';
+                 }
+             });
+         }
 
-        // Event listeners with performance optimization
+        // Use passive listeners for better performance
         mobileMenuBtn.addEventListener('click', () => toggleMenu(true), { passive: true });
-        mobileMenuClose.addEventListener('click', () => toggleMenu(false), { passive: true });
+        mobileMenuClose?.addEventListener('click', () => toggleMenu(false), { passive: true });
 
-        // Close menu when clicking on links
-        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+        // Close menu when clicking menu links
+        const menuLinks = document.querySelectorAll('.mobile-menu-links a');
+        menuLinks.forEach(link => {
             link.addEventListener('click', () => toggleMenu(false), { passive: true });
         });
 
-        // Close menu on outside click
+        // Close menu when clicking outside
         mobileMenu.addEventListener('click', (e) => {
             if (e.target === mobileMenu) toggleMenu(false);
         }, { passive: true });
 
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                toggleMenu(false);
-            }
-        });
+                 // Close menu on Escape key
+         document.addEventListener('keydown', (e) => {
+             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                 toggleMenu(false);
+             }
+         }, { passive: true });
     };
 
-    // === OPTIMIZED SMOOTH SCROLL ===
-    GoodWayUtils.initSmoothScroll = function() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+    // === OPTIMIZED SMOOTH SCROLLING ===
+    GoodWayUtils.initSmoothScrolling = function() {
+        // Use single event delegation instead of multiple listeners
+        document.addEventListener('click', function(e) {
+            const anchor = e.target.closest('a[href^="#"]');
+            if (!anchor) return;
+            
+            e.preventDefault();
+            const target = getElement(anchor.getAttribute('href'));
+            
+            if (target) {
+                const navHeight = getElement('nav')?.offsetHeight || 0;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
                 
-                if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            }, { passive: false });
-        });
-    };
-
-    // === PERFORMANCE OPTIMIZED PARTICLES ===
-    GoodWayUtils.createParticles = function() {
-        const container = document.getElementById('particles');
-        if (!container) return;
-
-        // Clear existing particles
-        container.innerHTML = '';
-        
-        // Reduce particle count for mobile performance
-        const isMobile = window.innerWidth < 768;
-        const count = isMobile ? 8 : 20;
-
-        const fragment = document.createDocumentFragment();
-
-        for (let i = 0; i < count; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            const size = Math.random() * 6 + 2;
-            particle.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                left: ${Math.random() * 100}%;
-                top: ${Math.random() * 100}%;
-                animation: float ${Math.random() * 6 + 3}s ease-in-out ${Math.random() * 2}s infinite;
-                opacity: ${(Math.random() * 0.2 + 0.1).toFixed(2)};
-                will-change: transform;
-            `;
-            
-            fragment.appendChild(particle);
-        }
-
-        container.appendChild(fragment);
-    };
-
-    // === DEBOUNCED RESIZE HANDLER ===
-    GoodWayUtils.initResizeHandler = function() {
-        let resizeTimer;
-        let rafId;
-        
-        const handleResize = () => {
-            if (rafId) {
-                cancelAnimationFrame(rafId);
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
-            
-            rafId = requestAnimationFrame(() => {
-                GoodWayUtils.createParticles();
-            });
-        };
-
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(handleResize, 100);
-        }, { passive: true });
+        }, { passive: false });
     };
 
-    // === INTERSECTION OBSERVER FOR ANIMATIONS ===
+    // === OPTIMIZED RESIZE HANDLER ===
+    GoodWayUtils.initResizeHandler = function(callback) {
+        const debouncedResize = debounce(callback, 250);
+        window.addEventListener('resize', debouncedResize, { passive: true });
+    };
+
+    // === OPTIMIZED SCROLL ANIMATIONS ===
     GoodWayUtils.initScrollAnimations = function() {
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: [0.1, 0.5],
+            rootMargin: '0px 0px -10% 0px'
         };
 
-        const observer = new IntersectionObserver(entries => {
+        // Use single intersection observer for better performance
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const target = entry.target;
-                    
-                    // Add animation class
-                    target.classList.add('animated');
-                    
-                    // Unobserve after animation starts
-                    observer.unobserve(target);
+                    requestAnimationFrame(() => {
+                        entry.target.classList.add('animate-in');
+                    });
+                    observer.unobserve(entry.target); // Stop observing once animated
                 }
             });
         }, observerOptions);
 
-        // Observe elements that need animation
-        document.querySelectorAll('.animate-on-scroll').forEach(element => {
-            observer.observe(element);
-        });
+        // Observe elements with animation class
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        animatedElements.forEach(element => observer.observe(element));
     };
 
-    // === FORM OPTIMIZATION ===
-    GoodWayUtils.initFormOptimizations = function() {
-        // Optimize form inputs with debounced validation
+    // === OPTIMIZED FORM VALIDATION ===
+    GoodWayUtils.initFormValidation = function() {
         const forms = document.querySelectorAll('form');
         
         forms.forEach(form => {
             const inputs = form.querySelectorAll('input, textarea, select');
             
             inputs.forEach(input => {
-                let validationTimer;
+                // Debounced validation to reduce excessive checks
+                const debouncedValidation = debounce(() => {
+                    validateField(input);
+                }, 300);
                 
-                input.addEventListener('input', () => {
-                    clearTimeout(validationTimer);
-                    validationTimer = setTimeout(() => {
-                        // Validate input (placeholder for actual validation)
-                        if (input.checkValidity()) {
-                            input.classList.remove('invalid');
-                            input.classList.add('valid');
-                        } else {
-                            input.classList.remove('valid');
-                            input.classList.add('invalid');
-                        }
-                    }, 300);
-                }, { passive: true });
+                input.addEventListener('input', debouncedValidation, { passive: true });
+                input.addEventListener('blur', () => validateField(input), { passive: true });
             });
         });
+
+        function validateField(field) {
+            // Basic validation logic - can be expanded
+            const isValid = field.checkValidity();
+            field.setAttribute('aria-invalid', !isValid);
+            
+            // Visual feedback
+            field.classList.toggle('invalid', !isValid);
+            field.classList.toggle('valid', isValid);
+        }
     };
 
-    // === INITIALIZE ALL UTILITIES ===
-    GoodWayUtils.init = function() {
-        // Initialize when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                GoodWayUtils.initThemeToggle();
-                GoodWayUtils.initMobileMenu();
-                GoodWayUtils.initSmoothScroll();
-                GoodWayUtils.initScrollAnimations();
-                GoodWayUtils.initFormOptimizations();
-                GoodWayUtils.initResizeHandler();
-                
-                // Create particles after initial layout
-                requestAnimationFrame(() => {
-                    GoodWayUtils.createParticles();
+    // === OPTIMIZED LAZY LOADING ===
+    GoodWayUtils.initLazyLoading = function() {
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
                 });
-            });
-        } else {
-            GoodWayUtils.initThemeToggle();
-            GoodWayUtils.initMobileMenu();
-            GoodWayUtils.initSmoothScroll();
-            GoodWayUtils.initScrollAnimations();
-            GoodWayUtils.initFormOptimizations();
-            GoodWayUtils.initResizeHandler();
-            
-            // Create particles after initial layout
-            requestAnimationFrame(() => {
-                GoodWayUtils.createParticles();
-            });
+            }, { rootMargin: '50px 0px' });
+
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            lazyImages.forEach(img => imageObserver.observe(img));
         }
     };
 
     // === PERFORMANCE MONITORING ===
-    GoodWayUtils.logPerformance = function() {
-        if ('performance' in window) {
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    const perfData = performance.getEntriesByType('navigation')[0];
-                    console.log('Page Load Performance:', {
-                        'DOM Content Loaded': perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
-                        'Page Load': perfData.loadEventEnd - perfData.loadEventStart,
-                        'Total Load Time': perfData.loadEventEnd - perfData.fetchStart
+    GoodWayUtils.monitorPerformance = function() {
+        if ('performance' in window && 'PerformanceObserver' in window) {
+            // Monitor Long Tasks
+            try {
+                const longTaskObserver = new PerformanceObserver((list) => {
+                    list.getEntries().forEach((entry) => {
+                        if (entry.duration > 50) {
+                            console.warn('Long task detected:', entry.duration + 'ms');
+                        }
                     });
-                }, 1000);
-            });
+                });
+                longTaskObserver.observe({ entryTypes: ['longtask'] });
+            } catch (e) {
+                // PerformanceObserver not supported in all browsers
+            }
         }
     };
+
+    // === AUTO INITIALIZATION ===
+    GoodWayUtils.init = function() {
+        // Use single DOMContentLoaded listener
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                GoodWayUtils.initThemeToggle();
+                GoodWayUtils.initMobileMenu();
+                GoodWayUtils.initSmoothScrolling();
+                GoodWayUtils.initScrollAnimations();
+                GoodWayUtils.initFormValidation();
+                GoodWayUtils.initLazyLoading();
+                GoodWayUtils.monitorPerformance();
+            });
+        } else {
+            // DOM is already loaded
+            GoodWayUtils.initThemeToggle();
+            GoodWayUtils.initMobileMenu();
+            GoodWayUtils.initSmoothScrolling();
+            GoodWayUtils.initScrollAnimations();
+            GoodWayUtils.initFormValidation();
+            GoodWayUtils.initLazyLoading();
+            GoodWayUtils.monitorPerformance();
+        }
+    };
+
+    // Auto-initialize when script loads
+    GoodWayUtils.init();
 
 })(window);

@@ -37,6 +37,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
     <!-- Load main CSS immediately -->
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/contact.css">
     
     <!-- Preload critical fonts -->
@@ -51,26 +52,25 @@
 <body>
     <!-- Navigation -->
     <nav aria-label="Main navigation">
-        <a href="/" class="logo" aria-label="Good Way Travels Home">
-            <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40" loading="lazy">
-            <span class="logo-text">Good Way </span>
+        <a href="index.html" class="logo" aria-label="Good Way Travels Home">
+            <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40" loading="eager" decoding="async" fetchpriority="high">
+            <span class="logo-text">Good Way</span>
         </a>
         
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="services.html">Services</a> 
             <a href="inquiry.html">Inquiry</a>
-            <a href="about.html">About </a>
+            <a href="about.html">About</a>
             <a href="contact.html" class="active">Contact</a>
-            
         </div>
         
         <div class="nav-actions">
-            <button class="theme-toggle" aria-label="Toggle dark mode">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
-            <button class="nav-cta">Book Now</button>
-            <button class="mobile-menu-btn" aria-label="Open mobile menu" aria-expanded="false">
+            <a href="inquiry.html" class="nav-cta" id="cta">Get Started</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -78,20 +78,19 @@
     
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <button class="mobile-menu-close" aria-label="Close mobile menu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu">
             <i class="fas fa-times"></i>
         </button>
         
         <div class="mobile-menu-links">
-          
-               <a href="index.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="services.html">Services</a> 
             <a href="inquiry.html">Inquiry</a>
-            <a href="about.html">About </a>
+            <a href="about.html">About</a>
             <a href="contact.html" class="active">Contact</a>
         </div>
         
-        <button class="nav-cta">Book Now</button>
+        <a href="inquiry.html" class="nav-cta">Get Started</a>
     </div>
     
     <!-- Hero Section -->

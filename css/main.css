@@ -180,8 +180,18 @@
         transition: width 0.3s ease;
     }
     
-    .nav-links a:hover::after {
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
         width: 100%;
+    }
+    
+    .nav-links a.active {
+        color: var(--primary);
+        font-weight: 700;
+    }
+    
+    body.dark-mode .nav-links a.active {
+        color: var(--primary-light);
     }
     
     .nav-actions {

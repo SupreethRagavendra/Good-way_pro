@@ -37,6 +37,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <!-- Load main CSS immediately -->
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/about.css">
     
     <!-- Preload critical fonts -->
@@ -77,9 +78,9 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo">
-            <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40" loading="eager" decoding="async">
+    <nav aria-label="Main navigation">
+        <a href="index.html" class="logo" aria-label="Good Way Travels Home">
+            <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40" loading="eager" decoding="async" fetchpriority="high">
             <span class="logo-text">Good Way</span>
         </a>
         
@@ -95,8 +96,8 @@
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
-            <a href="inquiry.html" class="nav-cta">Get Started</a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+            <a href="inquiry.html" class="nav-cta" id="cta">Get Started</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </div>

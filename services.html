@@ -134,9 +134,9 @@
     <!-- Skip to Content Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo">
-            <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40" loading="eager" decoding="async">
+    <nav aria-label="Main navigation">
+        <a href="index.html" class="logo" aria-label="Good Way Travels Home">
+            <img src="logo3.png" alt="Good Way Travels Logo" width="40" height="40" loading="eager" decoding="async" fetchpriority="high">
             <span class="logo-text">Good Way</span>
         </a>
         
@@ -153,7 +153,7 @@
                 <i class="fas fa-moon"></i>
             </button>
             <a href="inquiry.html" class="nav-cta" id="cta">Get Started</a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
