@@ -46,7 +46,7 @@ good-way-travels/
 ├── inquiry.html               # Inquiry page
 ├── css/                       # Stylesheets
 ├── js/                        # JavaScript files
-├── assests/                   # Images and assets
+├── assets/                   # Images and assets
 ├── site.webmanifest           # PWA manifest file
 ├── robots.txt                 # Search engine directives
 ├── sitemap.xml                # XML sitemap
