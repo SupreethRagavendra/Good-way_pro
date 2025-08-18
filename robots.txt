@@ -7,7 +7,7 @@ Sitemap: https://good-way-travels.vercel.app/sitemap.xml
 # Disallow unnecessary files
 Disallow: /css/
 Disallow: /js/
-Disallow: /assests/
+Disallow: /assets/
 Disallow: /*.json
 Disallow: /*.txt
 Disallow: /*.xml
