@@ -173,7 +173,7 @@ RESPONSIVE ENHANCEMENTS
 Bootstrap grid enhancements for existing components
 */
 
-/* Service container grid enhancement */
+/* Service container grid enhancement - Only apply to Bootstrap grid */
 .services-container.row {
     margin: 0;
     justify-content: center;
@@ -181,6 +181,81 @@ Bootstrap grid enhancements for existing components
 
 .services-container.row > * {
     padding: 1rem;
+}
+
+/* Ensure Bootstrap doesn't interfere with existing CSS Grid */
+.services-container:not(.row) {
+    /* Preserve original CSS Grid layout */
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
+    margin-top: 3rem !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Preserve responsive behavior */
+@media (max-width: 768px) {
+    .services-container:not(.row) {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Ensure service cards work properly with Bootstrap button classes */
+.service-card .service-link.btn {
+    /* Preserve original button styling while adding Bootstrap enhancements */
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    color: var(--primary) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid var(--primary) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    margin-top: 1rem !important;
+}
+
+.service-card .service-link.btn:hover {
+    color: white !important;
+    background: var(--primary) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.service-card .service-link.btn i {
+    transition: transform 0.3s ease !important;
+}
+
+.service-card .service-link.btn:hover i {
+    transform: translateX(5px) !important;
+}
+
+/* Ensure CTA buttons work properly with Bootstrap classes */
+.cta-btn.btn {
+    /* Preserve original CTA button styling */
+    background: white !important;
+    color: var(--primary) !important;
+    padding: 1rem 2.5rem !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+    font-size: var(--text-base) !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.cta-btn.btn:hover {
+    background: white !important;
+    color: var(--primary) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Stats container grid enhancement */
