@@ -1,15 +1,14 @@
-// Performance-optimized main.js with FOUC prevention
+// Main JavaScript file for Good Way Travels website
 
 (function() {
     'use strict';
     
-    // Use shared utilities for better performance
+    // Check if shared utilities are available
     if (typeof window.GoodWayUtils !== 'undefined') {
-        // Shared utilities are available, skip duplicate functionality
-        console.log('Using shared utilities for performance optimization');
+        console.log('Using shared utilities');
     }
     
-    // Optimized CSS loading function
+    // Load CSS files
     function loadCSS(href, media = 'all') {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
@@ -19,10 +18,8 @@
         return link;
     }
     
-    // Load non-critical resources after initial render with better scheduling
+    // Load fonts and other resources
     function loadNonCriticalResources() {
-        // FontAwesome is now loaded directly in HTML for immediate icon display
-        // Only load additional fonts if needed
         if ('requestIdleCallback' in window) {
             requestIdleCallback(() => {
                 loadCSS('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -34,9 +31,8 @@
         }
     }
 
-    // Theme toggle (fallback if shared utilities not available)
+    // Theme toggle functionality
     function initializeThemeToggle() {
-        // Skip if shared utilities handle this
         if (typeof window.GoodWayUtils !== 'undefined') return;
         
         const themeToggle = document.getElementById('themeToggle');
@@ -48,7 +44,7 @@
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Apply theme immediately without transitions to prevent blinking
+        // Apply saved theme
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
             body.classList.add('dark-mode');
             if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
@@ -57,17 +53,16 @@
         themeToggle.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // Use requestAnimationFrame for smooth theme switching
             requestAnimationFrame(() => {
                 const isDark = body.classList.contains('dark-mode');
                 
                 if (isDark) {
-                    // Switching to light mode
+                    // Switch to light mode
                     body.classList.remove('dark-mode');
                     themeIcon?.classList.replace('fa-sun', 'fa-moon');
                     localStorage.setItem('theme', 'light');
                 } else {
-                    // Switching to dark mode
+                    // Switch to dark mode
                     body.classList.add('dark-mode');
                     themeIcon?.classList.replace('fa-moon', 'fa-sun');
                     localStorage.setItem('theme', 'dark');
@@ -76,7 +71,7 @@
         });
     }
 
-    // Optimized timeline animation with performance considerations
+    // Timeline animation
     function initializeTimelineAnimation() {
         const timeline = document.querySelector('.process-timeline');
         const steps = document.querySelectorAll('.process-step');
@@ -86,7 +81,6 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Use requestAnimationFrame for smoother animations
                     requestAnimationFrame(() => {
                         const line = document.getElementById('timelineLine');
                         if (line) {
@@ -96,314 +90,118 @@
                             
                             requestAnimationFrame(() => {
                                 line.style.height = '100%';
-                                // Remove will-change after animation
                                 setTimeout(() => {
                                     line.style.willChange = 'auto';
                                 }, 1500);
                             });
                         }
-                        
-                        // Stagger step animations with better performance
-                        steps.forEach((step, index) => {
-                            setTimeout(() => {
-                                step.style.willChange = 'transform, opacity';
-                                step.classList.add('animated');
-                                // Remove will-change after animation
-                                setTimeout(() => {
-                                    step.style.willChange = 'auto';
-                                }, 800);
-                            }, index * 150); // Reduced delay for faster perceived performance
-                        });
                     });
-                    
-                    observer.unobserve(entry.target);
                 }
             });
-        }, { 
-            threshold: 0.2, // Reduced threshold for earlier trigger
-            rootMargin: '0px 0px -50px 0px' // Reduced margin
-        });
-        
-        observer.observe(timeline);
+        }, { threshold: 0.3 });
+
+        steps.forEach(step => observer.observe(step));
     }
 
-    // Mobile menu (fallback if shared utilities not available)
+    // Initialize mobile menu
     function initializeMobileMenu() {
-        // Skip if shared utilities handle this
-        if (typeof window.GoodWayUtils !== 'undefined') return;
-        
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileMenuClose = document.getElementById('mobileMenuClose');
 
-        if (!mobileMenuBtn || !mobileMenu || !mobileMenuClose) return;
+        if (!mobileMenuBtn || !mobileMenu) return;
 
-        const toggleMenu = (show) => {
+        function toggleMenu(show) {
             requestAnimationFrame(() => {
                 if (show) {
                     mobileMenu.classList.add('active');
+                    mobileMenu.setAttribute('aria-hidden', 'false');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'true');
                     document.body.style.overflow = 'hidden';
                 } else {
                     mobileMenu.classList.remove('active');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
                     document.body.style.overflow = '';
                 }
             });
-        };
+        }
 
         mobileMenuBtn.addEventListener('click', () => toggleMenu(true), { passive: true });
-        mobileMenuClose.addEventListener('click', () => toggleMenu(false), { passive: true });
+        mobileMenuClose?.addEventListener('click', () => toggleMenu(false), { passive: true });
 
-        // Close menu when clicking on links
-        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-            link.addEventListener('click', () => toggleMenu(false), { passive: true });
-        });
-
-        // Close menu on outside click
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) toggleMenu(false);
-        }, { passive: true });
-    }
-
-    // Optimized counter animation with RAF
-    function animateCounter(id, target, duration = 2000) {
-        const element = document.getElementById(id);
-        if (!element) return;
-
-        const startTime = performance.now();
-        const startValue = 0;
-
-        function updateCounter(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Easing function for smoother animation
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            const current = Math.floor(startValue + (target - startValue) * easeOutQuart);
-            
-            element.textContent = current.toLocaleString();
-
-            if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-            } else {
-                element.textContent = target.toLocaleString();
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                toggleMenu(false);
             }
-        }
-
-        requestAnimationFrame(updateCounter);
-    }
-
-    // Highly optimized particles with adaptive count based on device performance
-    function createParticles() {
-        const container = document.getElementById('particles');
-        if (!container) return;
-
-        // Clear existing particles efficiently
-        while (container.firstChild) {
-            container.removeChild(container.firstChild);
-        }
-        
-        // Adaptive particle count based on device performance
-        const isMobile = window.innerWidth < 768;
-        const isLowEnd = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
-        const count = isLowEnd ? (isMobile ? 5 : 8) : (isMobile ? 8 : 15); // Further reduced
-
-        const fragment = document.createDocumentFragment();
-
-        for (let i = 0; i < count; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            const size = Math.random() * 6 + 2; // Further reduced max size
-            particle.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                left: ${Math.random() * 100}%;
-                top: ${Math.random() * 100}%;
-                animation: float ${Math.random() * 8 + 4}s ease-in-out ${Math.random() * 3}s infinite;
-                opacity: ${(Math.random() * 0.3 + 0.1).toFixed(2)};
-                will-change: transform;
-            `;
-            
-            fragment.appendChild(particle);
-        }
-
-        container.appendChild(fragment);
-    }
-
-    // Optimized intersection observer for animations
-    function initializeScrollAnimations() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-
-                    if (target.classList.contains('process-section')) {
-                        const timelineLine = document.getElementById('timelineLine');
-                        if (timelineLine) {
-                            requestAnimationFrame(() => {
-                                timelineLine.style.transform = 'translateX(-50%) scaleY(1)';
-                            });
-                        }
-                        
-                        const steps = document.querySelectorAll('.process-step');
-                        steps.forEach((step, i) => {
-                            setTimeout(() => {
-                                step.style.willChange = 'transform, opacity';
-                                step.classList.add('animated');
-                                setTimeout(() => {
-                                    step.style.willChange = 'auto';
-                                }, 800);
-                            }, i * 200);
-                        });
-                    }
-
-                    // Stats counter animation
-                    if (target.classList.contains('section') && 
-                        target.querySelector('.stats-container')) {
-                        animateCounter('ticketsCounter', 3000);
-                        animateCounter('documentsCounter', 5700);
-                        animateCounter('yearsCounter', 3);
-                    }
-
-                    observer.unobserve(target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
         });
     }
 
-    // Cookie consent optimization
-    function initializeCookieConsent() {
-        const cookieConsent = document.getElementById('cookieConsent');
-        const cookieAccept = document.getElementById('cookieAccept');
-        const cookieDecline = document.getElementById('cookieDecline');
-
-        if (!cookieConsent || !cookieAccept || !cookieDecline) return;
-
-        if (!localStorage.getItem('cookieConsent')) {
-            setTimeout(() => {
-                cookieConsent.classList.add('show');
-            }, 1500); // Reduced delay
-        }
-
-        const handleConsent = (accepted) => {
-            localStorage.setItem('cookieConsent', accepted ? 'accepted' : 'declined');
-            cookieConsent.classList.remove('show');
-        };
-
-        cookieAccept.addEventListener('click', () => handleConsent(true));
-        cookieDecline.addEventListener('click', () => handleConsent(false));
-    }
-
-    // Optimized smooth scroll
-    function initializeSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+    // Smooth scrolling for navigation links
+    function initializeSmoothScrolling() {
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href === '#') return;
                 
+                const target = document.querySelector(href);
                 if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, { passive: true });
+        });
+    }
+
+    // Initialize form validation
+    function initializeFormValidation() {
+        const forms = document.querySelectorAll('form');
+        
+        forms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add('error');
+                    } else {
+                        field.classList.remove('error');
+                    }
+                });
+
+                if (!isValid) {
+                    e.preventDefault();
+                    alert('Please fill in all required fields.');
                 }
             });
         });
     }
 
-    // Debounced resize handler for better performance
-    function initializeResizeHandler() {
-        let resizeTimer;
-        let rafId;
-        
-        const handleResize = () => {
-            if (rafId) {
-                cancelAnimationFrame(rafId);
-            }
-            
-            rafId = requestAnimationFrame(() => {
-                createParticles();
-            });
-        };
-
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(handleResize, 150); // Reduced debounce time
-        }, { passive: true });
+    // Initialize when DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    } else {
+        initializeApp();
     }
 
-    // Initialize hero animations with proper timing
-    function initializeHeroAnimations() {
-        // Wait for CSS to be fully loaded
-        if (document.readyState === 'complete') {
-            startHeroAnimations();
-        } else {
-            window.addEventListener('load', startHeroAnimations);
-        }
-    }
-
-    function startHeroAnimations() {
-        const heroElements = document.querySelectorAll('.split-text-container, .hero-subtitle, .hero-cta, .hero-stats');
-        
-        heroElements.forEach((el, i) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.willChange = 'transform, opacity';
-            
-            setTimeout(() => {
-                requestAnimationFrame(() => {
-                    el.style.transition = 'all 0.6s ease-out';
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                    
-                    // Remove will-change after animation
-                    setTimeout(() => {
-                        el.style.willChange = 'auto';
-                    }, 600);
-                });
-            }, i * 150);
-        });
-    }
-
-    // Main initialization function
-    function initialize() {
-        // Initialize theme immediately to prevent flash
+    function initializeApp() {
+        // Initialize all components
         initializeThemeToggle();
-        
-        // Initialize other components
         initializeTimelineAnimation();
         initializeMobileMenu();
-        initializeScrollAnimations();
-        initializeCookieConsent();
-        initializeSmoothScroll();
-        initializeResizeHandler();
+        initializeSmoothScrolling();
+        initializeFormValidation();
         
-        // Create particles and hero animations after DOM is ready
-        requestAnimationFrame(() => {
-            createParticles();
-            initializeHeroAnimations();
-        });
-
-        // Load non-critical resources after initial paint
+        // Load non-critical resources
         loadNonCriticalResources();
+        
+        console.log('Main.js initialized successfully');
     }
 
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initialize);
-    } else {
-        initialize();
-    }
-    
 })();
    

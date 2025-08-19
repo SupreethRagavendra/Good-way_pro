@@ -83,7 +83,7 @@
         transition: none;
         opacity: 1;
         visibility: visible;
-        /* Prevent blinking and flickering */
+        /* Prevent flickering */
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         -moz-backface-visibility: hidden;
