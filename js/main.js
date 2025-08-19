@@ -1,15 +1,15 @@
-// Performance-optimized main.js with FOUC prevention
+// Main JavaScript file
 
 (function() {
     'use strict';
     
-    // Use shared utilities for better performance
+    // Check if shared utilities exist
     if (typeof window.GoodWayUtils !== 'undefined') {
-        // Shared utilities are available, skip duplicate functionality
-        console.log('Using shared utilities for performance optimization');
+        // Skip if utilities already loaded
+        console.log('Using shared utilities');
     }
     
-    // Optimized CSS loading function
+    // Load CSS files
     function loadCSS(href, media = 'all') {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
@@ -19,10 +19,10 @@
         return link;
     }
     
-    // Load non-critical resources after initial render with better scheduling
+    // Load extra resources
     function loadNonCriticalResources() {
-        // FontAwesome is now loaded directly in HTML for immediate icon display
-        // Only load additional fonts if needed
+        // Load Google Fonts
+        
         if ('requestIdleCallback' in window) {
             requestIdleCallback(() => {
                 loadCSS('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -34,9 +34,9 @@
         }
     }
 
-    // Theme toggle (fallback if shared utilities not available)
+    // Dark/Light theme toggle
     function initializeThemeToggle() {
-        // Skip if shared utilities handle this
+        // Skip if already handled
         if (typeof window.GoodWayUtils !== 'undefined') return;
         
         const themeToggle = document.getElementById('themeToggle');
@@ -48,7 +48,7 @@
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Apply theme immediately without transitions to prevent blinking
+        // Apply saved theme
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
             body.classList.add('dark-mode');
             if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
@@ -57,7 +57,7 @@
         themeToggle.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // Use requestAnimationFrame for smooth theme switching
+            // Switch theme smoothly
             requestAnimationFrame(() => {
                 const isDark = body.classList.contains('dark-mode');
                 
@@ -76,7 +76,7 @@
         });
     }
 
-    // Optimized timeline animation with performance considerations
+    // Timeline animation
     function initializeTimelineAnimation() {
         const timeline = document.querySelector('.process-timeline');
         const steps = document.querySelectorAll('.process-step');
@@ -86,7 +86,7 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Use requestAnimationFrame for smoother animations
+                    // Make animation smooth
                     requestAnimationFrame(() => {
                         const line = document.getElementById('timelineLine');
                         if (line) {
@@ -96,23 +96,23 @@
                             
                             requestAnimationFrame(() => {
                                 line.style.height = '100%';
-                                // Remove will-change after animation
+                                // Clean up after animation
                                 setTimeout(() => {
                                     line.style.willChange = 'auto';
                                 }, 1500);
                             });
                         }
                         
-                        // Stagger step animations with better performance
+                        // Show steps one by one
                         steps.forEach((step, index) => {
                             setTimeout(() => {
                                 step.style.willChange = 'transform, opacity';
                                 step.classList.add('animated');
-                                // Remove will-change after animation
+                                // Clean up after animation
                                 setTimeout(() => {
                                     step.style.willChange = 'auto';
                                 }, 800);
-                            }, index * 150); // Reduced delay for faster perceived performance
+                            }, index * 150); // Small delay between steps
                         });
                     });
                     
@@ -129,7 +129,7 @@
 
     // Mobile menu (fallback if shared utilities not available)
     function initializeMobileMenu() {
-        // Skip if shared utilities handle this
+        // Skip if already handled
         if (typeof window.GoodWayUtils !== 'undefined') return;
         
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -192,7 +192,7 @@
         requestAnimationFrame(updateCounter);
     }
 
-    // Highly optimized particles with adaptive count based on device performance
+    // Create moving particles
     function createParticles() {
         const container = document.getElementById('particles');
         if (!container) return;
@@ -202,7 +202,7 @@
             container.removeChild(container.firstChild);
         }
         
-        // Adaptive particle count based on device performance
+        // Less particles on mobile
         const isMobile = window.innerWidth < 768;
         const isLowEnd = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
         const count = isLowEnd ? (isMobile ? 5 : 8) : (isMobile ? 8 : 15); // Further reduced
@@ -280,7 +280,7 @@
         });
     }
 
-    // Cookie consent optimization
+    // Cookie consent popup
     function initializeCookieConsent() {
         const cookieConsent = document.getElementById('cookieConsent');
         const cookieAccept = document.getElementById('cookieAccept');
@@ -321,7 +321,7 @@
         });
     }
 
-    // Debounced resize handler for better performance
+    // Handle window resize
     function initializeResizeHandler() {
         let resizeTimer;
         let rafId;
@@ -366,7 +366,7 @@
                     el.style.opacity = '1';
                     el.style.transform = 'translateY(0)';
                     
-                    // Remove will-change after animation
+                    // Clean up after animation
                     setTimeout(() => {
                         el.style.willChange = 'auto';
                     }, 600);

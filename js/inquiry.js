@@ -1,7 +1,7 @@
 
-    // Theme toggle is handled by shared-utils.js
+    // Theme handled elsewhere
 
-    // === MOBILE MENU TOGGLE ===
+    // Mobile menu
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuClose = document.getElementById('mobileMenuClose');
@@ -24,14 +24,14 @@
     });
 
 
-    // === AUTO-SELECT SERVICE FROM URL PARAMETER ===
+    // Auto-select service
 function getServiceFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
     const serviceParam = urlParams.get('service');
     
     if (!serviceParam) return;
     
-    // Map URL parameters to form values
+    // Map URL to form
     const serviceMap = {
         'passport-services': 'Passport Services',
         'voter-id': 'Voter ID Services',
@@ -68,30 +68,30 @@ function getServiceFromUrl() {
     }
 }
 
-// Call this function when the DOM is loaded
+// Call when page loads
 document.addEventListener('DOMContentLoaded', getServiceFromUrl);
-    // === WHATSAPP SUBMISSION FUNCTION ===
+    // WhatsApp submission
     function submitToWhatsApp() {
-        // Get form data
+        // Get form info
         const name = document.getElementById('name').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const service = document.getElementById('service').value;
         const message = document.getElementById('message').value.trim();
         
-        // Validate form data
+        // Check form
         if (!name || !phone || !service || !message) {
             alert('Please fill in all required fields before submitting.');
             return;
         }
         
-        // Validate phone number
+        // Check phone number
         const phonePattern = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
         if (!phonePattern.test(phone)) {
             alert('Please enter a valid Indian mobile number.');
             return;
         }
         
-        // Create WhatsApp message
+        // Make WhatsApp message
         const whatsappMessage = `*Customer Details:*
 • Name: ${name}
 • Phone: ${phone}
@@ -100,27 +100,27 @@ document.addEventListener('DOMContentLoaded', getServiceFromUrl);
 *Inquiry Details:*
 ${message}`;
         
-        // Encode the message for URL
+        // Prepare message for URL
         const encodedMessage = encodeURIComponent(whatsappMessage);
         
-        // Create WhatsApp URL
+        // Make WhatsApp link
         const whatsappUrl = `https://wa.me/919994120140?text=${encodedMessage}`;
         
-        // Open WhatsApp in new tab
+        // Open WhatsApp
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         
-        // Show success message
+        // Show success
         const successDiv = document.getElementById('formSuccess');
         successDiv.style.display = 'block';
         successDiv.textContent = 'WhatsApp opened! Please send the message to complete your inquiry.';
         
-        // Hide success message after 5 seconds
+        // Hide success after 5 seconds
         setTimeout(() => {
             successDiv.style.display = 'none';
         }, 5000);
     }
 
-    // === FORM VALIDATION ===
+    // Form validation
     const inquiryForm = document.getElementById('inquiryForm');
     const submitBtn = document.getElementById('submitBtn');
     
@@ -183,13 +183,13 @@ ${message}`;
         }
     }
     
-    // Real-time validation
+    // Check as you type
     document.getElementById('name').addEventListener('input', validateName);
     document.getElementById('phone').addEventListener('input', validatePhone);
     document.getElementById('service').addEventListener('change', validateService);
     document.getElementById('message').addEventListener('input', validateMessage);
     
-    // Form submission
+    // Submit form
     inquiryForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -202,7 +202,7 @@ ${message}`;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             
-            // Simulate processing delay
+            // Wait a bit
             setTimeout(() => {
                 const name = document.getElementById('name').value;
                 const phone = document.getElementById('phone').value;
@@ -223,7 +223,7 @@ Please provide more details about this service.
                 const whatsappUrl = `https://wa.me/9994120140?text=${encodeURIComponent(whatsappMessage)}`;
                 window.open(whatsappUrl, '_blank');
                 
-                // Reset form
+                // Clear form
                 inquiryForm.reset();
                 document.getElementById('formSuccess').style.display = 'block';
                 submitBtn.disabled = false;
@@ -236,7 +236,7 @@ Please provide more details about this service.
         }
     });
 
-    // === PARTICLES ===
+    // Background particles
     function createParticles() {
         const container = document.getElementById('particles');
         if (!container) return;
@@ -244,26 +244,26 @@ Please provide more details about this service.
         container.innerHTML = '';
         document.querySelectorAll('[data-generated="particle-style"]').forEach(s => s.remove());
 
-        // Reduced particle count for better performance
+        // Less particles on mobile
         const count = window.innerWidth < 768 ? 10 : 25;
 
         for (let i = 0; i < count; i++) {
             const p = document.createElement('div');
             p.classList.add('particle');
 
-            const size = Math.random() * 8 + 2; // Smaller particles
+            const size = Math.random() * 8 + 2; // Small size
             p.style.width = `${size}px`;
             p.style.height = `${size}px`;
             p.style.left = `${Math.random() * 100}%`;
             p.style.top = `${Math.random() * 100}%`;
 
-            const duration = Math.random() * 8 + 4; // Faster animation
-            const delay = Math.random() * 3; // Shorter delay
-            const distance = Math.random() * 60 + 30; // Shorter distance
+            const duration = Math.random() * 8 + 4; // Fast animation
+            const delay = Math.random() * 3; // Short delay
+            const distance = Math.random() * 60 + 30; // Short distance
             const anim = `floatParticle-${i}`;
 
             p.style.animation = `${anim} ${duration}s ease-in-out ${delay}s infinite`;
-            p.style.opacity = (Math.random() * 0.3 + 0.1).toFixed(2); // Lower opacity
+            p.style.opacity = (Math.random() * 0.3 + 0.1).toFixed(2); // Light opacity
 
             const style = document.createElement('style');
             style.setAttribute('data-generated', 'particle-style');
@@ -281,7 +281,7 @@ Please provide more details about this service.
         }
     }
 
-    // === AIRPLANE ANIMATION - Optimized ===
+    // Airplane animation
     function animateAirplane() {
         const airplane = document.querySelector('.airplane');
         if (!airplane) return;
@@ -303,7 +303,7 @@ Please provide more details about this service.
         airplane.style.animation = 'fly 6s ease-in-out infinite';
     }
 
-    // === DOCUMENT ICON FLOATING - Optimized ===
+    // Floating icons
     function animateDocumentIcons() {
         const docs = document.querySelectorAll('.document-icon');
         if (!docs.length) return;
@@ -325,7 +325,7 @@ Please provide more details about this service.
         });
     }
 
-    // === ANIMATIONS & OBSERVER ===
+    // Animations
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -345,7 +345,7 @@ Please provide more details about this service.
 
     document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-    // === COOKIE CONSENT ===
+    // Cookie popup
     const cookieConsent = document.getElementById('cookieConsent');
     const cookieAccept = document.getElementById('cookieAccept');
     const cookieDecline = document.getElementById('cookieDecline');
@@ -364,7 +364,7 @@ Please provide more details about this service.
         cookieConsent.classList.remove('show');
     });
 
-    // Message templates for each service
+    // Message templates
 const messageTemplates = {
     'PAN Card Services': [
         {
@@ -516,7 +516,7 @@ Service required: [Describe your need in detail]`
     ]
 };
 
-// Default template for services not listed above
+// Default template
 const defaultTemplate = `I need assistance with [Service]. Please provide information about:
 - Required documents
 - Processing time
@@ -525,7 +525,7 @@ const defaultTemplate = `I need assistance with [Service]. Please provide inform
 
 My specific requirement: [Please describe in detail]`;
 
-// Update message field based on service selection
+// Update message field
 function updateMessageTemplate() {
     const serviceSelect = document.getElementById('service');
     const messageField = document.getElementById('message');
@@ -534,7 +534,7 @@ function updateMessageTemplate() {
     
     const selectedService = serviceSelect.value;
     
-    // Clear previous options
+    // Clear old options
     templateOptions.innerHTML = '';
     
     if (!selectedService) {
@@ -542,11 +542,11 @@ function updateMessageTemplate() {
         return;
     }
     
-    // Check if we have templates for this service
+    // Check for templates
     if (messageTemplates[selectedService]) {
         templateButtons.style.display = 'block';
         
-        // Add template options
+        // Add options
         messageTemplates[selectedService].forEach((template, index) => {
             const button = document.createElement('button');
             button.className = 'template-btn';
@@ -554,14 +554,14 @@ function updateMessageTemplate() {
             button.onclick = function() {
                 messageField.value = template.template;
                 updateCharCount();
-                // Smooth scroll to message field
+                // Scroll to message
                 messageField.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 messageField.focus();
             };
             templateOptions.appendChild(button);
         });
         
-        // Add default option if there are multiple templates
+        // Add default option
         if (messageTemplates[selectedService].length > 1) {
             const button = document.createElement('button');
             button.className = 'template-btn';
@@ -589,23 +589,23 @@ function updateMessageTemplate() {
     alert("Right-click is disabled on this page.");
 }, false);
 
-// Disable specific keyboard shortcuts
+// Disable shortcuts
 document.addEventListener('keydown', function(e) {
-    // Ctrl+U, Ctrl+S, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+C, F12
+    // Various shortcuts
     if (
-        (e.ctrlKey && e.key.toLowerCase() === 'u') || // View Source
-        (e.ctrlKey && e.key.toLowerCase() === 's') || // Save
-        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') || // DevTools
-        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') || // Console
-        (e.ctrlKey && e.key.toLowerCase() === 'c') || // Copy
-        (e.key === 'F12') // DevTools
+        (e.ctrlKey && e.key.toLowerCase() === 'u') || // View source
+        (e.ctrlKey && e.key.toLowerCase() === 's') || // Save page
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') || // Dev tools
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') || // Console tool
+        (e.ctrlKey && e.key.toLowerCase() === 'c') || // Copy text
+        (e.key === 'F12') // Dev tools
     ) {
         e.preventDefault();
         alert("This shortcut is disabled.");
     }
 });
 
-// Character counter for message field
+// Character counter
 function updateCharCount() {
     const messageField = document.getElementById('message');
     const charCount = document.getElementById('charCount');
@@ -622,9 +622,9 @@ function updateCharCount() {
     }
 }
 
-// Initialize on page load
+// Start on page load
 document.addEventListener('DOMContentLoaded', function() {
-    // Check for service parameter in URL
+    // Check URL for service
     const urlParams = new URLSearchParams(window.location.search);
     const serviceParam = urlParams.get('service');
     
@@ -639,11 +639,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Initialize character counter
+    // Start character counter
     updateCharCount();
 });
 
-    // === SMOOTH SCROLL ===
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -655,7 +655,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // === LAZY LOAD IMAGES ===
+    // Load images
     function lazyLoadImages() {
         const imgs = document.querySelectorAll('img[loading="lazy"]');
         if ('loading' in HTMLImageElement.prototype) {
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // === INIT ON DOM READY ===
+    // Start when ready
     document.addEventListener('DOMContentLoaded', () => {
         createParticles();
         animateAirplane();
@@ -682,7 +682,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lazyLoadImages();
     });
 
-    // === RESIZE OPTIMIZED ===
+    // Window resize
     window.addEventListener('resize', () => {
         createParticles();
         animateAirplane();

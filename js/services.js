@@ -1,12 +1,12 @@
-// main.js - External JavaScript File
-// ==========================================
+// Services page JavaScript
+
 
 (function() {
     'use strict';
 
-    // Theme toggle is handled by shared-utils.js
+    // Theme handled elsewhere
 
-    // === MOBILE MENU TOGGLE ===
+    // Mobile menu
     function initMobileMenu() {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -24,7 +24,7 @@
             document.body.style.overflow = '';
         });
 
-        // Close menu when clicking on navigation links
+        // Close menu on link click
         document.querySelectorAll('.mobile-menu-links a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -33,7 +33,7 @@
         });
     }
 
-    // === SERVICE FILTERING ===
+    // Filter services
     function initServiceFiltering() {
         const filterBtns = document.querySelectorAll('.filter-btn');
         const serviceCards = document.querySelectorAll('.service-card');
@@ -42,9 +42,9 @@
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
+                // Remove active from all
                 filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
+                // Make clicked button active
                 btn.classList.add('active');
                 
                 const filter = btn.dataset.filter;
@@ -62,7 +62,7 @@
         });
     }
 
-    // === SERVICE SEARCH FUNCTIONALITY ===
+    // Search services
     function initServiceSearch() {
         const searchInput = document.getElementById('serviceSearch');
         const serviceCards = document.querySelectorAll('.service-card');
@@ -86,7 +86,7 @@
         });
     }
 
-    // === SERVICE LINK ENHANCEMENT ===
+    // Service links
     function initServiceLinks() {
         document.querySelectorAll('.service-link').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -102,16 +102,16 @@
                     actionText = 'Get Started';
                 }
                 
-                // Update the link text if needed
+                // Update link text
                 this.innerHTML = `${actionText} <i class="fas fa-arrow-right"></i>`;
                 
-                // Redirect to inquiry page with service parameter
+                // Go to inquiry page
                 window.location.href = `inquiry.html?service=${encodeURIComponent(serviceName)}`;
             });
         });
     }
 
-    // === FAQ ACCORDION ===
+    // FAQ accordion
     function initFAQAccordion() {
         const faqItems = document.querySelectorAll('.faq-item');
         
@@ -124,10 +124,10 @@
             question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
                 
-                // Close all other FAQ items
+                // Close other FAQs
                 faqItems.forEach(faq => faq.classList.remove('active'));
                 
-                // Toggle current item
+                // Show/hide current FAQ
                 if (!isActive) {
                     item.classList.add('active');
                 }
@@ -135,7 +135,7 @@
         });
     }
 
-    // === SERVICE PROCESS TIMELINE ANIMATION ===
+    // Timeline animation
     function initProcessTimeline() {
         const processSection = document.getElementById('service-process');
         if (!processSection) return;
@@ -158,7 +158,7 @@
         processObserver.observe(processSection);
     }
 
-    // === PARTICLES BACKGROUND ===
+    // Background particles
     function createParticles() {
         const container = document.getElementById('particles');
         if (!container) return;
@@ -202,7 +202,7 @@
         }
     }
 
-    // === DOCUMENT ICON FLOATING ===
+    // Floating icons
     function animateDocumentIcons() {
         const docs = document.querySelectorAll('.document-icon');
         if (!docs.length) return;
@@ -224,7 +224,7 @@
         });
     }
 
-    // === COOKIE CONSENT ===
+    // Cookie popup
     function initCookieConsent() {
         const cookieConsent = document.getElementById('cookieConsent');
         const cookieAccept = document.getElementById('cookieAccept');
@@ -247,7 +247,7 @@
         });
     }
 
-    // === AIRPLANE ANIMATION ===
+    // Airplane animation
     function animateAirplane() {
         const airplane = document.querySelector('.airplane');
         if (!airplane) return;
@@ -271,7 +271,7 @@
         airplane.style.animation = 'fly 8s ease-in-out infinite';
     }
 
-    // === LAZY LOAD IMAGES ===
+    // Load images
     function initLazyLoading() {
         const lazyImages = document.querySelectorAll('img[loading="lazy"]');
         
@@ -295,7 +295,7 @@
         });
     }
 
-    // === SMOOTH SCROLL ===
+    // Smooth scrolling
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -312,7 +312,7 @@
         });
     }
 
-    // === CTA BUTTON REDIRECTS ===
+    // Button redirects
     function initCTAButtons() {
         const ctaBtn = document.querySelector('.cta-btn');
         const navCta = document.querySelector('.nav-cta');
@@ -330,23 +330,23 @@
         }
     }
 
-    // === SERVICE CARDS ANIMATION ===
+    // Card animations
     function initServiceCardAnimations() {
         document.querySelectorAll('.service-card').forEach((card, index) => {
             card.style.animationDelay = `${0.3 + (index * 0.2)}s`;
         });
     }
 
-    // === RESIZE HANDLER ===
+    // Window resize
     function handleResize() {
         createParticles();
         animateDocumentIcons();
     }
 
-    // === INITIALIZATION ===
+    // Setup
     function init() {
-        // Initialize all functionality
-        // Theme toggle is handled by shared-utils.js
+        // Start everything
+        // Theme handled elsewhere
         initMobileMenu();
         initServiceFiltering();
         initServiceSearch();
@@ -359,22 +359,22 @@
         initCTAButtons();
         initServiceCardAnimations();
         
-        // Create visual effects
+        // Add effects
         createParticles();
         animateAirplane();
         animateDocumentIcons();
         
-        // Add resize event listener
+        // Listen for window resize
         window.addEventListener('resize', handleResize);
     }
 
-    // === DOM READY ===
+    // When page loads
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
-     // Disable right-click and keyboard shortcuts
+     // Disable right-click
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     });

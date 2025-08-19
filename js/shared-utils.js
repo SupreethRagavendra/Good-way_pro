@@ -1,16 +1,16 @@
-// Shared Utilities for Good Way Travels Website
-// Optimized for performance and mobile experience
+// Shared utility functions
+// For better performance
 
 (function(window) {
     'use strict';
     
-    // Create namespace
+    // Create global object
     window.GoodWayUtils = window.GoodWayUtils || {};
     
-    // Performance optimizations - Cache DOM elements
+    // Cache elements for speed
     let cachedElements = {};
     
-    // Optimized DOM element getter with caching
+    // Get elements with caching
     function getElement(selector, useCache = true) {
         if (useCache && cachedElements[selector]) {
             return cachedElements[selector];
@@ -22,7 +22,7 @@
         return element;
     }
     
-    // Optimized debounce function
+    // Debounce function
     function debounce(func, wait, immediate) {
         let timeout;
         return function executedFunction(...args) {
@@ -37,7 +37,7 @@
         };
     }
     
-    // === PERFORMANCE OPTIMIZED THEME TOGGLE ===
+    // Theme toggle
     GoodWayUtils.initThemeToggle = function() {
         const themeToggle = getElement('#themeToggle');
         const body = document.body;
@@ -50,17 +50,17 @@
             return;
         }
 
-        // Check for saved theme or system preference
+        // Check saved theme
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Apply theme immediately to prevent flash
+        // Apply theme quickly
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
             body.classList.add('dark-mode');
             themeIcon.classList.replace('fa-moon', 'fa-sun');
         }
 
-        // Optimized theme toggle with better debouncing
+        // Theme toggle with debounce
         const debouncedToggle = debounce(() => {
             console.log('Theme toggle clicked, current theme:', body.classList.contains('dark-mode') ? 'dark' : 'light');
             body.classList.toggle('dark-mode');
@@ -79,7 +79,7 @@
         console.log('Theme toggle event listener added');
     };
 
-    // === OPTIMIZED MOBILE MENU ===
+    // Mobile menu
     GoodWayUtils.initMobileMenu = function() {
         const mobileMenuBtn = getElement('#mobileMenuBtn');
         const mobileMenu = getElement('#mobileMenu');
@@ -103,22 +103,22 @@
              });
          }
 
-        // Use passive listeners for better performance
+        // Use passive listeners
         mobileMenuBtn.addEventListener('click', () => toggleMenu(true), { passive: true });
         mobileMenuClose?.addEventListener('click', () => toggleMenu(false), { passive: true });
 
-        // Close menu when clicking menu links
+        // Close on menu click
         const menuLinks = document.querySelectorAll('.mobile-menu-links a');
         menuLinks.forEach(link => {
             link.addEventListener('click', () => toggleMenu(false), { passive: true });
         });
 
-        // Close menu when clicking outside
+        // Close on outside click
         mobileMenu.addEventListener('click', (e) => {
             if (e.target === mobileMenu) toggleMenu(false);
         }, { passive: true });
 
-                 // Close menu on Escape key
+                 // Close on Escape
          document.addEventListener('keydown', (e) => {
              if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
                  toggleMenu(false);
@@ -126,9 +126,9 @@
          }, { passive: true });
     };
 
-    // === OPTIMIZED SMOOTH SCROLLING ===
+    // Smooth scrolling
     GoodWayUtils.initSmoothScrolling = function() {
-        // Use single event delegation instead of multiple listeners
+        // Use event delegation
         document.addEventListener('click', function(e) {
             const anchor = e.target.closest('a[href^="#"]');
             if (!anchor) return;
@@ -148,37 +148,37 @@
         }, { passive: false });
     };
 
-    // === OPTIMIZED RESIZE HANDLER ===
+    // Window resize
     GoodWayUtils.initResizeHandler = function(callback) {
         const debouncedResize = debounce(callback, 250);
         window.addEventListener('resize', debouncedResize, { passive: true });
     };
 
-    // === OPTIMIZED SCROLL ANIMATIONS ===
+    // Scroll animations
     GoodWayUtils.initScrollAnimations = function() {
         const observerOptions = {
             threshold: [0.1, 0.5],
             rootMargin: '0px 0px -10% 0px'
         };
 
-        // Use single intersection observer for better performance
+        // Use intersection observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     requestAnimationFrame(() => {
                         entry.target.classList.add('animate-in');
                     });
-                    observer.unobserve(entry.target); // Stop observing once animated
+                    observer.unobserve(entry.target); // Stop watching
                 }
             });
         }, observerOptions);
 
-        // Observe elements with animation class
+        // Watch animation elements
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
         animatedElements.forEach(element => observer.observe(element));
     };
 
-    // === OPTIMIZED FORM VALIDATION ===
+    // Form validation
     GoodWayUtils.initFormValidation = function() {
         const forms = document.querySelectorAll('form');
         
@@ -186,7 +186,7 @@
             const inputs = form.querySelectorAll('input, textarea, select');
             
             inputs.forEach(input => {
-                // Debounced validation to reduce excessive checks
+                // Debounced validation
                 const debouncedValidation = debounce(() => {
                     validateField(input);
                 }, 300);
@@ -197,17 +197,17 @@
         });
 
         function validateField(field) {
-            // Basic validation logic - can be expanded
+            // Basic validation
             const isValid = field.checkValidity();
             field.setAttribute('aria-invalid', !isValid);
             
-            // Visual feedback
+            // Show feedback
             field.classList.toggle('invalid', !isValid);
             field.classList.toggle('valid', isValid);
         }
     };
 
-    // === OPTIMIZED LAZY LOADING ===
+    // Lazy loading
     GoodWayUtils.initLazyLoading = function() {
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries) => {
@@ -229,10 +229,10 @@
         }
     };
 
-    // === PERFORMANCE MONITORING ===
+    // Performance monitoring
     GoodWayUtils.monitorPerformance = function() {
         if ('performance' in window && 'PerformanceObserver' in window) {
-            // Monitor Long Tasks
+            // Monitor tasks
             try {
                 const longTaskObserver = new PerformanceObserver((list) => {
                     list.getEntries().forEach((entry) => {
@@ -243,14 +243,14 @@
                 });
                 longTaskObserver.observe({ entryTypes: ['longtask'] });
             } catch (e) {
-                // PerformanceObserver not supported in all browsers
+                // Not all browsers support this
             }
         }
     };
 
-    // === AUTO INITIALIZATION ===
+    // Auto start
     GoodWayUtils.init = function() {
-        // Use single DOMContentLoaded listener
+        // Listen for page load
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 GoodWayUtils.initThemeToggle();
@@ -262,7 +262,7 @@
                 GoodWayUtils.monitorPerformance();
             });
         } else {
-            // DOM is already loaded
+            // Page already loaded
             GoodWayUtils.initThemeToggle();
             GoodWayUtils.initMobileMenu();
             GoodWayUtils.initSmoothScrolling();
@@ -273,7 +273,7 @@
         }
     };
 
-    // Auto-initialize when script loads
+    // Start automatically
     GoodWayUtils.init();
 
 })(window);

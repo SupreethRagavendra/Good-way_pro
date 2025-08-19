@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if FontAwesome loaded properly for icons
+    // Check FontAwesome icons
     function checkFontAwesome() {
-        // Create a test element to check if FontAwesome is loaded
+        // Test FontAwesome loading
         const testElement = document.createElement('i');
         testElement.className = 'fas fa-phone';
         testElement.style.position = 'absolute';
@@ -9,23 +9,23 @@ document.addEventListener('DOMContentLoaded', function() {
         testElement.style.fontSize = '16px';
         document.body.appendChild(testElement);
         
-        // Check if the icon has proper width (FontAwesome loaded)
+        // Check icon width
         const iconWidth = testElement.offsetWidth;
         document.body.removeChild(testElement);
         
-        // If FontAwesome didn't load properly, add fallback class
+        // Add fallback if needed
         if (iconWidth === 0 || iconWidth < 10) {
             document.body.classList.add('fontawesome-fallback');
             console.warn('FontAwesome not loaded properly, using emoji fallbacks');
         }
     }
     
-    // Check FontAwesome after a short delay to ensure CSS is loaded
+    // Check after delay
     setTimeout(checkFontAwesome, 500);
     
-    // Theme toggle is handled by shared-utils.js
+    // Theme handled elsewhere
     
-    // Mobile Menu Toggle
+    // Mobile menu
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileMenuClose = document.querySelector('.mobile-menu-close');
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // FAQ Accordion
+    // FAQ section
     const faqQuestions = document.querySelectorAll('.faq-question');
     
     faqQuestions.forEach(question => {
@@ -54,19 +54,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const item = this.parentNode;
             const isActive = item.classList.contains('active');
             
-            // Close all items first
+            // Close all first
             document.querySelectorAll('.faq-item').forEach(el => {
                 el.classList.remove('active');
             });
             
-            // Open current if not active
+            // Open if not active
             if (!isActive) {
                 item.classList.add('active');
             }
         });
     });
     
-    // Contact Form Submission
+    // Form submission
     const contactForm = document.getElementById('contactForm');
     const formMessage = document.getElementById('formMessage');
     
@@ -74,21 +74,21 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Hide previous messages
+            // Hide old messages
             formMessage.style.display = 'none';
             formMessage.className = 'form-message';
             
-            // Show loading state
+            // Show loading
             const submitBtn = contactForm.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
             try {
-                // Get form values
+                // Get form data
                 const formData = new FormData(contactForm);
                 
-                // Basic validation
+                // Check form
                 const name = formData.get('name')?.trim();
                 const email = formData.get('email')?.trim();
                 const phone = formData.get('phone')?.trim();
@@ -99,18 +99,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw new Error('Please fill in all required fields.');
                 }
                 
-                // Email validation
+                // Check email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     throw new Error('Please enter a valid email address.');
                 }
                 
-                // Phone validation (basic)
+                // Check phone
                 if (phone.length < 8) {
                     throw new Error('Please enter a valid phone number.');
                 }
                 
-                // Submit form
+                // Send form
                 const response = await fetch('https://good-way.onrender.com/index.php', {
                     method: 'POST',
                     body: formData,
@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', function() {
         formMessage.className = `form-message ${type}`;
         formMessage.style.display = 'block';
         
-        // Scroll to message
+        // Scroll to message area
         formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         
-        // Auto-hide success messages after 5 seconds
+        // Hide success after 5 seconds
         if (type === 'success') {
             setTimeout(() => {
                 formMessage.style.display = 'none';
@@ -158,31 +158,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Initialize Particles
+    // Start particles
     initParticles();
     
-    // Lazy load images
+    // Load images
     initLazyLoading();
     
-    // Security measures
+    // Security
     initSecurityMeasures();
 });
 
-// Particles Animation
+// Particle animation
 function initParticles() {
     const particlesContainer = document.querySelector('.particles');
     if (!particlesContainer) return;
     
-    const particleCount = Math.min(Math.floor(window.innerWidth / 10), 50); // Limit to 50 particles max
+    const particleCount = Math.min(Math.floor(window.innerWidth / 10), 50); // Max 50 particles
     const particles = [];
     
-    // Create particles
+    // Make particles
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        // Random properties with constrained ranges
-        const size = Math.random() * 3 + 1; // 1-4px
+        // Random properties
+        const size = Math.random() * 3 + 1; // Small size
         const posX = Math.random() * 100;
         const posY = Math.random() * 100;
         const delay = Math.random() * 5;
