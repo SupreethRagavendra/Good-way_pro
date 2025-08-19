@@ -1,0 +1,70 @@
+{
+    "name": "Good Way Travels & Online Services",
+    "short_name": "Good Way Travels",
+    "description": "Your trusted partner for seamless travel bookings and government document services in Palakkad, Kerala",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#FF6600",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "categories": ["travel", "business", "productivity"],
+    "icons": [
+        {
+            "src": "/logo3.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/logo3.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/logo3.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Book Train Tickets",
+            "short_name": "Train Booking",
+            "description": "Book IRCTC train tickets instantly",
+            "url": "/services.html#train-booking",
+            "icons": [
+                {
+                    "src": "/logo3.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Government Services",
+            "short_name": "Gov Services",
+            "description": "PAN card, Aadhaar, and certificate services",
+            "url": "/services.html#government-services",
+            "icons": [
+                {
+                    "src": "/logo3.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Make Inquiry",
+            "short_name": "Inquiry",
+            "description": "Submit a service inquiry",
+            "url": "/inquiry.html",
+            "icons": [
+                {
+                    "src": "/logo3.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ]
+}

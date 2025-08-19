@@ -1,0 +1,258 @@
+:root {
+    --text-dark: #2D3748;
+    --orange-primary: #FF6600;
+    --bg-white: #FFFFFF;
+    --text-light: #718096;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    padding-top: 90px; /* Offset for fixed navbar */
+}
+
+/* Navbar Styles */
+.navbar-custom {
+    background: var(--bg-white);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-custom.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo Styles */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+.company-name {
+    line-height: 1.2;
+}
+
+.company-name .main-name {
+    display: block;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.company-name .sub-name {
+    display: block;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--orange-primary);
+}
+
+/* Navigation Links */
+.navbar-nav .nav-link {
+    color: var(--text-dark) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.25rem !important;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--orange-primary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--orange-primary) !important;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 80%;
+}
+
+/* Right Side Actions */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.action-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 102, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.action-icon:hover {
+    background: var(--orange-primary);
+    color: white;
+}
+
+.inquire-btn {
+    background: var(--orange-primary);
+    color: white !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.inquire-btn:hover {
+    background: #e05d00;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 80px);
+        background: var(--bg-white);
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+    }
+    
+    .navbar-collapse.show {
+        right: 0;
+    }
+    
+    .navbar-nav {
+        margin-top: 1rem;
+    }
+    
+    .navbar-actions {
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+    
+    .navbar-toggler {
+        border: none;
+    }
+}
+
+/* Page Content */
+.page-content {
+    min-height: 100vh;
+}   
+
+/* Extra Large Logo Styles */
+.logo-img-xxl {
+    height: 80px; /* XXL size */
+    width: auto;
+    max-width: 160px; /* For wide logos */
+    transition: all 0.3s ease;
+}
+
+/* Adjust navbar for XXL logo */
+.navbar-custom {
+    min-height: 110px; /* Taller navbar */
+    padding: 1.5rem 0;
+    transition: all 0.3s ease;
+}
+
+/* Company name styling for XXL logo */
+.company-name-xxl {
+    margin-left: 20px;
+    line-height: 1.3;
+}
+
+.company-name-xxl .main-name {
+    font-size: 1.5rem; /* Larger text */
+    font-weight: 700;
+    display: block;
+}
+
+.company-name-xxl .sub-name {
+    font-size: 1rem; /* Larger subtext */
+    display: block;
+}
+
+/* Adjust navigation items alignment */
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem !important;
+}
+
+/* Make action buttons slightly larger */
+.action-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+}
+
+.inquire-btn {
+    padding: 0.85rem 1.75rem;
+    font-size: 1rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 991.98px) {
+    .logo-img-xxl {
+        height: 60px; /* Still large on mobile */
+        max-width: 120px;
+    }
+    
+    .navbar-custom {
+        min-height: 90px;
+    }
+    
+    .company-name-xxl .main-name {
+        font-size: 1.3rem;
+    }
+    
+    .company-name-xxl .sub-name {
+        font-size: 0.9rem;
+    }
+    
+    .navbar-collapse {
+        top: 110px;
+        height: calc(100vh - 110px);
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 575.98px) {
+    .logo-img-xxl {
+        height: 50px;
+        max-width: 100px;
+    }
+    
+    .company-name-xxl {
+        margin-left: 12px;
+    }
+    
+    .company-name-xxl .main-name {
+        font-size: 1.1rem;
+    }
+}
+
+/* Content spacing */
+.main-content {
+    padding-top: 120px; /* Matches navbar height */
+}
