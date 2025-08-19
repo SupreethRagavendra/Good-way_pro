@@ -37,49 +37,33 @@
         };
     }
     
-    // === PERFORMANCE OPTIMIZED THEME TOGGLE ===
+    // === THEME TOGGLE ===
     GoodWayUtils.initThemeToggle = function() {
         const themeToggle = getElement('#themeToggle');
         const body = document.body;
         const themeIcon = themeToggle?.querySelector('i');
 
-        console.log('Theme toggle initialization:', { themeToggle, themeIcon });
+        if (!themeToggle || !themeIcon) return;
 
-        if (!themeToggle || !themeIcon) {
-            console.warn('Theme toggle elements not found');
-            return;
-        }
-
-        // Check for saved theme or system preference
+        // Apply saved theme
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Apply theme immediately to prevent flash
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
             body.classList.add('dark-mode');
             themeIcon.classList.replace('fa-moon', 'fa-sun');
         }
 
-        // Optimized theme toggle with better debouncing
-        const debouncedToggle = debounce(() => {
-            console.log('Theme toggle clicked, current theme:', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        // Toggle theme
+        themeToggle.addEventListener('click', debounce(() => {
             body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-                console.log('Switched to dark mode');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-                console.log('Switched to light mode');
-            }
-        }, 50);
-        
-        themeToggle.addEventListener('click', debouncedToggle, { passive: true });
-        console.log('Theme toggle event listener added');
+            const isDark = body.classList.contains('dark-mode');
+            themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }, 50), { passive: true });
     };
 
-    // === OPTIMIZED MOBILE MENU ===
+        // === MOBILE MENU ===
     GoodWayUtils.initMobileMenu = function() {
         const mobileMenuBtn = getElement('#mobileMenuBtn');
         const mobileMenu = getElement('#mobileMenu');
@@ -87,48 +71,31 @@
 
         if (!mobileMenuBtn || !mobileMenu) return;
 
-                 function toggleMenu(show) {
-             requestAnimationFrame(() => {
-                 if (show) {
-                     mobileMenu.classList.add('active');
-                     mobileMenu.setAttribute('aria-hidden', 'false');
-                     mobileMenuBtn.setAttribute('aria-expanded', 'true');
-                     document.body.style.overflow = 'hidden';
-                 } else {
-                     mobileMenu.classList.remove('active');
-                     mobileMenu.setAttribute('aria-hidden', 'true');
-                     mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                     document.body.style.overflow = '';
-                 }
-             });
-         }
+        function toggleMenu(show) {
+            mobileMenu.classList.toggle('active', show);
+            mobileMenuBtn.setAttribute('aria-expanded', show);
+            mobileMenu.setAttribute('aria-hidden', !show);
+            document.body.style.overflow = show ? 'hidden' : '';
+        }
 
-        // Use passive listeners for better performance
         mobileMenuBtn.addEventListener('click', () => toggleMenu(true), { passive: true });
         mobileMenuClose?.addEventListener('click', () => toggleMenu(false), { passive: true });
-
-        // Close menu when clicking menu links
-        const menuLinks = document.querySelectorAll('.mobile-menu-links a');
-        menuLinks.forEach(link => {
+        
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
             link.addEventListener('click', () => toggleMenu(false), { passive: true });
         });
 
-        // Close menu when clicking outside
         mobileMenu.addEventListener('click', (e) => {
             if (e.target === mobileMenu) toggleMenu(false);
         }, { passive: true });
 
-                 // Close menu on Escape key
-         document.addEventListener('keydown', (e) => {
-             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                 toggleMenu(false);
-             }
-         }, { passive: true });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMenu(false);
+        }, { passive: true });
     };
 
-    // === OPTIMIZED SMOOTH SCROLLING ===
+    // === SMOOTH SCROLLING ===
     GoodWayUtils.initSmoothScrolling = function() {
-        // Use single event delegation instead of multiple listeners
         document.addEventListener('click', function(e) {
             const anchor = e.target.closest('a[href^="#"]');
             if (!anchor) return;
@@ -137,139 +104,86 @@
             const target = getElement(anchor.getAttribute('href'));
             
             if (target) {
-                const navHeight = getElement('nav')?.offsetHeight || 0;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
-                
                 window.scrollTo({
-                    top: targetPosition,
+                    top: target.offsetTop - (getElement('nav')?.offsetHeight || 80),
                     behavior: 'smooth'
                 });
             }
         }, { passive: false });
     };
 
-    // === OPTIMIZED RESIZE HANDLER ===
+    // === RESIZE HANDLER ===
     GoodWayUtils.initResizeHandler = function(callback) {
-        const debouncedResize = debounce(callback, 250);
-        window.addEventListener('resize', debouncedResize, { passive: true });
+        window.addEventListener('resize', debounce(callback, 250), { passive: true });
     };
 
-    // === OPTIMIZED SCROLL ANIMATIONS ===
+    // === SCROLL ANIMATIONS ===
     GoodWayUtils.initScrollAnimations = function() {
-        const observerOptions = {
-            threshold: [0.1, 0.5],
-            rootMargin: '0px 0px -10% 0px'
-        };
-
-        // Use single intersection observer for better performance
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    requestAnimationFrame(() => {
-                        entry.target.classList.add('animate-in');
-                    });
-                    observer.unobserve(entry.target); // Stop observing once animated
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
 
-        // Observe elements with animation class
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
-        animatedElements.forEach(element => observer.observe(element));
+        document.querySelectorAll('.animate-on-scroll').forEach(element => observer.observe(element));
     };
 
-    // === OPTIMIZED FORM VALIDATION ===
+    // === FORM VALIDATION ===
     GoodWayUtils.initFormValidation = function() {
-        const forms = document.querySelectorAll('form');
-        
-        forms.forEach(form => {
-            const inputs = form.querySelectorAll('input, textarea, select');
-            
-            inputs.forEach(input => {
-                // Debounced validation to reduce excessive checks
-                const debouncedValidation = debounce(() => {
-                    validateField(input);
-                }, 300);
-                
-                input.addEventListener('input', debouncedValidation, { passive: true });
+        const validateField = (field) => {
+            const isValid = field.checkValidity();
+            field.setAttribute('aria-invalid', !isValid);
+            field.classList.toggle('invalid', !isValid);
+            field.classList.toggle('valid', isValid);
+        };
+
+        document.querySelectorAll('form').forEach(form => {
+            form.querySelectorAll('input, textarea, select').forEach(input => {
+                input.addEventListener('input', debounce(() => validateField(input), 300), { passive: true });
                 input.addEventListener('blur', () => validateField(input), { passive: true });
             });
         });
-
-        function validateField(field) {
-            // Basic validation logic - can be expanded
-            const isValid = field.checkValidity();
-            field.setAttribute('aria-invalid', !isValid);
-            
-            // Visual feedback
-            field.classList.toggle('invalid', !isValid);
-            field.classList.toggle('valid', isValid);
-        }
     };
 
-    // === OPTIMIZED LAZY LOADING ===
+    // === LAZY LOADING ===
     GoodWayUtils.initLazyLoading = function() {
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                        img.classList.add('loaded');
-                        imageObserver.unobserve(img);
+        if (!('IntersectionObserver' in window)) return;
+        
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
                     }
-                });
-            }, { rootMargin: '50px 0px' });
-
-            const lazyImages = document.querySelectorAll('img[data-src]');
-            lazyImages.forEach(img => imageObserver.observe(img));
-        }
-    };
-
-    // === PERFORMANCE MONITORING ===
-    GoodWayUtils.monitorPerformance = function() {
-        if ('performance' in window && 'PerformanceObserver' in window) {
-            // Monitor Long Tasks
-            try {
-                const longTaskObserver = new PerformanceObserver((list) => {
-                    list.getEntries().forEach((entry) => {
-                        if (entry.duration > 50) {
-                            console.warn('Long task detected:', entry.duration + 'ms');
-                        }
-                    });
-                });
-                longTaskObserver.observe({ entryTypes: ['longtask'] });
-            } catch (e) {
-                // PerformanceObserver not supported in all browsers
-            }
-        }
-    };
-
-    // === AUTO INITIALIZATION ===
-    GoodWayUtils.init = function() {
-        // Use single DOMContentLoaded listener
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                GoodWayUtils.initThemeToggle();
-                GoodWayUtils.initMobileMenu();
-                GoodWayUtils.initSmoothScrolling();
-                GoodWayUtils.initScrollAnimations();
-                GoodWayUtils.initFormValidation();
-                GoodWayUtils.initLazyLoading();
-                GoodWayUtils.monitorPerformance();
+                    img.classList.add('loaded');
+                    imageObserver.unobserve(img);
+                }
             });
-        } else {
-            // DOM is already loaded
+        }, { rootMargin: '50px 0px' });
+
+        document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
+    };
+
+    // === INITIALIZATION ===
+    GoodWayUtils.init = function() {
+        const initAll = () => {
             GoodWayUtils.initThemeToggle();
             GoodWayUtils.initMobileMenu();
             GoodWayUtils.initSmoothScrolling();
             GoodWayUtils.initScrollAnimations();
             GoodWayUtils.initFormValidation();
             GoodWayUtils.initLazyLoading();
-            GoodWayUtils.monitorPerformance();
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAll);
+        } else {
+            initAll();
         }
     };
 
