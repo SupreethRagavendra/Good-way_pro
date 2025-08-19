@@ -1,16 +1,12 @@
-// Shared Utilities for Good Way Travels Website
-// Optimized for performance and mobile experience
+
 
 (function(window) {
     'use strict';
     
-    // Create namespace
     window.GoodWayUtils = window.GoodWayUtils || {};
     
-    // Performance optimizations - Cache DOM elements
     let cachedElements = {};
     
-    // Optimized DOM element getter with caching
     function getElement(selector, useCache = true) {
         if (useCache && cachedElements[selector]) {
             return cachedElements[selector];
@@ -22,7 +18,6 @@
         return element;
     }
     
-    // Optimized debounce function
     function debounce(func, wait, immediate) {
         let timeout;
         return function executedFunction(...args) {
@@ -128,7 +123,6 @@
 
     // === OPTIMIZED SMOOTH SCROLLING ===
     GoodWayUtils.initSmoothScrolling = function() {
-        // Use single event delegation instead of multiple listeners
         document.addEventListener('click', function(e) {
             const anchor = e.target.closest('a[href^="#"]');
             if (!anchor) return;
@@ -161,19 +155,17 @@
             rootMargin: '0px 0px -10% 0px'
         };
 
-        // Use single intersection observer for better performance
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     requestAnimationFrame(() => {
                         entry.target.classList.add('animate-in');
                     });
-                    observer.unobserve(entry.target); // Stop observing once animated
+                    observer.unobserve(entry.target); 
                 }
             });
         }, observerOptions);
 
-        // Observe elements with animation class
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
         animatedElements.forEach(element => observer.observe(element));
     };
@@ -186,7 +178,6 @@
             const inputs = form.querySelectorAll('input, textarea, select');
             
             inputs.forEach(input => {
-                // Debounced validation to reduce excessive checks
                 const debouncedValidation = debounce(() => {
                     validateField(input);
                 }, 300);
@@ -232,7 +223,6 @@
     // === PERFORMANCE MONITORING ===
     GoodWayUtils.monitorPerformance = function() {
         if ('performance' in window && 'PerformanceObserver' in window) {
-            // Monitor Long Tasks
             try {
                 const longTaskObserver = new PerformanceObserver((list) => {
                     list.getEntries().forEach((entry) => {
@@ -243,14 +233,11 @@
                 });
                 longTaskObserver.observe({ entryTypes: ['longtask'] });
             } catch (e) {
-                // PerformanceObserver not supported in all browsers
             }
         }
     };
 
-    // === AUTO INITIALIZATION ===
     GoodWayUtils.init = function() {
-        // Use single DOMContentLoaded listener
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 GoodWayUtils.initThemeToggle();
@@ -262,7 +249,6 @@
                 GoodWayUtils.monitorPerformance();
             });
         } else {
-            // DOM is already loaded
             GoodWayUtils.initThemeToggle();
             GoodWayUtils.initMobileMenu();
             GoodWayUtils.initSmoothScrolling();
