@@ -1,3 +1,4 @@
+/* Inquiry page CSS */
 
     :root {
         --primary: #FF6600;
@@ -33,7 +34,7 @@
         --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
     }
     
-    /* Base Styles */
+    /* Base styles */
     * {
         margin: 0;
         padding: 0;
@@ -53,7 +54,7 @@
         background-color: var(--dark);
     }
     
-    /* Skip to Content Link for Accessibility */
+    /* Skip to content link */
     .skip-link {
         position: absolute;
         top: -40px;
@@ -86,7 +87,7 @@
         transition: none;
         opacity: 1;
         visibility: visible;
-        /* Prevent blinking and flickering */
+        /* Prevent flickering */
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         -moz-backface-visibility: hidden;
@@ -134,7 +135,7 @@
         gap: 1rem;
     }
     
-    /* Prevent all nav elements from blinking */
+            /* Prevent nav elements from flickering */
     nav * {
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
@@ -143,7 +144,7 @@
         transition: none;
     }
     
-    /* Smooth transitions only for specific elements */
+            /* Smooth transitions for specific elements */
     .nav-links a {
         transition: color 0.2s ease !important;
     }
@@ -269,7 +270,7 @@
         box-shadow: 0 6px 12px rgba(255, 102, 0, 0.3);
     }
     
-    /* Mobile Menu */
+            /* Mobile menu */
     .mobile-menu-btn {
         display: none;
         background: none;
@@ -386,7 +387,7 @@
   transition: right 0.5s ease-in-out;
     }
     
-    /* Hero Section */
+            /* Hero section */
     .hero {
         min-height: 100vh;
         display: flex;
@@ -768,7 +769,7 @@
         to { opacity: 1; transform: translateY(0); }
     }
     
-    /* Inquiry Form Section */
+            /* Inquiry form section */
     .inquiry-form-container {
         max-width: 800px;
         margin: 0 auto;
@@ -920,7 +921,7 @@
         box-shadow: none;
     }
     
-    /* Benefits Section */
+            /* Benefits section */
     .benefits-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -984,7 +985,7 @@
         color: var(--gray);
     }
     
-    /* Trust Section */
+            /* Trust section */
     .trust-container {
         display: flex;
         flex-direction: column;
@@ -1066,7 +1067,7 @@
         background-color: var(--secondary);
     }
     
-    /* 3D Elements */
+            /* 3D elements */
     .airplane {
         position: absolute;
         width: 150px;

@@ -1,4 +1,4 @@
-        /* Critical CSS for above-the-fold content */
+        /* Services page CSS */
         :root {
             --primary: #FF6600;
             --primary-light: #FF8533;
@@ -33,7 +33,7 @@
             --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
         }
         
-        /* Base Styles */
+        /* Base styles */
         * {
             margin: 0;
             padding: 0;
@@ -53,7 +53,7 @@
             background-color: var(--dark);
         }
         
-        /* Skip to Content Link for Accessibility */
+        /* Skip to content link */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -86,7 +86,7 @@
             transition: none;
             opacity: 1;
             visibility: visible;
-            /* Prevent blinking and flickering */
+            /* Prevent flickering */
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             -moz-backface-visibility: hidden;
@@ -98,7 +98,7 @@
             -ms-transform: translateZ(0);
         }
         
-        /* Prevent all nav elements from blinking */
+        /* Prevent nav elements from flickering */
         nav * {
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
@@ -107,7 +107,7 @@
             transition: none;
         }
         
-        /* Smooth transitions only for specific elements */
+        /* Smooth transitions for specific elements */
         .nav-links a {
             transition: color 0.2s ease !important;
         }
@@ -226,7 +226,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(255, 102, 0, 0.2);
-            min-height: 44px; /* Accessibility minimum touch target */
+            min-height: 44px; /* Minimum touch target */
         }
         
         .nav-cta:hover {
@@ -234,7 +234,7 @@
             box-shadow: 0 6px 12px rgba(255, 102, 0, 0.3);
         }
         
-        /* Mobile Menu */
+        /* Mobile menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -242,8 +242,8 @@
             font-size: 1.5rem;
             color: var(--secondary);
             cursor: pointer;
-            width: 44px; /* Accessibility minimum touch target */
-            height: 44px; /* Accessibility minimum touch target */
+            width: 44px; /* Minimum touch target */
+            height: 44px; /* Minimum touch target */
             align-items: center;
             justify-content: center;
             border-radius: 50%;
@@ -292,8 +292,8 @@
             font-size: 1.75rem;
             color: var(--secondary);
             cursor: pointer;
-            width: 44px; /* Accessibility minimum touch target */
-            height: 44px; /* Accessibility minimum touch target */
+            width: 44px; /* Minimum touch target */
+            height: 44px; /* Minimum touch target */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -328,7 +328,7 @@
             border-radius: 8px;
             width: 100%;
             text-align: center;
-            min-height: 44px; /* Accessibility minimum touch target */
+            min-height: 44px; /* Minimum touch target */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -343,7 +343,7 @@
             background-color: rgba(255, 102, 0, 0.1);
         }
         
-        /* Services-specific styles only */
+        /* Services page styles */
             width: 100%;
         }
         
@@ -391,7 +391,7 @@
             color: var(--dark-gray);
         }
         
-        /* Service Categories Filter */
+        /* Service categories filter */
         .filter-container {
             display: flex;
             justify-content: center;
@@ -427,7 +427,7 @@
             transform: translateY(-2px);
         }
         
-        /* Section Common Styles */
+        /* Section styles */
         .section {
             padding: 6rem 5%;
             position: relative;
@@ -463,7 +463,7 @@
             color: var(--gray);
         }
         
-        /* Services Section */
+        /* Services section */
         .services-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -545,7 +545,7 @@
             color: var(--gray);
         }
         
-        /* Enhanced Service Card Features */
+        /* Service card features */
         .service-features {
             display: flex;
             flex-wrap: wrap;
@@ -616,7 +616,7 @@
             border-bottom-right-radius: 15px;
         }
         
-        /* Process Section */
+        /* Process section */
         .process-timeline {
             position: relative;
             max-width: 1200px;
@@ -748,7 +748,7 @@
             color: var(--gray);
         }
         
-        /* FAQ Styles */
+        /* FAQ styles */
         .faq-container {
             max-width: 800px;
             margin: 3rem auto 0;
@@ -825,7 +825,7 @@
             color: var(--gray);
         }
         
-        /* CTA Section */
+        /* CTA section */
         .cta-section {
             padding: 6rem 5%;
             background: var(--gradient-primary);
@@ -898,7 +898,7 @@
             padding: 0 2rem;
         }
         
-        /* Footer Top Section */
+        /* Footer top section */
         .footer-top {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -1047,7 +1047,7 @@
             transform: translateX(3px);
         }
         
-        /* Footer Bottom Section */
+        /* Footer bottom section */
         .footer-bottom {
             display: flex;
             justify-content: space-between;
@@ -1085,7 +1085,7 @@
             font-size: 0.85rem;
         }
         
-        /* WhatsApp FAB */
+        /* WhatsApp button */
         .whatsapp-fab {
             position: fixed;
             bottom: 30px;
@@ -1111,7 +1111,7 @@
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
         }
         
-        /* Cookie Consent Banner */
+        /* Cookie consent banner */
         .cookie-consent {
             position: fixed;
             bottom: 0;
@@ -1179,7 +1179,7 @@
             100% { opacity: 0.6; }
         }
         
-        /* Responsive Design */
+        /* Responsive design */
         @media (max-width: 1024px) {
             .nav-links {
                 display: none;
@@ -1249,7 +1249,7 @@
                 align-items: flex-start;
             }
             
-            /* Mobile navbar height optimization */
+            /* Mobile navbar height */
             nav {
                 padding: 0.5rem 4%;
                 min-height: 60px;
@@ -1477,7 +1477,7 @@
             animation: float linear infinite;
         }
         
-        /* Lazy loading styles */
+        /* Lazy loading */
         img[loading="lazy"] {
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -1487,7 +1487,7 @@
             opacity: 1;
         }
         
-        /* Compact navbar variant */
+        /* Compact navbar */
         .nav-compact {
             padding: 0.3rem 3% !important;
             min-height: 50px !important;
@@ -1508,7 +1508,7 @@
             font-size: 0.8rem !important;
         }
         
-        /* Hide elements on very small screens to save space */
+        /* Hide elements on small screens */
         @media (max-width: 360px) {
             .nav-cta {
                 display: none !important;
@@ -1523,7 +1523,7 @@
                 min-height: 48px;
             }
         }
-        /* Hero Title Animation */
+        /* Hero title animation */
 .inquiry-hero-title {
     display: flex;
     flex-wrap: wrap;
@@ -1565,7 +1565,7 @@
     100% { transform: translateX(0); }
 }
 
-/* Hero Subtitle Animation */
+        /* Hero subtitle animation */
 .inquiry-hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.5rem);
     color: var(--dark-gray);
@@ -1577,7 +1577,7 @@ body.dark-mode .inquiry-hero-subtitle {
     color: var(--gray);
 }
 
-/* Breadcrumb - No Animation */
+        /* Breadcrumb */
 .breadcrumb {
     display: flex;
     justify-content: center;
