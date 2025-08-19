@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Check FontAwesome after a short delay to ensure CSS is loaded
     setTimeout(checkFontAwesome, 500);
     
     
