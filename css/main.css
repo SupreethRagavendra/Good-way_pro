@@ -436,6 +436,7 @@
         
     }
     
+    /* Button styles */
     .btn-primary {
         padding: 1rem 2rem;
         background: var(--gradient-primary);
@@ -1212,6 +1213,7 @@
         opacity: 0.9;
     }
     
+    /* CTA link button */
     .cta-btn {
         background: white;
         color: var(--primary);
