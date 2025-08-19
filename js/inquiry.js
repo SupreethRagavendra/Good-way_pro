@@ -1,7 +1,5 @@
 
-    // Theme toggle is handled by shared-utils.js
 
-    // === MOBILE MENU TOGGLE ===
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuClose = document.getElementById('mobileMenuClose');
@@ -591,7 +589,6 @@ function updateMessageTemplate() {
 
 // Disable specific keyboard shortcuts
 document.addEventListener('keydown', function(e) {
-    // Ctrl+U, Ctrl+S, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+C, F12
     if (
         (e.ctrlKey && e.key.toLowerCase() === 'u') || // View Source
         (e.ctrlKey && e.key.toLowerCase() === 's') || // Save
