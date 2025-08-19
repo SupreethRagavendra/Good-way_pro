@@ -1,15 +1,10 @@
-/* Bootstrap Integration CSS - Seamless Enhancement Layer */
-/* This file enhances Bootstrap to work perfectly with existing custom styles */
 
-/* 
-==============================================
-BOOTSTRAP CUSTOM PROPERTY INTEGRATION
-==============================================
-Map existing CSS custom properties to Bootstrap
-*/
+
+
+
 
 :root {
-    /* Map existing colors to Bootstrap semantic colors */
+    
     --bs-primary: var(--primary, #FF6600);
     --bs-primary-rgb: 255, 102, 0;
     --bs-secondary: var(--secondary, #2D3748);
@@ -27,23 +22,18 @@ Map existing CSS custom properties to Bootstrap
     --bs-dark: var(--dark, #1A202C);
     --bs-dark-rgb: 26, 32, 44;
     
-    /* Use existing font family */
+    
     --bs-font-sans-serif: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     
-    /* Use existing shadow system */
+    
     --bs-box-shadow: var(--shadow);
     --bs-box-shadow-sm: var(--shadow-sm);
     --bs-box-shadow-lg: var(--shadow-lg);
 }
 
-/* 
-==============================================
-BOOTSTRAP COMPONENT ENHANCEMENTS
-==============================================
-Enhance Bootstrap components to match existing design
-*/
 
-/* Enhanced Button Integration */
+
+
 .btn {
     font-family: var(--bs-font-sans-serif);
     font-weight: 500;
@@ -82,7 +72,7 @@ Enhance Bootstrap components to match existing design
     box-shadow: var(--shadow-sm);
 }
 
-/* Enhanced Card Integration */
+
 .card {
     border: none;
     border-radius: 12px;
@@ -101,7 +91,7 @@ Enhance Bootstrap components to match existing design
     padding: 1.5rem;
 }
 
-/* Form Control Enhancement */
+
 .form-control {
     border: 2px solid #E5E7EB;
     border-radius: 8px;
@@ -115,7 +105,7 @@ Enhance Bootstrap components to match existing design
     box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.25);
 }
 
-/* Alert Enhancement */
+
 .alert {
     border: none;
     border-radius: 8px;
@@ -128,14 +118,9 @@ Enhance Bootstrap components to match existing design
     border-left: 4px solid var(--success);
 }
 
-/* 
-==============================================
-UTILITY CLASS ENHANCEMENTS
-==============================================
-Custom utility classes that complement Bootstrap
-*/
 
-/* Spacing utilities that match existing design */
+
+
 .gap-custom {
     gap: 2rem;
 }
@@ -148,7 +133,7 @@ Custom utility classes that complement Bootstrap
     gap: 3rem;
 }
 
-/* Custom text utilities */
+
 .text-primary-custom {
     color: var(--primary) !important;
 }
@@ -157,7 +142,7 @@ Custom utility classes that complement Bootstrap
     color: var(--secondary) !important;
 }
 
-/* Custom background utilities */
+
 .bg-gradient-primary {
     background: var(--gradient-primary) !important;
 }
@@ -166,14 +151,9 @@ Custom utility classes that complement Bootstrap
     background: var(--gradient-secondary) !important;
 }
 
-/* 
-==============================================
-RESPONSIVE ENHANCEMENTS
-==============================================
-Bootstrap grid enhancements for existing components
-*/
 
-/* Service container grid enhancement - Only apply to Bootstrap grid */
+
+
 .services-container.row {
     margin: 0;
     justify-content: center;
@@ -183,9 +163,9 @@ Bootstrap grid enhancements for existing components
     padding: 1rem;
 }
 
-/* Ensure Bootstrap doesn't interfere with existing CSS Grid */
+
 .services-container:not(.row) {
-    /* Preserve original CSS Grid layout */
+    
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 2rem !important;
@@ -195,16 +175,16 @@ Bootstrap grid enhancements for existing components
     margin-right: auto !important;
 }
 
-/* Preserve responsive behavior */
+
 @media (max-width: 768px) {
     .services-container:not(.row) {
         grid-template-columns: 1fr !important;
     }
 }
 
-/* Ensure service cards work properly with Bootstrap button classes */
+
 .service-card .service-link.btn {
-    /* Preserve original button styling while adding Bootstrap enhancements */
+    
     display: inline-flex !important;
     align-items: center !important;
     gap: 0.5rem !important;
@@ -234,9 +214,9 @@ Bootstrap grid enhancements for existing components
     transform: translateX(5px) !important;
 }
 
-/* Ensure CTA buttons work properly with Bootstrap classes */
+
 .cta-btn.btn {
-    /* Preserve original CTA button styling */
+    
     background: white !important;
     color: var(--primary) !important;
     padding: 1rem 2.5rem !important;
@@ -258,19 +238,14 @@ Bootstrap grid enhancements for existing components
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Stats container grid enhancement */
+
 .stats-container.row {
     margin: 0;
     justify-content: center;
     align-items: stretch;
 }
 
-/* 
-==============================================
-DARK MODE INTEGRATION
-==============================================
-Bootstrap dark mode integration with existing system
-*/
+
 
 body.dark-mode {
     --bs-body-bg: var(--dark);
@@ -295,12 +270,7 @@ body.dark-mode .form-control:focus {
     color: var(--gray);
 }
 
-/* 
-==============================================
-ANIMATION COMPATIBILITY
-==============================================
-Ensure Bootstrap animations work with existing ones
-*/
+
 
 .fade-in-up {
     animation: fadeInUp 0.6s ease forwards;
@@ -317,47 +287,37 @@ Ensure Bootstrap animations work with existing ones
     }
 }
 
-/* 
-==============================================
-SAFE CSS OVERRIDES
-==============================================
-Minimal overrides to ensure visual consistency
-*/
 
-/* Ensure Bootstrap doesn't override existing navigation */
+
+
 .navbar-custom {
-    /* Keep existing navbar styles intact */
+    
     all: revert;
 }
 
-/* Preserve existing service card animations */
+
 .service-card.card {
-    /* Keep existing service card styles and add Bootstrap enhancements */
+    
     animation: inherit;
 }
 
-/* Preserve existing button styles when using Bootstrap classes */
+
 .cta-btn.btn {
-    /* Inherit existing CTA button styles */
+    
     font-size: inherit;
     padding: inherit;
     min-height: inherit;
 }
 
 .service-link.btn {
-    /* Inherit existing service link styles */
+    
     font-size: inherit;
     padding: inherit;
 }
 
-/* 
-==============================================
-COMPONENT COMPATIBILITY
-==============================================
-Ensure existing components work with Bootstrap
-*/
 
-/* Modal enhancements for existing modal triggers */
+
+
 .modal-content {
     border: none;
     border-radius: 12px;
@@ -373,12 +333,12 @@ Ensure existing components work with Bootstrap
     padding: 1.5rem;
 }
 
-/* Tooltip enhancements */
+
 .tooltip {
     font-family: var(--bs-font-sans-serif);
 }
 
-/* Dropdown enhancements */
+
 .dropdown-menu {
     border: none;
     border-radius: 8px;

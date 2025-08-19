@@ -1,8 +1,8 @@
-/* contact.css - Optimized version matching home page styles */
 
 
 
-/* Reuse all the root variables and base styles from index.css */
+
+
 :root {
     --primary: #FF6600;
     --primary-light: #FF8533;
@@ -59,9 +59,9 @@ body.dark-mode {
     background-color: var(--dark);
 }
 
-/* Contact page specific navigation overrides (inherits base styles from main.css) */
 
-/* Mobile Menu - Matches home page */
+
+
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -166,7 +166,7 @@ body.dark-mode .mobile-menu-links a {
     background-color: rgba(255, 102, 0, 0.1);
 }
 
-/* Section Styles */
+
 .section {
     padding: 6rem 5%;
     position: relative;
@@ -202,7 +202,7 @@ body.dark-mode .section-subtitle {
     color: var(--gray);
 }
 
-/* Hero Section */
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -452,7 +452,7 @@ body.dark-mode .document-icon {
     animation: float linear infinite;
 }
 
-/* Contact-specific hero styles */
+
 .contact-hero {
     min-height: 60vh;
     display: flex;
@@ -475,7 +475,7 @@ body.dark-mode .contact-hero {
     position: relative;
 }
 
-/* Breadcrumb */
+
 .breadcrumb {
     display: flex;
     justify-content: center;
@@ -510,7 +510,7 @@ body.dark-mode .breadcrumb-separator {
     color: var(--gray);
 }
 
-/* Hero Title - Matches home page animation */
+
 .contact-hero-title {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 800;
@@ -553,7 +553,7 @@ body.dark-mode .breadcrumb-separator {
     }
 }
 
-/* Hero Subtitle */
+
 .contact-hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.5rem);
     color: var(--dark-gray);
@@ -569,7 +569,7 @@ body.dark-mode .contact-hero-subtitle {
     color: var(--gray);
 }
 
-/* Hero CTA */
+
 .contact-hero-cta {
     display: flex;
     gap: 1rem;
@@ -579,7 +579,7 @@ body.dark-mode .contact-hero-subtitle {
     animation: fadeInUp 1s ease-out 2s forwards;
 }
 
-/* Contact Cards Grid */
+
 .contact-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -633,7 +633,7 @@ body.dark-mode .contact-card:hover {
     transition: all 0.3s;
 }
 
-/* Ensure FontAwesome icons display properly */
+
 .contact-icon i {
     font-family: "Font Awesome 6 Free" !important;
     font-weight: 900 !important;
@@ -648,14 +648,14 @@ body.dark-mode .contact-card:hover {
     min-height: 16px;
 }
 
-/* Force display of contact icons background and visibility */
+
 .contact-icon {
     position: relative;
     background-color: rgba(255, 102, 0, 0.1) !important;
     border: 2px solid rgba(255, 102, 0, 0.2);
 }
 
-/* Fallback when FontAwesome is not loaded - show text instead of empty circles */
+
 .fontawesome-fallback .contact-icon .fa-phone-alt::after,
 .fontawesome-fallback .contact-icon .fa-phone::after {
     content: "📞";
@@ -720,7 +720,7 @@ body.dark-mode .contact-card-content {
     text-decoration: underline;
 }
 
-/* Contact Form */
+
 .contact-form-container {
     max-width: 800px;
     margin: 0 auto;
@@ -831,7 +831,7 @@ textarea.form-control {
     display: block;
 }
 
-/* Map Section */
+
 .map-container {
     height: 400px;
     border-radius: 15px;
@@ -844,7 +844,7 @@ body.dark-mode .map-container {
     filter: brightness(0.8) contrast(1.2);
 }
 
-/* FAQ Section */
+
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
@@ -924,7 +924,7 @@ body.dark-mode .faq-answer p {
     color: var(--gray);
 }
 
-/* WhatsApp FAB */
+
 .whatsapp-fab {
     position: fixed;
     bottom: 30px;
@@ -956,7 +956,7 @@ body.dark-mode .faq-answer p {
     100% { transform: scale(1); }
 }
 
-/* Footer - Matches home page exactly */
+
 .site-footer {
     background-color: #2D3748;
     color: #fff;
@@ -1133,7 +1133,7 @@ body.dark-mode .faq-answer p {
     font-size: 0.85rem;
 }
 
-/* Mobile Responsive Styles */
+
 @media (max-width: 768px) {
     .hero {
         padding-top: 70px;
@@ -1277,7 +1277,7 @@ body.dark-mode .faq-answer p {
     font-size: 0.85rem;
 }
 
-/* Animations */
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -1288,7 +1288,7 @@ body.dark-mode .faq-answer p {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive Design - Matches home page breakpoints */
+
 @media (max-width: 1024px) {
     .nav-links {
         display: none;
@@ -1343,7 +1343,7 @@ body.dark-mode .faq-answer p {
         align-items: flex-start;
     }
     
-    /* Mobile navbar adjustments */
+    
     nav {
         padding: 0.5rem 4%;
         min-height: 60px;
@@ -1393,7 +1393,7 @@ body.dark-mode .faq-answer p {
         grid-template-columns: 1fr;
     }
     
-    /* Extra small mobile adjustments */
+    
     nav {
         padding: 0.4rem 3%;
         min-height: 55px;

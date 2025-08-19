@@ -83,12 +83,12 @@
         transition: none;
         opacity: 1;
         visibility: visible;
-        /* Prevent blinking and flickering */
+        
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         -moz-backface-visibility: hidden;
         -ms-backface-visibility: hidden;
-        /* Hardware acceleration */
+        
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
         -moz-transform: translateZ(0);
@@ -100,7 +100,7 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     
-    /* Prevent all nav elements from blinking */
+    
     nav * {
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
@@ -109,7 +109,7 @@
         transition: none;
     }
     
-    /* Smooth transitions only for specific elements */
+    
     .nav-links a {
         transition: color 0.2s ease !important;
     }
@@ -527,7 +527,7 @@
         animation: float 8s ease-in-out infinite;
         z-index: 1;
     }
-     /* Process Timeline Drop Animation */
+     
         .process-timeline {
             position: relative;
             max-width: 1200px;
@@ -649,7 +649,7 @@
             }
         }
         
-        /* Mobile responsive adjustments */
+        
         @media (max-width: 1024px) {
             .process-timeline {
                 padding-left: 50px;
@@ -1524,7 +1524,7 @@
         border: 1px solid white;
     }
     
-    /* Responsive Design */
+    
     @media (max-width: 1024px) {
         .nav-links {
             display: none;
@@ -1621,7 +1621,7 @@
             align-items: flex-start;
         }
         
-        /* Mobile navbar adjustments */
+        
         nav {
             padding: 0.5rem 4%;
             min-height: 60px;
@@ -1683,7 +1683,7 @@
             grid-template-columns: 1fr;
         }
         
-        /* Extra small mobile adjustments */
+        
         nav {
             padding: 0.4rem 3%;
             min-height: 55px;
@@ -1755,7 +1755,7 @@
         }
     }
     
-    /* iPhone SE and similar small devices */
+    
     @media (max-width: 375px) and (orientation: portrait) {
         .hero {
             min-height: 90vh;
@@ -1771,7 +1771,7 @@
         }
     }
     
-    /* Landscape mobile optimization */
+    
     @media (max-width: 768px) and (orientation: landscape) {
         .hero {
             min-height: 100vh;
