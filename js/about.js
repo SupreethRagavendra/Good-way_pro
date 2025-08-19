@@ -1,10 +1,6 @@
 
-    // About page uses shared utilities for theme toggle and mobile menu
-    // No need to duplicate functionality from shared-utils.js
 
-    // Enhanced FontAwesome loading check with multiple fallback methods
     function checkFontAwesome() {
-        // Create a test element to check if FontAwesome is loaded
         const testElement = document.createElement('i');
         testElement.className = 'fas fa-phone';
         testElement.style.position = 'absolute';
@@ -13,7 +9,6 @@
         testElement.style.visibility = 'hidden';
         document.body.appendChild(testElement);
         
-        // Check if the icon has proper width (FontAwesome loaded)
         const iconWidth = testElement.offsetWidth;
         const computedStyle = window.getComputedStyle(testElement, '::before');
         const hasFontAwesome = computedStyle.fontFamily.includes('Font Awesome') || 
@@ -22,12 +17,10 @@
         
         document.body.removeChild(testElement);
         
-        // If FontAwesome didn't load properly, add fallback class
         if (!hasFontAwesome) {
             document.body.classList.add('fontawesome-fallback');
             console.warn('FontAwesome not loaded properly, using emoji fallbacks');
             
-            // Try to reload FontAwesome from alternative CDN
             const alternativeLink = document.createElement('link');
             alternativeLink.rel = 'stylesheet';
             alternativeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
@@ -45,7 +38,6 @@
         }
     }
     
-    // Check FontAwesome after DOM is ready and CSS is loaded
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(checkFontAwesome, 300);
@@ -54,35 +46,29 @@
         setTimeout(checkFontAwesome, 300);
     }
     
-    // Additional check after window load
     window.addEventListener('load', () => {
         setTimeout(checkFontAwesome, 100);
     });
 
-    // === SECURITY MEASURES ===
     (function() {
-        // Disable right-click
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         }, false);
 
-        // Disable specific keyboard shortcuts
         document.addEventListener('keydown', function(e) {
-            // Ctrl+U, Ctrl+S, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+C, F12
             if (
-                (e.ctrlKey && e.key.toLowerCase() === 'u') || // View Source
-                (e.ctrlKey && e.key.toLowerCase() === 's') || // Save
-                (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') || // DevTools
-                (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') || // Console
-                (e.ctrlKey && e.key.toLowerCase() === 'c') || // Copy
-                (e.key === 'F12') // DevTools
+                (e.ctrlKey && e.key.toLowerCase() === 'u') || 
+                (e.ctrlKey && e.key.toLowerCase() === 's') || 
+                (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') || 
+                (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') || 
+                (e.ctrlKey && e.key.toLowerCase() === 'c') || 
+                (e.key === 'F12') 
             ) {
                 e.preventDefault();
             }
         });
     })();
 
-    // === PARTICLES ===
     (function() {
         function createParticles() {
             const container = document.getElementById('particles');
@@ -127,7 +113,6 @@
             }
         }
 
-        // Initialize particles
         window.addEventListener('load', createParticles);
         let resizeTimer; window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(createParticles, 120); }, { passive: true });
     })();
@@ -160,7 +145,6 @@
         window.addEventListener('load', animateAirplane);
     })();
 
-    // === DOCUMENT ICON FLOATING ===
     (function() {
         function animateDocumentIcons() {
             const docs = document.querySelectorAll('.document-icon');
@@ -186,7 +170,6 @@
         window.addEventListener('load', animateDocumentIcons);
     })();
 
-    // === ANIMATIONS & OBSERVER ===
     (function() {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
