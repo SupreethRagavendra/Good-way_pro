@@ -1,12 +1,9 @@
-// main.js - External JavaScript File
-// ==========================================
+
 
 (function() {
     'use strict';
 
-    // Theme toggle is handled by shared-utils.js
-
-    // === MOBILE MENU TOGGLE ===
+ 
     function initMobileMenu() {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -24,7 +21,6 @@
             document.body.style.overflow = '';
         });
 
-        // Close menu when clicking on navigation links
         document.querySelectorAll('.mobile-menu-links a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -33,7 +29,6 @@
         });
     }
 
-    // === SERVICE FILTERING ===
     function initServiceFiltering() {
         const filterBtns = document.querySelectorAll('.filter-btn');
         const serviceCards = document.querySelectorAll('.service-card');
@@ -42,9 +37,7 @@
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
                 btn.classList.add('active');
                 
                 const filter = btn.dataset.filter;
@@ -62,7 +55,6 @@
         });
     }
 
-    // === SERVICE SEARCH FUNCTIONALITY ===
     function initServiceSearch() {
         const searchInput = document.getElementById('serviceSearch');
         const serviceCards = document.querySelectorAll('.service-card');
@@ -86,7 +78,6 @@
         });
     }
 
-    // === SERVICE LINK ENHANCEMENT ===
     function initServiceLinks() {
         document.querySelectorAll('.service-link').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -102,7 +93,6 @@
                     actionText = 'Get Started';
                 }
                 
-                // Update the link text if needed
                 this.innerHTML = `${actionText} <i class="fas fa-arrow-right"></i>`;
                 
                 // Redirect to inquiry page with service parameter
@@ -135,7 +125,6 @@
         });
     }
 
-    // === SERVICE PROCESS TIMELINE ANIMATION ===
     function initProcessTimeline() {
         const processSection = document.getElementById('service-process');
         if (!processSection) return;
@@ -345,8 +334,7 @@
 
     // === INITIALIZATION ===
     function init() {
-        // Initialize all functionality
-        // Theme toggle is handled by shared-utils.js
+   
         initMobileMenu();
         initServiceFiltering();
         initServiceSearch();
