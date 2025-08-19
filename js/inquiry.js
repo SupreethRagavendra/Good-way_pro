@@ -92,32 +92,49 @@ document.addEventListener('DOMContentLoaded', getServiceFromUrl);
         }
         
         // Create WhatsApp message
-        const whatsappMessage = `*Customer Details:*
+        const whatsappMessage = `*New Inquiry from Website*
+
+*Customer Details:*
 • Name: ${name}
 • Phone: ${phone}
 • Service Required: ${service}
 
 *Inquiry Details:*
-${message}`;
+${message}
+
+Please provide more details about this service.`;
         
         // Encode the message for URL
         const encodedMessage = encodeURIComponent(whatsappMessage);
         
-        // Create WhatsApp URL
+        // Create WhatsApp URL - Fixed phone number consistency
         const whatsappUrl = `https://wa.me/919994120140?text=${encodedMessage}`;
         
-        // Open WhatsApp in new tab
-        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        // For desktop, try opening WhatsApp Web first, then fallback to regular WhatsApp
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         
-        // Show success message
-        const successDiv = document.getElementById('formSuccess');
-        successDiv.style.display = 'block';
-        successDiv.textContent = 'WhatsApp opened! Please send the message to complete your inquiry.';
+        if (!isMobile) {
+            // Desktop: Try WhatsApp Web first
+            const whatsappWebUrl = `https://web.whatsapp.com/send?phone=919994120140&text=${encodedMessage}`;
+            window.open(whatsappWebUrl, '_blank', 'noopener,noreferrer');
+            
+            // Show additional message for desktop users
+            const successDiv = document.getElementById('formSuccess');
+            successDiv.style.display = 'block';
+            successDiv.innerHTML = 'WhatsApp Web opened! If WhatsApp Web doesn\'t work, <a href="' + whatsappUrl + '" target="_blank" style="color: #25D366; text-decoration: underline;">click here</a> to open WhatsApp directly.';
+        } else {
+            // Mobile: Open WhatsApp directly
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+            
+            const successDiv = document.getElementById('formSuccess');
+            successDiv.style.display = 'block';
+            successDiv.textContent = 'WhatsApp opened! Please send the message to complete your inquiry.';
+        }
         
-        // Hide success message after 5 seconds
+        // Hide success message after 8 seconds
         setTimeout(() => {
-            successDiv.style.display = 'none';
-        }, 5000);
+            document.getElementById('formSuccess').style.display = 'none';
+        }, 8000);
     }
 
     // === FORM VALIDATION ===
@@ -189,7 +206,7 @@ ${message}`;
     document.getElementById('service').addEventListener('change', validateService);
     document.getElementById('message').addEventListener('input', validateMessage);
     
-    // Form submission
+    // Form submission - Use the dedicated WhatsApp function
     inquiryForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -199,40 +216,8 @@ ${message}`;
         const isMessageValid = validateMessage();
         
         if (isNameValid && isPhoneValid && isServiceValid && isMessageValid) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            
-            // Simulate processing delay
-            setTimeout(() => {
-                const name = document.getElementById('name').value;
-                const phone = document.getElementById('phone').value;
-                const service = document.getElementById('service').value;
-                const message = document.getElementById('message').value;
-                
-                const whatsappMessage = `
-*New Inquiry from Website*
-
-*Name:* ${name}
-*Phone:* ${phone}
-*Service Required:* ${service}
-*Message:* ${message}
-
-Please provide more details about this service.
-                `.trim();
-                
-                const whatsappUrl = `https://wa.me/9994120140?text=${encodeURIComponent(whatsappMessage)}`;
-                window.open(whatsappUrl, '_blank');
-                
-                // Reset form
-                inquiryForm.reset();
-                document.getElementById('formSuccess').style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Submit via WhatsApp';
-                
-                setTimeout(() => {
-                    document.getElementById('formSuccess').style.display = 'none';
-                }, 5000);
-            }, 1000);
+            // Use the main WhatsApp submission function
+            submitToWhatsApp();
         }
     });
 

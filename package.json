@@ -1,0 +1,33 @@
+{
+  "name": "good-way-travels",
+  "version": "1.0.0",
+  "description": "Good Way Travels & Online Services - Travel and Government Services Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000 || python -m SimpleHTTPServer 8000",
+    "serve": "python3 -m http.server 8000 || python -m SimpleHTTPServer 8000",
+    "deploy": "git add . && git commit -m 'Deploy updates' && git push origin main",
+    "build": "echo 'No build process required for static HTML project. Project is ready to serve!'",
+    "test": "echo 'Opening inquiry page for testing...' && (xdg-open inquiry.html || open inquiry.html || echo 'Please open inquiry.html in your browser')",
+    "students:add": "echo 'Adding student record...' && echo 'Student management feature will be implemented here'",
+    "students:list": "echo 'Listing students...' && echo 'Student list feature will be implemented here'",
+    "students:remove": "echo 'Removing student record...' && echo 'Student removal feature will be implemented here'",
+    "help": "echo 'Available commands:' && echo '  npm start       - Start development server' && echo '  npm run serve   - Start development server' && echo '  npm run deploy  - Deploy to GitHub' && echo '  npm run build   - Build project' && echo '  npm test        - Test application' && echo '  npm run students:add    - Add student' && echo '  npm run students:list   - List students' && echo '  npm run students:remove - Remove student'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/good-way-travels.git"
+  },
+  "keywords": [
+    "travel",
+    "government-services",
+    "tickets",
+    "passport",
+    "pan-card",
+    "aadhaar"
+  ],
+  "author": "Good Way Travels",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
