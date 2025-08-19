@@ -1,6 +1,7 @@
 
 
-   
+
+
 nav {
     position: fixed;
     top: 0;
@@ -17,52 +18,26 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* Mobile-specific navbar adjustments */
-@media (max-width: 768px) {
-    nav {
-        padding: 0.5rem 4%; /* Reduce padding significantly */
-        min-height: 60px; /* Set a fixed smaller height */
+    /* Mobile-specific navbar adjustments */
+    @media (max-width: 768px) {
+        nav {
+            padding: 0.5rem 4%; /* Align with main.css */
+            min-height: 60px; /* Align with main.css */
+        }
+        
+        .logo img { height: 32px; }
+        .logo-text { font-size: 1.2rem; }
+        .theme-toggle { width: 32px; height: 32px; font-size: 1rem; }
+        .nav-cta { padding: 0.5rem 1rem; font-size: 0.85rem; }
+        .mobile-menu-btn { width: 32px; height: 32px; font-size: 1.2rem; }
+        .nav-actions { gap: 0.5rem; }
     }
-    
-    /* Reduce logo size */
-    .logo img {
-        height: 32px; /* Smaller logo */
-        width: auto;
-    }
-    
-    .logo-text {
-        font-size: 1.2rem; /* Smaller text */
-    }
-    
-    /* Make nav action buttons smaller */
-    .theme-toggle {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-    }
-    
-    .nav-cta {
-        padding: 0.5rem 1rem; /* Smaller padding */
-        font-size: 0.85rem; /* Smaller font */
-        display: none; /* Hide CTA button on very small screens */
-    }
-    
-    .mobile-menu-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 1.2rem;
-    }
-    
-    .nav-actions {
-        gap: 0.5rem; /* Reduce gap between elements */
-    }
-}
 
 /* Extra small mobile devices */
-@media (max-width: 480px) {
+    @media (max-width: 480px) {
     nav {
         padding: 0.4rem 3%;
-        min-height: 55px; /* Even smaller height */
+        min-height: 55px; /* Align with other pages */
     }
     
     .logo img {
@@ -86,15 +61,15 @@ nav {
 }
 
 /* Adjust hero section padding to compensate for smaller navbar */
-@media (max-width: 768px) {
-    .hero {
-        padding-top: 70px; /* Adjust based on new navbar height */
+    @media (max-width: 768px) {
+        .hero {
+            padding-top: 70px; /* Align with other pages */
+        }
     }
-}
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 65px; /* Even less padding needed */
+        padding-top: 65px; /* Align with main.css */
     }
 }
 
@@ -204,131 +179,7 @@ nav {
         top: 0;
     }
     
-    /* Navigation */
-    nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 1rem 5%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1000;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: var(--shadow-sm);
-        transition: all 0.3s ease;
-    }
-    
-    body.dark-mode nav {
-        background-color: rgba(45, 55, 72, 0.95);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        text-decoration: none;
-    }
-    
-    .logo img {
-        height: 40px;
-        width: auto;
-    }
-    
-    .logo-text {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--primary);
-        transition: all 0.3s;
-    }
-    
-    .logo:hover .logo-text {
-        color: var(--primary-dark);
-    }
-    
-    .nav-links {
-        display: flex;
-        gap: 2rem;
-    }
-    
-    .nav-links a {
-        text-decoration: none;
-        color: var(--secondary);
-        font-weight: 600;
-        font-size: var(--text-lg);
-        transition: all 0.3s ease;
-        position: relative;
-    }
-    
-    body.dark-mode .nav-links a {
-        color: var(--gray);
-    }
-    
-    .nav-links a::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--primary);
-        transition: width 0.3s ease;
-    }
-    
-    .nav-links a:hover::after {
-        width: 100%;
-    }
-    
-    .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .theme-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 1.25rem;
-        color: var(--secondary);
-        transition: all 0.3s ease;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
-    
-    body.dark-mode .theme-toggle {
-        color: var(--gray);
-    }
-    
-    .theme-toggle:hover {
-        background-color: rgba(255, 102, 0, 0.1);
-        transform: rotate(30deg);
-    }
-    
-    .nav-cta {
-        padding: 0.75rem 1.5rem;
-        background: var(--gradient-primary);
-        color: white;
-        border: none;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: var(--text-base);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(255, 102, 0, 0.2);
-    }
-    
-    .nav-cta:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(255, 102, 0, 0.3);
-    }
+    /* About page specific navigation overrides (inherits base styles from main.css) */
     
     /* Mobile Menu */
     .mobile-menu-btn {
@@ -436,6 +287,256 @@ nav {
     }
     
     /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 6rem 5% 4rem;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(237, 242, 247, 0.9) 100%);
+    }
+    
+    body.dark-mode .hero {
+        background: linear-gradient(135deg, rgba(26, 32, 44, 0.95) 0%, rgba(45, 55, 72, 0.9) 100%);
+    }
+    
+    .hero-content {
+        max-width: 600px;
+        z-index: 2;
+        position: relative;
+    }
+    
+    .split-text-container {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+    }
+    
+    .text-part {
+        display: inline-block;
+        position: relative;
+    }
+    
+    .text-part.left {
+        color: var(--primary);
+    }
+    
+    .hero-subtitle {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: var(--dark-gray);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+    
+    body.dark-mode .hero-subtitle {
+        color: var(--gray);
+    }
+    
+    .rotating-text {
+        height: 3rem;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    
+    .rotating-text-item {
+        position: absolute;
+        opacity: 0;
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        font-weight: 600;
+        color: var(--primary);
+        animation: rotateText 16s infinite;
+        width: 100%;
+    }
+    
+    .rotating-text-item:nth-child(1) { animation-delay: 0s; }
+    .rotating-text-item:nth-child(2) { animation-delay: 4s; }
+    .rotating-text-item:nth-child(3) { animation-delay: 8s; }
+    .rotating-text-item:nth-child(4) { animation-delay: 12s; }
+    
+    @keyframes rotateText {
+        0% { opacity: 0; transform: translateY(20px); }
+        5% { opacity: 1; transform: translateY(0); }
+        20% { opacity: 1; transform: translateY(0); }
+        25% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 0; transform: translateY(-20px); }
+    }
+    
+    .hero-cta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .btn-primary {
+        padding: 1rem 2rem;
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: var(--text-base);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 4px 6px rgba(255, 102, 0, 0.2);
+        text-decoration: none;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 102, 0, 0.3);
+    }
+    
+    .btn-secondary {
+        padding: 1rem 2rem;
+        background-color: transparent;
+        color: var(--secondary);
+        border: 2px solid var(--secondary);
+        border-radius: 50px;
+        font-size: var(--text-base);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+    }
+    
+    body.dark-mode .btn-secondary {
+        color: var(--gray);
+        border-color: var(--gray);
+    }
+    
+    .btn-secondary:hover {
+        background-color: var(--secondary);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(45, 55, 72, 0.2);
+    }
+    
+    body.dark-mode .btn-secondary:hover {
+        background-color: var(--gray);
+        color: var(--dark);
+    }
+    
+    .hero-stats {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 0.75rem 1.25rem;
+        border-radius: 50px;
+        box-shadow: var(--shadow-sm);
+    }
+    
+    body.dark-mode .stat-item {
+        background-color: rgba(45, 55, 72, 0.8);
+    }
+    
+    .stat-icon {
+        font-size: 1.25rem;
+        color: var(--primary);
+    }
+    
+    .stat-text {
+        font-size: var(--text-sm);
+        font-weight: 600;
+    }
+    
+    .airplane {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        right: 10%;
+        top: 20%;
+        transform-style: preserve-3d;
+        animation: float 8s ease-in-out infinite;
+        z-index: 1;
+    }
+    
+    .document-icon {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: var(--shadow-md);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: var(--primary);
+        transform-style: preserve-3d;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+    
+    body.dark-mode .document-icon {
+        background-color: var(--secondary);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .document-icon:hover {
+        transform: translateY(-10px) rotateY(180deg);
+    }
+    
+    .doc1 {
+        right: 25%;
+        top: 50%;
+        animation: float 6s ease-in-out infinite 1s;
+    }
+    
+    .doc2 {
+        right: 15%;
+        bottom: 20%;
+        animation: float 7s ease-in-out infinite 2s;
+    }
+    
+    .doc3 {
+        right: 30%;
+        bottom: 30%;
+        animation: float 5s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+        100% { transform: translateY(0) rotate(0deg); }
+    }
+    
+    .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+    }
+    
+    .particle {
+        position: absolute;
+        background: rgba(255, 102, 0, 0.3);
+        border-radius: 50%;
+        animation: float linear infinite;
+    }
+    
+    /* About-specific hero styles */
     .about-hero {
         min-height: 80vh;
         display: flex;
@@ -460,44 +561,26 @@ nav {
     
     .about-split-text-container {
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
         font-size: clamp(2rem, 5vw, 3.5rem);
         font-weight: 800;
         line-height: 1.2;
         margin-bottom: 1.5rem;
-        overflow: hidden;
+        overflow: visible;
     }
     
     .about-text-part {
         display: inline-block;
         position: relative;
+        opacity: 1;
+        visibility: visible;
         transform: translateX(0);
-        animation-duration: 1.5s;
-        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        animation-fill-mode: forwards;
-    }
-    
-    .about-text-part.left {
-        transform: translateX(-200%);
-        animation-name: slide-in-left;
         color: var(--primary);
+        animation: fadeInUp 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s forwards;
     }
     
-    .about-text-part.right {
-        transform: translateX(200%);
-        animation-name: slide-in-right;
-    }
-    
-    @keyframes slide-in-left {
-        0% { transform: translateX(-200%); }
-        100% { transform: translateX(0); }
-    }
-    
-    @keyframes slide-in-right {
-        0% { transform: translateX(200%); }
-        100% { transform: translateX(0); }
-    }
+
     
     .about-hero-subtitle {
         font-size: clamp(1rem, 2vw, 1.2rem);
@@ -817,11 +900,20 @@ nav {
         padding: 3rem;
         border-radius: 15px;
         box-shadow: var(--shadow-md);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         position: relative;
         overflow: hidden;
         opacity: 0;
         transform: translateY(20px);
         animation: fadeInUp 1s ease-out forwards;
+    }
+
+    /* Ensure proper contrast in light mode */
+    body:not(.dark-mode) .mission-card,
+    body:not(.dark-mode) .vision-card {
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
     }
     
     body.dark-mode .mission-card,
@@ -889,10 +981,18 @@ nav {
         border-radius: 15px;
         overflow: hidden;
         box-shadow: var(--shadow-md);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         opacity: 0;
         transform: translateY(20px);
         animation: fadeInUp 1s ease-out forwards;
+    }
+
+    /* Ensure proper contrast for team members in light mode */
+    body:not(.dark-mode) .team-member {
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
     }
     
     body.dark-mode .team-member {
@@ -1113,10 +1213,18 @@ nav {
         padding: 2rem;
         text-align: center;
         box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         opacity: 0;
         transform: translateY(20px);
         animation: fadeInUp 1s ease-out forwards;
+    }
+
+    /* Ensure proper contrast for value cards in light mode */
+    body:not(.dark-mode) .value-card {
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.08);
     }
     
     body.dark-mode .value-card {
@@ -1297,19 +1405,121 @@ nav {
         display: flex;
         align-items: flex-start;
         gap: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .contact-item i {
+        color: #FF6600;
+        margin-top: 0.2rem;
     }
     
     .contact-icon {
         width: 50px;
         height: 50px;
-        background-color: var(--primary);
-        color: white;
+        background-color: var(--primary) !important;
+        color: white !important;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.2rem;
         flex-shrink: 0;
+        border: 2px solid rgba(255, 102, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Ensure FontAwesome icons display properly in About page */
+    .contact-icon i {
+        font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+        font-weight: 900 !important;
+        font-style: normal !important;
+        font-variant: normal !important;
+        text-rendering: auto;
+        line-height: 1;
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-width: 16px;
+        min-height: 16px;
+        color: white !important;
+        z-index: 2;
+        position: relative;
+    }
+
+    /* Enhanced fallback system for when FontAwesome is not loaded */
+    .fontawesome-fallback .contact-icon .fa-map-marker-alt::after {
+        content: "📍";
+        font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+        font-size: 1.2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    .fontawesome-fallback .contact-icon .fa-phone-alt::after {
+        content: "📞";
+        font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+        font-size: 1.2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    .fontawesome-fallback .contact-icon .fa-envelope::after {
+        content: "✉️"; 
+        font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+        font-size: 1.2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    .fontawesome-fallback .contact-icon .fa-clock::after {
+        content: "🕒";
+        font-family: emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif;
+        font-size: 1.2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    .fontawesome-fallback .contact-icon i {
+        display: none;
+    }
+
+    /* Light theme specific improvements */
+    body:not(.dark-mode) .contact-icon {
+        background-color: var(--primary) !important;
+        color: white !important;
+        border: 2px solid rgba(255, 102, 0, 0.3);
+        box-shadow: 0 2px 8px rgba(255, 102, 0, 0.2);
+    }
+
+    body:not(.dark-mode) .contact-icon i {
+        color: white !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Dark theme specific improvements */
+    body.dark-mode .contact-icon {
+        background-color: var(--primary) !important;
+        color: white !important;
+        border: 2px solid rgba(255, 102, 0, 0.4);
+        box-shadow: 0 2px 8px rgba(255, 102, 0, 0.3);
+    }
+
+    body.dark-mode .contact-icon i {
+        color: white !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
     
     .contact-text h4 {
@@ -1317,18 +1527,110 @@ nav {
     }
     
     .contact-text p, .contact-text a {
-        color: var(--secondary-light);
+        color: var(--secondary);
         text-decoration: none;
         transition: color 0.3s;
+        font-weight: 500;
     }
     
+    /* Light theme specific text colors */
+    body:not(.dark-mode) .contact-text p,
+    body:not(.dark-mode) .contact-text a {
+        color: var(--secondary);
+    }
+    
+    body:not(.dark-mode) .contact-text h4 {
+        color: var(--secondary);
+        font-weight: 600;
+    }
+    
+    /* Dark theme specific text colors */
     body.dark-mode .contact-text p,
     body.dark-mode .contact-text a {
         color: var(--gray);
     }
     
+    body.dark-mode .contact-text h4 {
+        color: var(--gray);
+        font-weight: 600;
+    }
+    
     .contact-text a:hover {
         color: var(--primary);
+    }
+
+    /* Clean contact info section styling */
+    .contact-info {
+        background: transparent;
+        border-radius: 0;
+        padding: 2rem 0;
+        box-shadow: none;
+        backdrop-filter: none;
+        border: none;
+    }
+
+    .contact-info h3 {
+        color: var(--secondary);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .contact-info h3::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--gradient-primary);
+        border-radius: 2px;
+    }
+
+    body.dark-mode .contact-info h3 {
+        color: var(--gray);
+    }
+
+    /* Clean contact item styling without boxes */
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 0.5rem 0;
+        transition: all 0.3s ease;
+        background: transparent;
+        border: none;
+    }
+
+    .contact-item:hover {
+        transform: translateX(5px);
+    }
+
+    /* Contact details container styling */
+    .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Responsive improvements for contact section */
+    @media (max-width: 768px) {
+        .contact-info {
+            padding: 1.5rem;
+        }
+        
+        .contact-item {
+            padding: 0.75rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
     }
     
     /* CTA Section */
@@ -1648,6 +1950,126 @@ nav {
     .cookie-actions {
         display: flex;
         gap: 1rem;
+    }
+    
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+        .hero {
+            padding-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 100%;
+            text-align: center;
+        }
+        
+        .split-text-container {
+            font-size: clamp(1.5rem, 8vw, 2.5rem);
+        }
+        
+        .hero-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-cta {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .hero-stats {
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .stat-item {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+        }
+        
+        .airplane {
+            width: 80px;
+            height: 80px;
+            right: 5%;
+            top: 15%;
+        }
+        
+        .document-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+        }
+        
+        .doc1 {
+            right: 10%;
+            top: 40%;
+        }
+        
+        .doc2 {
+            right: 5%;
+            bottom: 15%;
+        }
+        
+        .doc3 {
+            right: 15%;
+            bottom: 25%;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero {
+            padding: 5rem 5% 3rem;
+            padding-top: 65px;
+        }
+        
+        .rotating-text-item {
+            font-size: 1.2rem;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        .hero-content {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+        
+        .split-text-container {
+            font-size: clamp(1.5rem, 8vw, 2.5rem);
+        }
+        
+        .hero-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-cta {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .hero-stats {
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .stat-item {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+        }
     }
     
     .cookie-btn {

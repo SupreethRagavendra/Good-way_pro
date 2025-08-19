@@ -1,59 +1,63 @@
 
-    // === THEME TOGGLE ===
-    (function() {
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const themeIcon = themeToggle.querySelector('i');
+    // About page uses shared utilities for theme toggle and mobile menu
+    // No need to duplicate functionality from shared-utils.js
 
-        // Check for saved theme preference or use system preference
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        // Apply theme on load
-        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-            body.classList.add('dark-mode');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
+    // Enhanced FontAwesome loading check with multiple fallback methods
+    function checkFontAwesome() {
+        // Create a test element to check if FontAwesome is loaded
+        const testElement = document.createElement('i');
+        testElement.className = 'fas fa-phone';
+        testElement.style.position = 'absolute';
+        testElement.style.left = '-9999px';
+        testElement.style.fontSize = '16px';
+        testElement.style.visibility = 'hidden';
+        document.body.appendChild(testElement);
+        
+        // Check if the icon has proper width (FontAwesome loaded)
+        const iconWidth = testElement.offsetWidth;
+        const computedStyle = window.getComputedStyle(testElement, '::before');
+        const hasFontAwesome = computedStyle.fontFamily.includes('Font Awesome') || 
+                              computedStyle.fontFamily.includes('FontAwesome') ||
+                              iconWidth > 10;
+        
+        document.body.removeChild(testElement);
+        
+        // If FontAwesome didn't load properly, add fallback class
+        if (!hasFontAwesome) {
+            document.body.classList.add('fontawesome-fallback');
+            console.warn('FontAwesome not loaded properly, using emoji fallbacks');
+            
+            // Try to reload FontAwesome from alternative CDN
+            const alternativeLink = document.createElement('link');
+            alternativeLink.rel = 'stylesheet';
+            alternativeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+            alternativeLink.onload = () => {
+                setTimeout(() => {
+                    if (!document.body.classList.contains('fontawesome-fallback')) {
+                        document.body.classList.remove('fontawesome-fallback');
+                        console.log('FontAwesome loaded successfully from alternative CDN');
+                    }
+                }, 100);
+            };
+            document.head.appendChild(alternativeLink);
+        } else {
+            console.log('FontAwesome loaded successfully');
         }
-
-        // Toggle theme on click
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
+    }
+    
+    // Check FontAwesome after DOM is ready and CSS is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(checkFontAwesome, 300);
         });
-    })();
-
-    // === MOBILE MENU TOGGLE ===
-    (function() {
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-        // Open mobile menu
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        // Close mobile menu
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Close menu when clicking on links
-        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-    })();
+    } else {
+        setTimeout(checkFontAwesome, 300);
+    }
+    
+    // Additional check after window load
+    window.addEventListener('load', () => {
+        setTimeout(checkFontAwesome, 100);
+    });
 
     // === SECURITY MEASURES ===
     (function() {
@@ -87,7 +91,7 @@
             container.innerHTML = '';
             document.querySelectorAll('[data-generated="particle-style"]').forEach(s => s.remove());
 
-            const count = window.innerWidth < 768 ? 20 : 50;
+            const count = window.innerWidth < 768 ? 10 : 25;
 
             for (let i = 0; i < count; i++) {
                 const p = document.createElement('div');
@@ -125,7 +129,7 @@
 
         // Initialize particles
         window.addEventListener('load', createParticles);
-        window.addEventListener('resize', createParticles);
+        let resizeTimer; window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(createParticles, 120); }, { passive: true });
     })();
 
     // === AIRPLANE ANIMATION ===

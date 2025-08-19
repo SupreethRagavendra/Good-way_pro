@@ -1,27 +1,5 @@
 
-    // === THEME TOGGLE ===
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const themeIcon = themeToggle.querySelector('i');
-
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-        body.classList.add('dark-mode');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        if (body.classList.contains('dark-mode')) {
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-            localStorage.setItem('theme', 'light');
-        }
-    });
+    // Theme toggle is handled by shared-utils.js
 
     // === MOBILE MENU TOGGLE ===
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -92,6 +70,56 @@ function getServiceFromUrl() {
 
 // Call this function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', getServiceFromUrl);
+    // === WHATSAPP SUBMISSION FUNCTION ===
+    function submitToWhatsApp() {
+        // Get form data
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value.trim();
+        
+        // Validate form data
+        if (!name || !phone || !service || !message) {
+            alert('Please fill in all required fields before submitting.');
+            return;
+        }
+        
+        // Validate phone number
+        const phonePattern = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
+        if (!phonePattern.test(phone)) {
+            alert('Please enter a valid Indian mobile number.');
+            return;
+        }
+        
+        // Create WhatsApp message
+        const whatsappMessage = `*Customer Details:*
+• Name: ${name}
+• Phone: ${phone}
+• Service Required: ${service}
+
+*Inquiry Details:*
+${message}`;
+        
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        
+        // Create WhatsApp URL
+        const whatsappUrl = `https://wa.me/919994120140?text=${encodedMessage}`;
+        
+        // Open WhatsApp in new tab
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        
+        // Show success message
+        const successDiv = document.getElementById('formSuccess');
+        successDiv.style.display = 'block';
+        successDiv.textContent = 'WhatsApp opened! Please send the message to complete your inquiry.';
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+            successDiv.style.display = 'none';
+        }, 5000);
+    }
+
     // === FORM VALIDATION ===
     const inquiryForm = document.getElementById('inquiryForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -216,32 +244,33 @@ Please provide more details about this service.
         container.innerHTML = '';
         document.querySelectorAll('[data-generated="particle-style"]').forEach(s => s.remove());
 
-        const count = window.innerWidth < 768 ? 20 : 50;
+        // Reduced particle count for better performance
+        const count = window.innerWidth < 768 ? 10 : 25;
 
         for (let i = 0; i < count; i++) {
             const p = document.createElement('div');
             p.classList.add('particle');
 
-            const size = Math.random() * 12 + 2;
+            const size = Math.random() * 8 + 2; // Smaller particles
             p.style.width = `${size}px`;
             p.style.height = `${size}px`;
             p.style.left = `${Math.random() * 100}%`;
             p.style.top = `${Math.random() * 100}%`;
 
-            const duration = Math.random() * 10 + 5;
-            const delay = Math.random() * 5;
-            const distance = Math.random() * 100 + 50;
+            const duration = Math.random() * 8 + 4; // Faster animation
+            const delay = Math.random() * 3; // Shorter delay
+            const distance = Math.random() * 60 + 30; // Shorter distance
             const anim = `floatParticle-${i}`;
 
             p.style.animation = `${anim} ${duration}s ease-in-out ${delay}s infinite`;
-            p.style.opacity = (Math.random() * 0.5 + 0.1).toFixed(2);
+            p.style.opacity = (Math.random() * 0.3 + 0.1).toFixed(2); // Lower opacity
 
             const style = document.createElement('style');
             style.setAttribute('data-generated', 'particle-style');
             style.textContent = `
                 @keyframes ${anim} {
                     0%, 100% { transform: translate(0, 0); }
-                    25%, 50%, 75% {
+                    50% {
                         transform: translate(${(Math.random() * distance - distance/2).toFixed(1)}px,
                                              ${(Math.random() * distance - distance/2).toFixed(1)}px);
                     }
@@ -252,7 +281,7 @@ Please provide more details about this service.
         }
     }
 
-    // === AIRPLANE ANIMATION ===
+    // === AIRPLANE ANIMATION - Optimized ===
     function animateAirplane() {
         const airplane = document.querySelector('.airplane');
         if (!airplane) return;
@@ -265,18 +294,16 @@ Please provide more details about this service.
         style.textContent = `
             @keyframes fly {
                 0% { transform: translate(0, 0) rotate(0deg); }
-                25% { transform: translate(50px, -30px) rotate(5deg); }
-                50% { transform: translate(100px, 0) rotate(0deg); }
-                75% { transform: translate(50px, 30px) rotate(-5deg); }
+                50% { transform: translate(30px, -15px) rotate(3deg); }
                 100% { transform: translate(0, 0) rotate(0deg); }
             }
         `;
         document.head.appendChild(style);
 
-        airplane.style.animation = 'fly 8s ease-in-out infinite';
+        airplane.style.animation = 'fly 6s ease-in-out infinite';
     }
 
-    // === DOCUMENT ICON FLOATING ===
+    // === DOCUMENT ICON FLOATING - Optimized ===
     function animateDocumentIcons() {
         const docs = document.querySelectorAll('.document-icon');
         if (!docs.length) return;
@@ -290,11 +317,11 @@ Please provide more details about this service.
             style.textContent = `
                 @keyframes ${anim} {
                     0%, 100% { transform: translateY(0) rotate(0deg); }
-                    50% { transform: translateY(-20px) rotate(${i % 2 ? '5deg' : '-5deg'}); }
+                    50% { transform: translateY(-15px) rotate(${i % 2 ? '3deg' : '-3deg'}); }
                 }
             `;
             document.head.appendChild(style);
-            doc.style.animation = `${anim} ${6 + i}s ease-in-out infinite`;
+            doc.style.animation = `${anim} ${4 + i}s ease-in-out infinite`;
         });
     }
 

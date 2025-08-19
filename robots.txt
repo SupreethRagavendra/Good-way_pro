@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://good-way-travels.vercel.app/sitemap.xml
+
+# Disallow unnecessary files
+Disallow: /css/
+Disallow: /js/
+Disallow: /assets/
+Disallow: /*.json
+Disallow: /*.txt
+Disallow: /*.xml
+
+# Allow important pages
+Allow: /index.html
+Allow: /about.html
+Allow: /services.html
+Allow: /inquiry.html
+Allow: /contact.html

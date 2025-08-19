@@ -4,34 +4,7 @@
 (function() {
     'use strict';
 
-    // === THEME TOGGLE ===
-    function initThemeToggle() {
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const themeIcon = themeToggle?.querySelector('i');
-
-        if (!themeToggle || !themeIcon) return;
-
-        // Check for saved theme or system preference
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-            body.classList.add('dark-mode');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    }
+    // Theme toggle is handled by shared-utils.js
 
     // === MOBILE MENU TOGGLE ===
     function initMobileMenu() {
@@ -373,7 +346,7 @@
     // === INITIALIZATION ===
     function init() {
         // Initialize all functionality
-        initThemeToggle();
+        // Theme toggle is handled by shared-utils.js
         initMobileMenu();
         initServiceFiltering();
         initServiceSearch();
