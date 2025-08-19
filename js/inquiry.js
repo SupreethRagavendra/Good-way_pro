@@ -1,7 +1,5 @@
 
-    // Theme toggle is handled by shared-utils.js
 
-    // === MOBILE MENU TOGGLE ===
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuClose = document.getElementById('mobileMenuClose');
@@ -24,7 +22,6 @@
     });
 
 
-    // === AUTO-SELECT SERVICE FROM URL PARAMETER ===
 function getServiceFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
     const serviceParam = urlParams.get('service');
@@ -68,9 +65,7 @@ function getServiceFromUrl() {
     }
 }
 
-// Call this function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', getServiceFromUrl);
-    // === WHATSAPP SUBMISSION FUNCTION ===
     function submitToWhatsApp() {
         // Get form data
         const name = document.getElementById('name').value.trim();
