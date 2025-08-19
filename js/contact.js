@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if FontAwesome loaded properly for icons
     function checkFontAwesome() {
-        // Create a test element to check if FontAwesome is loaded
         const testElement = document.createElement('i');
         testElement.className = 'fas fa-phone';
         testElement.style.position = 'absolute';
@@ -9,11 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
         testElement.style.fontSize = '16px';
         document.body.appendChild(testElement);
         
-        // Check if the icon has proper width (FontAwesome loaded)
         const iconWidth = testElement.offsetWidth;
         document.body.removeChild(testElement);
         
-        // If FontAwesome didn't load properly, add fallback class
         if (iconWidth === 0 || iconWidth < 10) {
             document.body.classList.add('fontawesome-fallback');
             console.warn('FontAwesome not loaded properly, using emoji fallbacks');
@@ -23,9 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check FontAwesome after a short delay to ensure CSS is loaded
     setTimeout(checkFontAwesome, 500);
     
-    // Theme toggle is handled by shared-utils.js
     
-    // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileMenuClose = document.querySelector('.mobile-menu-close');
@@ -54,12 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const item = this.parentNode;
             const isActive = item.classList.contains('active');
             
-            // Close all items first
             document.querySelectorAll('.faq-item').forEach(el => {
                 el.classList.remove('active');
             });
             
-            // Open current if not active
             if (!isActive) {
                 item.classList.add('active');
             }
@@ -74,21 +66,17 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Hide previous messages
             formMessage.style.display = 'none';
             formMessage.className = 'form-message';
             
-            // Show loading state
             const submitBtn = contactForm.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
             try {
-                // Get form values
                 const formData = new FormData(contactForm);
                 
-                // Basic validation
                 const name = formData.get('name')?.trim();
                 const email = formData.get('email')?.trim();
                 const phone = formData.get('phone')?.trim();
@@ -105,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw new Error('Please enter a valid email address.');
                 }
                 
-                // Phone validation (basic)
+                // Phone validation 
                 if (phone.length < 8) {
                     throw new Error('Please enter a valid phone number.');
                 }
@@ -150,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Scroll to message
         formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         
-        // Auto-hide success messages after 5 seconds
         if (type === 'success') {
             setTimeout(() => {
                 formMessage.style.display = 'none';
@@ -158,17 +145,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Initialize Particles
     initParticles();
     
-    // Lazy load images
     initLazyLoading();
     
-    // Security measures
     initSecurityMeasures();
 });
 
-// Particles Animation
 function initParticles() {
     const particlesContainer = document.querySelector('.particles');
     if (!particlesContainer) return;
@@ -176,20 +159,17 @@ function initParticles() {
     const particleCount = Math.min(Math.floor(window.innerWidth / 10), 50); // Limit to 50 particles max
     const particles = [];
     
-    // Create particles
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        // Random properties with constrained ranges
-        const size = Math.random() * 3 + 1; // 1-4px
+        const size = Math.random() * 3 + 1; 
         const posX = Math.random() * 100;
         const posY = Math.random() * 100;
         const delay = Math.random() * 5;
-        const duration = Math.random() * 10 + 10; // 10-20s
-        const opacity = Math.random() * 0.3 + 0.1; // 0.1-0.4
+        const duration = Math.random() * 10 + 10;
+        const opacity = Math.random() * 0.3 + 0.1; 
         
-        // Apply styles
         Object.assign(particle.style, {
             width: `${size}px`,
             height: `${size}px`,
@@ -198,17 +178,16 @@ function initParticles() {
             opacity: opacity,
             animationDelay: `${delay}s`,
             animationDuration: `${duration}s`,
-            willChange: 'transform' // Optimize for performance
+            willChange: 'transform' 
         });
         
         particlesContainer.appendChild(particle);
         particles.push(particle);
     }
     
-    // Animation loop with throttling
     let lastTime = 0;
     const animationFrame = (time) => {
-        if (time - lastTime > 30) { // ~30fps
+        if (time - lastTime > 30) { 
             particles.forEach(particle => {
                 const currentTop = parseFloat(particle.style.top);
                 const newTop = currentTop > 100 ? -10 : currentTop + 0.05;
@@ -222,7 +201,6 @@ function initParticles() {
     requestAnimationFrame(animationFrame);
 }
 
-// Lazy Loading
 function initLazyLoading() {
     if ('loading' in HTMLImageElement.prototype) {
         // Native lazy loading supported
@@ -233,7 +211,6 @@ function initLazyLoading() {
             }
         });
     } else {
-        // Fallback with IntersectionObserver
         const lazyLoadObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -245,7 +222,7 @@ function initLazyLoading() {
                 }
             });
         }, {
-            rootMargin: '200px 0px' // Load images 200px before they enter viewport
+            rootMargin: '200px 0px' 
         });
         
         document.querySelectorAll('img[loading="lazy"]').forEach(img => {
@@ -254,9 +231,7 @@ function initLazyLoading() {
     }
 }
 
-// Security Measures
 function initSecurityMeasures() {
-    // Disable right-click
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     });
@@ -264,26 +239,18 @@ function initSecurityMeasures() {
     // Disable keyboard shortcuts
     document.addEventListener('keydown', function(e) {
         const blockedCombinations = [
-            // Ctrl+U (View source)
             e.ctrlKey && e.key.toLowerCase() === 'u',
-            // Ctrl+S (Save page)
             e.ctrlKey && e.key.toLowerCase() === 's',
-            // Ctrl+Shift+I (DevTools)
             e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i',
-            // Ctrl+Shift+J (DevTools Console)
             e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j',
-            // Ctrl+C (Copy)
             e.ctrlKey && e.key.toLowerCase() === 'c',
-            // F12 (DevTools)
             e.key === 'F12',
-            // Option+Command+I (Mac DevTools)
             e.altKey && e.metaKey && e.key.toLowerCase() === 'i'
         ];
 
         if (blockedCombinations.some(combination => combination)) {
             e.preventDefault();
-            // Optionally show a message
-            // alert('This functionality is disabled.');
+             alert('This functionality is disabled.');
         }
     });
 }
