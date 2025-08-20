@@ -161,7 +161,7 @@
     
     .nav-links {
         display: flex;
-        gap: 2rem;
+        gap: 1.25rem;
     }
     
     .nav-links a {
@@ -332,7 +332,7 @@
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         width: 100%;
     }
     
@@ -358,10 +358,10 @@
     }
     
     .hero {
-        min-height: 100vh;
+        min-height: 92vh;
         display: flex;
         align-items: center;
-        padding: 6rem 5% 4rem;
+        padding: 4rem 5% 3rem;
         position: relative;
         overflow: hidden;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(237, 242, 247, 0.9) 100%);
@@ -440,7 +440,7 @@
     .hero-cta {
         display: flex;
         gap: 1rem;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         
     }
     
@@ -500,7 +500,7 @@
     
     .hero-stats {
         display: flex;
-        gap: 2rem;
+        gap: 1.25rem;
         flex-wrap: wrap;
     }
     
@@ -769,7 +769,7 @@
     
     
     .section {
-        padding: 6rem 5%;
+        padding: 4rem 5%;
         position: relative;
     }
     
@@ -800,7 +800,7 @@
     .services-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        gap: 1.25rem;
         margin-top: 3rem;
         max-width: 1200px;
         margin-left: auto;
@@ -1027,8 +1027,8 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 2rem;
-        margin-bottom: 3rem;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
     }
     
     .badge {
@@ -1089,7 +1089,7 @@
     .stats-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
+        gap: 1.25rem;
         margin-top: 4rem;
     }
     
@@ -1196,7 +1196,7 @@
     }
     
     .cta-section {
-        padding: 6rem 5%;
+        padding: 4rem 5%;
         background: var(--gradient-primary);
         color: white;
         text-align: center;
@@ -1347,7 +1347,7 @@
     .footer-links-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
+        gap: 1.25rem;
     }
 
     .footer-links-col {

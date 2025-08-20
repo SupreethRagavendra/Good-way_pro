@@ -143,7 +143,7 @@ body.dark-mode .mobile-menu-close {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     width: 100%;
 }
 
@@ -170,7 +170,7 @@ body.dark-mode .mobile-menu-links a {
 
 
 .section {
-    padding: 6rem 5%;
+    padding: 4rem 5%;
     position: relative;
 }
 
@@ -209,7 +209,7 @@ body.dark-mode .section-subtitle {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 6rem 5% 4rem;
+    padding: 4rem 5% 3rem;
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(237, 242, 247, 0.9) 100%);
@@ -288,7 +288,7 @@ body.dark-mode .hero-subtitle {
 .hero-cta {
     display: flex;
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .btn-primary {
@@ -348,7 +348,7 @@ body.dark-mode .btn-secondary:hover {
 
 .hero-stats {
     display: flex;
-    gap: 2rem;
+    gap: 1.25rem;
     flex-wrap: wrap;
 }
 
@@ -459,7 +459,7 @@ body.dark-mode .document-icon {
     min-height: 60vh;
     display: flex;
     align-items: center;
-    padding: 8rem 5% 4rem;
+    padding: 5rem 5% 3rem;
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(237, 242, 247, 0.9) 100%);
@@ -576,7 +576,7 @@ body.dark-mode .contact-hero-subtitle {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     opacity: 0;
     animation: fadeInUp 1s ease-out 2s forwards;
 }
@@ -585,7 +585,7 @@ body.dark-mode .contact-hero-subtitle {
 .contact-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 1.25rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -1062,7 +1062,7 @@ body.dark-mode .faq-answer p {
 .footer-links-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 1.25rem;
 }
 
 .footer-links-col {
