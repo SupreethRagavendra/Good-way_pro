@@ -893,6 +893,8 @@
         font-weight: 600;
         border-bottom-right-radius: 15px;
     }
+    .service-category.category-travel { background-color: var(--accent); }
+    .service-category.category-government { background-color: var(--error); }
     
     .process-timeline {
         position: relative;
