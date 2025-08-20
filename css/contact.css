@@ -6,19 +6,19 @@
 
 
 :root {
-    --primary: #FF6600;
-    --primary-light: #FF8533;
-    --primary-dark: #E55B00;
-    --secondary: #2D3748;
-    --secondary-light: #4A5568;
-    --accent: #138808;
+    --primary: #1E5CB8;
+    --primary-light: #2563EB;
+    --primary-dark: #174EA6;
+    --secondary: #1F2937;
+    --secondary-light: #374151;
+    --accent: #15803D;
     --light: #FFFFFF;
-    --dark: #1A202C;
-    --gray: #EDF2F7;
-    --dark-gray: #718096;
+    --dark: #1F2937;
+    --gray: #F8FAFC;
+    --dark-gray: #4B5563;
     --success: #22C55E;
     --warning: #F59E0B;
-    --error: #EF4444;
+    --error: #DC2626;
     
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
@@ -84,7 +84,7 @@ body.dark-mode .mobile-menu-btn {
 }
 
 .mobile-menu-btn:hover {
-    background-color: rgba(255, 102, 0, 0.1);
+    background-color: rgba(30, 92, 184, 0.1);
 }
 
 .mobile-menu {
@@ -135,7 +135,7 @@ body.dark-mode .mobile-menu-close {
 }
 
 .mobile-menu-close:hover {
-    background-color: rgba(255, 102, 0, 0.1);
+    background-color: rgba(30, 92, 184, 0.1);
 }
 
 .mobile-menu-links {
@@ -165,7 +165,7 @@ body.dark-mode .mobile-menu-links a {
 
 .mobile-menu-links a:hover {
     color: var(--primary);
-    background-color: rgba(255, 102, 0, 0.1);
+    background-color: rgba(30, 92, 184, 0.1);
 }
 
 
@@ -304,13 +304,13 @@ body.dark-mode .hero-subtitle {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    box-shadow: 0 4px 6px rgba(255, 102, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(30, 92, 184, 0.2);
     text-decoration: none;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(255, 102, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(30, 92, 184, 0.3);
 }
 
 .btn-secondary {
@@ -449,7 +449,7 @@ body.dark-mode .document-icon {
 
 .particle {
     position: absolute;
-    background: rgba(255, 102, 0, 0.3);
+    background: rgba(30, 92, 184, 0.3);
     border-radius: 50%;
     animation: float linear infinite;
 }
@@ -624,7 +624,7 @@ body.dark-mode .contact-card:hover {
 .contact-icon {
     width: 70px;
     height: 70px;
-    background-color: rgba(255, 102, 0, 0.1);
+    background-color: rgba(30, 92, 184, 0.1);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -653,8 +653,8 @@ body.dark-mode .contact-card:hover {
 
 .contact-icon {
     position: relative;
-    background-color: rgba(255, 102, 0, 0.1) !important;
-    border: 2px solid rgba(255, 102, 0, 0.2);
+    background-color: rgba(30, 92, 184, 0.1) !important;
+    border: 2px solid rgba(30, 92, 184, 0.2);
 }
 
 
@@ -775,7 +775,7 @@ body.dark-mode .form-control {
 .form-control:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
+    box-shadow: 0 0 0 3px rgba(30, 92, 184, 0.2);
 }
 
 .form-control.error {
@@ -804,12 +804,12 @@ textarea.form-control {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 4px 6px rgba(255, 102, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(30, 92, 184, 0.2);
 }
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(255, 102, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(30, 92, 184, 0.3);
 }
 
 .form-message {
@@ -883,7 +883,7 @@ body.dark-mode .faq-question {
 }
 
 .faq-question:hover {
-    background: rgba(255, 102, 0, 0.05);
+    background: rgba(30, 92, 184, 0.05);
 }
 
 .faq-question h4 {
@@ -1023,7 +1023,7 @@ body.dark-mode .faq-answer p {
 }
 
 .contact-item i {
-    color: #FF6600;
+    color: #1E5CB8;
     margin-top: 0.2rem;
 }
 
@@ -1055,7 +1055,7 @@ body.dark-mode .faq-answer p {
 }
 
 .social-link:hover {
-    background-color: #FF6600;
+    background-color: #1E5CB8;
     transform: translateY(-3px);
 }
 
@@ -1087,7 +1087,7 @@ body.dark-mode .faq-answer p {
     left: 0;
     width: 40px;
     height: 2px;
-    background-color: #FF6600;
+    background-color: #1E5CB8;
 }
 
 .footer-links {
@@ -1108,12 +1108,12 @@ body.dark-mode .faq-answer p {
 
 .footer-links a i {
     font-size: 0.7rem;
-    color: #FF6600;
+    color: #1E5CB8;
     transition: transform 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #FF6600;
+    color: #1E5CB8;
     transform: translateX(5px);
 }
 
@@ -1271,7 +1271,7 @@ body.dark-mode .faq-answer p {
 }
 
 .footer-legal-links a:hover {
-    color: #FF6600;
+    color: #1E5CB8;
 }
 
 .footer-legal-links span {

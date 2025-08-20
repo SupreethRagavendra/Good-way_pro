@@ -7,8 +7,8 @@
 
 :root {
     
-    --bs-primary: var(--primary, #FF6600);
-    --bs-primary-rgb: 255, 102, 0;
+    --bs-primary: var(--primary, #1E5CB8);
+    --bs-primary-rgb: 30, 92, 184;
     --bs-secondary: var(--secondary, #2D3748);
     --bs-secondary-rgb: 45, 55, 72;
     --bs-success: var(--success, #22C55E);
@@ -21,8 +21,8 @@
     --bs-info-rgb: 6, 182, 212;
     --bs-light: var(--light, #FFFFFF);
     --bs-light-rgb: 255, 255, 255;
-    --bs-dark: var(--dark, #1A202C);
-    --bs-dark-rgb: 26, 32, 44;
+    --bs-dark: var(--dark, #1F2937);
+    --bs-dark-rgb: 31, 41, 55;
     
     
     --bs-font-sans-serif: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -55,7 +55,7 @@
 }
 
 .btn-primary:hover {
-    background: var(--primary-dark, #E55B00);
+    background: var(--primary-dark, #174EA6);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
     color: white;
@@ -104,7 +104,7 @@
 
 .form-control:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(30, 92, 184, 0.25);
 }
 
 
@@ -354,6 +354,6 @@ body.dark-mode .form-control:focus {
 }
 
 .dropdown-item:hover {
-    background-color: rgba(255, 102, 0, 0.1);
+    background-color: rgba(30, 92, 184, 0.1);
     color: var(--primary);
 }

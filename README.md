@@ -147,7 +147,7 @@ good-way-travels/
 ```css
 /* Custom Properties for Design System */
 :root {
-    --primary: #FF6600;
+    --primary: #1E5CB8;
     --text-base: 1rem;
     --spacing-md: 1rem;
     --radius-md: 0.5rem;
