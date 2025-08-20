@@ -35,6 +35,14 @@
         --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
     }
 
+    /* Brand utilities for additional accents */
+    .text-brand-green { color: var(--accent) !important; }
+    .bg-brand-green { background-color: var(--accent) !important; }
+    .border-brand-green { border-color: var(--accent) !important; }
+    .text-brand-red { color: var(--error) !important; }
+    .bg-brand-red { background-color: var(--error) !important; }
+    .border-brand-red { border-color: var(--error) !important; }
+
     * {
         margin: 0;
         padding: 0;
