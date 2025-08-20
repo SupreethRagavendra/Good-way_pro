@@ -2,19 +2,19 @@
 
 
     :root {
-        --primary: #FF6600;
-        --primary-light: #FF8533;
-        --primary-dark: #E55B00;
-        --secondary: #2D3748;
-        --secondary-light: #4A5568;
-        --accent: #138808;
+        --primary: #1E5CB8;
+        --primary-light: #2563EB;
+        --primary-dark: #174EA6;
+        --secondary: #1F2937;
+        --secondary-light: #374151;
+        --accent: #15803D;
         --light: #FFFFFF;
-        --dark: #1A202C;
-        --gray: #EDF2F7;
-        --dark-gray: #718096;
+        --dark: #1F2937;
+        --gray: #F8FAFC;
+        --dark-gray: #4B5563;
         --success: #22C55E;
         --warning: #F59E0B;
-        --error: #EF4444;
+        --error: #DC2626;
         
         --text-xs: 0.75rem;
         --text-sm: 0.875rem;
@@ -222,7 +222,7 @@
     }
     
     .theme-toggle:hover {
-        background-color: rgba(255, 102, 0, 0.1);
+        background-color: rgba(30, 92, 184, 0.1);
         transform: rotate(30deg);
     }
     
@@ -237,12 +237,12 @@
         font-size: var(--text-base);
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(255, 102, 0, 0.2);
+        box-shadow: 0 4px 6px rgba(30, 92, 184, 0.2);
     }
     
     .nav-cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(255, 102, 0, 0.3);
+        box-shadow: 0 6px 12px rgba(30, 92, 184, 0.3);
     }
     
     .mobile-menu-btn {
@@ -265,7 +265,7 @@
     }
     
     .mobile-menu-btn:hover {
-        background-color: rgba(255, 102, 0, 0.1);
+        background-color: rgba(30, 92, 184, 0.1);
     }
     
     .mobile-menu {
@@ -316,7 +316,7 @@
     }
     
     .mobile-menu-close:hover {
-        background-color: rgba(255, 102, 0, 0.1);
+        background-color: rgba(30, 92, 184, 0.1);
     }
     
     .mobile-menu-links {
@@ -346,7 +346,7 @@
     
     .mobile-menu-links a:hover {
         color: var(--primary);
-        background-color: rgba(255, 102, 0, 0.1);
+        background-color: rgba(30, 92, 184, 0.1);
     }
     
     .hero {
@@ -450,12 +450,12 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        box-shadow: 0 4px 6px rgba(255, 102, 0, 0.2);
+        box-shadow: 0 4px 6px rgba(30, 92, 184, 0.2);
     }
     
     .btn-primary:hover {
         transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(255, 102, 0, 0.3);
+        box-shadow: 0 6px 12px rgba(30, 92, 184, 0.3);
     }
     
     .btn-secondary {
@@ -750,7 +750,7 @@
     
     .particle {
         position: absolute;
-        background: rgba(255, 102, 0, 0.3);
+        background: rgba(30, 92, 184, 0.3);
         border-radius: 50%;
         animation: float linear infinite;
     }
@@ -1298,7 +1298,7 @@
     }
 
     .contact-item i {
-        color: #FF6600;
+        color: #1E5CB8;
         margin-top: 0.2rem;
     }
 
@@ -1330,7 +1330,7 @@
     }
 
     .social-link:hover {
-        background-color: #FF6600;
+        background-color: #1E5CB8;
         transform: translateY(-3px);
     }
 
@@ -1362,7 +1362,7 @@
         left: 0;
         width: 40px;
         height: 2px;
-        background-color: #FF6600;
+        background-color: #1E5CB8;
     }
 
     .footer-links {
@@ -1383,12 +1383,12 @@
 
     .footer-links a i {
         font-size: 0.7rem;
-        color: #FF6600;
+        color: #1E5CB8;
         transition: transform 0.3s ease;
     }
 
     .footer-links a:hover {
-        color: #FF6600;
+        color: #1E5CB8;
         transform: translateX(5px);
     }
 
@@ -1425,7 +1425,7 @@
     }
 
     .footer-legal-links a:hover {
-        color: #FF6600;
+        color: #1E5CB8;
     }
 
     .footer-legal-links span {
