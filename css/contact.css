@@ -456,10 +456,10 @@ body.dark-mode .document-icon {
 
 
 .contact-hero {
-    min-height: 60vh;
+    min-height: calc(60vh - 80px);
     display: flex;
     align-items: center;
-    padding: 5rem 5% 3rem;
+    padding: 6rem 5% 3rem;
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(237, 242, 247, 0.9) 100%);
