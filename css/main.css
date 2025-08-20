@@ -16,6 +16,14 @@
         --warning: #F59E0B;
         --error: #DC2626;
         
+        /* Interactive accent helpers */
+        --blue-accent: #2563EB;
+        --blue-accent-dark: #1D4ED8;
+        --green-accent: #15803D;
+        --green-accent-dark: #166534;
+        --red-accent: #DC2626;
+        --red-accent-dark: #B91C1C;
+        
         --text-xs: 0.75rem;
         --text-sm: 0.875rem;
         --text-base: 1rem;
@@ -435,6 +443,40 @@
         margin-bottom: 3rem;
         
     }
+
+    /* Quick Actions (three-accent CTA row) */
+    .quick-actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.25rem;
+    }
+    @media (max-width: 768px) {
+        .quick-actions {
+            grid-template-columns: 1fr;
+        }
+    }
+    .qa-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.9rem 1.1rem;
+        border-radius: 12px;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        will-change: transform;
+        min-height: 48px;
+    }
+    .qa-btn:focus-visible { outline: 3px solid rgba(255,255,255,0.6); outline-offset: 2px; }
+    .qa-btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .qa-btn:active { transform: translateY(0); filter: brightness(0.98); }
+    .qa-blue { background: linear-gradient(135deg, var(--blue-accent), var(--blue-accent-dark)); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25); }
+    .qa-green { background: linear-gradient(135deg, var(--green-accent), var(--green-accent-dark)); box-shadow: 0 8px 20px rgba(21, 128, 61, 0.25); }
+    .qa-red { background: linear-gradient(135deg, var(--red-accent), var(--red-accent-dark)); box-shadow: 0 8px 20px rgba(220, 38, 38, 0.25); }
+    .qa-btn i { font-size: 1.05rem; }
     
     /* Button styles */
     .btn-primary {
