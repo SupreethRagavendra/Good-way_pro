@@ -151,6 +151,12 @@
         text-decoration: none;
     }
     
+    .logo-text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
     .logo img {
         height: 40px;
         width: auto;
@@ -168,7 +174,6 @@
         font-size: 0.75rem;
         font-weight: 500;
         color: var(--dark-gray);
-        display: block;
         margin-top: -2px;
         transition: all 0.3s;
         line-height: 1.1;
