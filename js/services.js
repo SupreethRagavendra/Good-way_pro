@@ -3,7 +3,326 @@
 (function() {
     'use strict';
 
- 
+    // === SERVICE DATA ARRAYS ===
+    const servicesData = {
+        government: [
+            {
+                id: 'passport-services',
+                title: 'Passport Services',
+                description: 'Complete passport services including new application, renewal, and police verification assistance.',
+                category: 'Government',
+                image: 'assets/Images/passport-service.webp',
+                icon: 'fas fa-passport',
+                features: ['New Application', 'Renewal', 'Police Verification'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'voter-id',
+                title: 'Voter ID Card',
+                description: 'New voter registration, address change, and corrections in voter ID details.',
+                category: 'Government',
+                image: 'assets/Images/voter-id-services.webp',
+                icon: 'fas fa-vote-yea',
+                features: ['New Registration', 'Address Change', 'Corrections'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'pan-card',
+                title: 'PAN Card Services',
+                description: 'New PAN application, corrections, duplicate PAN, and Aadhaar linking services.',
+                category: 'Government',
+                image: 'assets/Images/pan-card-services.webp',
+                icon: 'fas fa-id-card',
+                features: ['New Application', 'Corrections', 'Duplicate Copy'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'aadhaar-services',
+                title: 'Aadhaar Services',
+                description: 'Aadhaar enrollment, biometric updates, mobile number linking, and address updates.',
+                category: 'Government',
+                image: 'assets/Images/aadhaar-services.webp',
+                icon: 'fas fa-fingerprint',
+                features: ['New Enrollment', 'Updates', 'Print/Download'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'birth-certificate',
+                title: 'Birth Certificate',
+                description: 'New birth certificate registration, duplicate copies, and corrections in birth records.',
+                category: 'Government',
+                image: 'assets/Images/Birth.webp',
+                icon: 'fas fa-baby',
+                features: ['New Registration', 'Duplicate Copy', 'Corrections'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'death-certificate',
+                title: 'Death Certificate',
+                description: 'Death registration, duplicate death certificates, and related documentation services.',
+                category: 'Government',
+                image: 'assets/Images/death-certificate.webp',
+                icon: 'fas fa-cross',
+                features: ['New Registration', 'Duplicate Copy', 'Legal Documentation'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'income-certificate',
+                title: 'Income Certificate',
+                description: 'Income certificate for educational admissions, loans, and government scheme applications.',
+                category: 'Government',
+                image: 'assets/Images/income-certificate.webp',
+                icon: 'fas fa-file-invoice-dollar',
+                features: ['For Education', 'For Loans', 'For Schemes'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'community-certificate',
+                title: 'Community Certificate',
+                description: 'Caste certificate, religion certificate, and community verification documents.',
+                category: 'Government',
+                image: 'assets/Images/community-certificate.webp',
+                icon: 'fas fa-users',
+                features: ['Caste Certificate', 'Religion Certificate', 'Verification'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'driving-license',
+                title: 'Driving License',
+                description: 'New driving license, renewal, international driving permit, and license corrections.',
+                category: 'Government',
+                image: 'assets/Images/driving-license.webp',
+                icon: 'fas fa-car',
+                features: ['New License', 'Renewal', 'International Permit'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'marriage-certificate',
+                title: 'Marriage Certificate',
+                description: 'Marriage registration, certificate issuance, and duplicate marriage certificates.',
+                category: 'Government',
+                image: 'assets/Images/marriage-certificate.webp',
+                icon: 'fas fa-ring',
+                features: ['Registration', 'Certificate Issuance', 'Duplicate Copy'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'nativity-certificate',
+                title: 'Nativity Certificate',
+                description: 'Domicile certificate, residence proof, and nativity verification documents.',
+                category: 'Government',
+                image: 'assets/Images/Nativity Certificate.webp',
+                icon: 'fas fa-home',
+                features: ['Domicile Certificate', 'Residence Proof', 'Verification'],
+                actionText: 'Apply Now'
+            },
+            {
+                id: 'fssai-registration',
+                title: 'FSSAI Registration',
+                description: 'Food license registration, FSSAI renewal, and food business compliance documentation.',
+                category: 'Government',
+                image: 'assets/Images/fssai-registration.webp',
+                icon: 'fas fa-utensils',
+                features: ['New Registration', 'License Renewal', 'Compliance Support'],
+                actionText: 'Apply Now'
+            }
+        ],
+        travel: [
+            {
+                id: 'air-ticket',
+                title: 'Air Ticket Booking',
+                description: 'Domestic and international flight bookings with best fare comparison and instant confirmation.',
+                category: 'Travel',
+                image: 'assets/Images/flight-inquiries.webp',
+                icon: 'fas fa-plane',
+                features: ['Domestic Flights', 'International Flights', 'Best Prices'],
+                actionText: 'Book Now'
+            },
+            {
+                id: 'bus-ticket',
+                title: 'Bus Ticket Booking',
+                description: 'State transport and private bus bookings across India with seat selection and real-time tracking.',
+                category: 'Travel',
+                image: 'assets/Images/bus-reservations.webp',
+                icon: 'fas fa-bus',
+                features: ['State Transport', 'Private Buses', 'Seat Selection'],
+                actionText: 'Book Now'
+            },
+            {
+                id: 'train-ticket',
+                title: 'Train Ticket Booking',
+                description: 'IRCTC authorized train ticket booking with tatkal, premium tatkal, and waitlist management.',
+                category: 'Travel',
+                image: 'assets/Images/train-ticket-booking.webp',
+                icon: 'fas fa-train',
+                features: ['IRCTC Authorized', 'Tatkal Booking', 'Waitlist Management'],
+                actionText: 'Book Now'
+            },
+            {
+                id: 'hajj-umrah',
+                title: 'Hajj & Umrah Packages',
+                description: 'Complete pilgrimage packages including flights, accommodation, visa processing, and guided tours.',
+                category: 'Travel',
+                image: 'assets/Images/hajj-umrah.webp',
+                icon: 'fas fa-kaaba',
+                features: ['All-Inclusive', 'Visa Assistance', 'Guided Tours'],
+                actionText: 'Book Now'
+            }
+        ],
+        additional: [
+            {
+                id: 'income-tax',
+                title: 'Income Tax Filing',
+                description: 'Professional ITR filing services with expert guidance and maximum refund assistance.',
+                category: 'Financial',
+                image: 'assets/Images/tx.webp',
+                icon: 'fas fa-calculator',
+                features: ['Expert Guidance', 'Maximum Refund', 'All ITR Forms'],
+                actionText: 'File Now'
+            },
+            {
+                id: 'eb-bill',
+                title: 'EB Bill Payment',
+                description: 'Quick electricity bill payments for all state electricity boards with instant confirmation.',
+                category: 'Utility',
+                image: 'assets/Images/ebill.webp',
+                icon: 'fas fa-bolt',
+                features: ['All State Boards', 'Instant Payment', 'SMS Confirmation'],
+                actionText: 'Pay Now'
+            },
+            {
+                id: 'printing-services',
+                title: 'Color Printout & Exam Results',
+                description: 'High-quality color printing, document scanning, and exam result printing services.',
+                category: 'Printing',
+                image: 'assets/Images/color.webp',
+                icon: 'fas fa-print',
+                features: ['Color Printing', 'Document Scanning', 'Exam Results'],
+                actionText: 'Print Now'
+            }
+        ]
+    };
+
+    // === SERVICE FILTERING FUNCTIONS ===
+    function showAllServices() {
+        const serviceCards = document.querySelectorAll('.service-card');
+        const sectionTitles = document.querySelectorAll('.section-title');
+        const sectionSubtitles = document.querySelectorAll('.section-subtitle');
+        
+        // Show all service cards
+        serviceCards.forEach(card => {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.5s ease-out forwards';
+        });
+        
+        // Show all section titles and subtitles
+        sectionTitles.forEach(title => title.style.display = 'block');
+        sectionSubtitles.forEach(subtitle => subtitle.style.display = 'block');
+        
+        // Update filter buttons
+        updateFilterButtons('all');
+    }
+
+    function showCategoryServices(category) {
+        const serviceCards = document.querySelectorAll('.service-card');
+        const sectionTitles = document.querySelectorAll('.section-title');
+        const sectionSubtitles = document.querySelectorAll('.section-subtitle');
+        
+        // Hide all service cards first
+        serviceCards.forEach(card => {
+            card.style.display = 'none';
+        });
+        
+        // Show only cards from the selected category
+        serviceCards.forEach(card => {
+            const section = card.closest('[data-category]');
+            if (section && section.dataset.category === category) {
+                card.style.display = 'block';
+                card.style.animation = 'fadeInUp 0.5s ease-out forwards';
+            }
+        });
+        
+        // Show only relevant section titles and subtitles
+        sectionTitles.forEach(title => {
+            const section = title.closest('section');
+            if (section && section.id === `${category}-services`) {
+                title.style.display = 'block';
+            } else {
+                title.style.display = 'none';
+            }
+        });
+        
+        sectionSubtitles.forEach(subtitle => {
+            const section = subtitle.closest('section');
+            if (section && section.id === `${category}-services`) {
+                subtitle.style.display = 'block';
+            } else {
+                subtitle.style.display = 'none';
+            }
+        });
+        
+        // Update filter buttons
+        updateFilterButtons(category);
+    }
+
+    function showSingleService(serviceId) {
+        const serviceCards = document.querySelectorAll('.service-card');
+        const sectionTitles = document.querySelectorAll('.section-title');
+        const sectionSubtitles = document.querySelectorAll('.section-subtitle');
+        
+        // Hide all service cards first
+        serviceCards.forEach(card => {
+            card.style.display = 'none';
+        });
+        
+        // Show only the selected service card
+        const targetCard = document.querySelector(`[data-service="${serviceId}"]`);
+        if (targetCard) {
+            targetCard.style.display = 'block';
+            targetCard.style.animation = 'fadeInUp 0.5s ease-out forwards';
+        }
+        
+        // Hide all section titles and subtitles
+        sectionTitles.forEach(title => title.style.display = 'none');
+        sectionSubtitles.forEach(subtitle => subtitle.style.display = 'none');
+        
+        // Update filter buttons to show "Show All" option
+        updateFilterButtons('single');
+    }
+
+    function updateFilterButtons(activeFilter) {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        // Remove active class from all buttons
+        filterBtns.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to appropriate button
+        if (activeFilter === 'all') {
+            const allBtn = document.querySelector('[data-filter="all"]');
+            if (allBtn) allBtn.classList.add('active');
+        } else if (activeFilter === 'single') {
+            // Create or update "Show All" button for single service view
+            let showAllBtn = document.querySelector('[data-filter="show-all"]');
+            if (!showAllBtn) {
+                showAllBtn = document.createElement('button');
+                showAllBtn.className = 'filter-btn active';
+                showAllBtn.setAttribute('data-filter', 'show-all');
+                showAllBtn.textContent = 'Show All Services';
+                
+                // Insert after the first filter button
+                const firstBtn = document.querySelector('.filter-btn');
+                if (firstBtn) {
+                    firstBtn.parentNode.insertBefore(showAllBtn, firstBtn.nextSibling);
+                }
+            }
+            showAllBtn.classList.add('active');
+        } else {
+            const categoryBtn = document.querySelector(`[data-filter="${activeFilter}"]`);
+            if (categoryBtn) categoryBtn.classList.add('active');
+        }
+    }
+
+    // === INITIALIZATION FUNCTIONS ===
     function initMobileMenu() {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -31,26 +350,22 @@
 
     function initServiceFiltering() {
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const serviceCards = document.querySelectorAll('.service-card');
         
-        if (!filterBtns.length || !serviceCards.length) return;
+        if (!filterBtns.length) return;
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
                 const filter = btn.dataset.filter;
                 
-                serviceCards.forEach(card => {
-                    const section = card.closest('[data-category]');
-                    if (filter === 'all' || (section && section.dataset.category === filter)) {
-                        card.style.display = 'block';
-                        card.style.animation = 'fadeInUp 0.5s ease-out forwards';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                if (filter === 'all') {
+                    showAllServices();
+                } else if (filter === 'show-all') {
+                    showAllServices();
+                    // Remove the "Show All" button
+                    btn.remove();
+                } else {
+                    showCategoryServices(filter);
+                }
             });
         });
     }
@@ -64,6 +379,11 @@
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
             
+            if (searchTerm === '') {
+                showAllServices();
+                return;
+            }
+            
             serviceCards.forEach(card => {
                 const title = card.querySelector('.service-title')?.textContent.toLowerCase() || '';
                 const description = card.querySelector('.service-description')?.textContent.toLowerCase() || '';
@@ -71,6 +391,7 @@
                 
                 if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
                     card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.5s ease-out forwards';
                 } else {
                     card.style.display = 'none';
                 }
@@ -97,6 +418,26 @@
                 
                 // Redirect to inquiry page with service parameter
                 window.location.href = `inquiry.html?service=${encodeURIComponent(serviceName)}`;
+            });
+        });
+    }
+
+    // Add click event listeners to service cards for individual service filtering
+    function initIndividualServiceFiltering() {
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Don't trigger if clicking on the link button
+                if (e.target.closest('.service-link')) return;
+                
+                const serviceId = this.dataset.service;
+                if (serviceId) {
+                    // Add visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        showSingleService(serviceId);
+                    }, 150);
+                }
             });
         });
     }
@@ -339,6 +680,7 @@
         initServiceFiltering();
         initServiceSearch();
         initServiceLinks();
+        initIndividualServiceFiltering(); // Initialize individual service filtering
         initFAQAccordion();
         initProcessTimeline();
         initCookieConsent();
