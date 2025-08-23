@@ -1210,14 +1210,16 @@ body.dark-mode .faq-answer p {
     
     .hero-cta {
         flex-direction: column;
-        gap: 0.75rem;
+        align-items: center;
+        width: 100%;
     }
     
     .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
         padding: 0.75rem 1.5rem;
         font-size: 0.9rem;
-        width: 100%;
-        justify-content: center;
     }
     
     .hero-stats {
@@ -1268,6 +1270,14 @@ body.dark-mode .faq-answer p {
     .rotating-text-item {
         font-size: 1.2rem;
     }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 360px) {
@@ -1287,14 +1297,16 @@ body.dark-mode .faq-answer p {
     
     .hero-cta {
         flex-direction: column;
-        gap: 0.75rem;
+        align-items: center;
+        width: 100%;
     }
     
     .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
         padding: 0.75rem 1.5rem;
         font-size: 0.9rem;
-        width: 100%;
-        justify-content: center;
     }
     
     .hero-stats {

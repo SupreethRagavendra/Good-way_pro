@@ -2470,10 +2470,11 @@
     }
         
         .btn-primary, .btn-secondary {
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
             padding: 0.75rem 1.5rem;
             font-size: 0.9rem;
-            width: 100%;
-            justify-content: center;
         }
         
         .hero-stats {
