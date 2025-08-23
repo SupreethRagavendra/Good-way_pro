@@ -1433,39 +1433,7 @@ body.dark-mode .faq-answer p {
     }
     
     
-    nav {
-        padding: 0.5rem 4%;
-        min-height: 60px;
-    }
-    
-    .logo img {
-        height: 32px;
-    }
-    
-    .logo-text {
-        font-size: 1.2rem;
-    }
-    
-    .theme-toggle {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-    }
-    
-    .nav-cta {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-    }
-    
-    .mobile-menu-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 1.2rem;
-    }
-    
-    .nav-actions {
-        gap: 0.5rem;
-    }
+
 }
 
 @media (max-width: 480px) {
@@ -1483,28 +1451,7 @@ body.dark-mode .faq-answer p {
     }
     
     
-    nav {
-        padding: 0.4rem 3%;
-        min-height: 55px;
-    }
-    
-    .logo img {
-        height: 28px;
-    }
-    
-    .logo-text {
-        font-size: 1.1rem;
-    }
-    
-    .theme-toggle, .mobile-menu-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 0.9rem;
-    }
-    
-    .nav-cta {
-        display: none;
-    }
+
 }
 
 @media (max-width: 360px) {
@@ -1515,8 +1462,5 @@ body.dark-mode .faq-answer p {
         font-size: 1.1rem;
     }
     
-    nav {
-        padding: 0.3rem 2%;
-        min-height: 48px;
-    }
+
 }
