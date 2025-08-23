@@ -578,11 +578,13 @@
         line-height: 1.2;
         margin-bottom: 1.5rem;
         overflow: hidden;
+        gap: 0.5rem;
     }
     
     .text-part {
         display: inline-block;
         position: relative;
+        margin-right: 0.25rem;
     }
     
     .text-part.left {

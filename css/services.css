@@ -1,5 +1,21 @@
-/* services.css: Services page layout and components */
+        /* services.css: Services page layout and components */
 
+        /* Enhanced spacing for services page text */
+        .services-page .split-text-container {
+            gap: 0.75rem;
+        }
+        
+        .services-page .text-part {
+            margin-right: 0.5rem;
+        }
+        
+        .services-page .hero-subtitle {
+            word-spacing: 0.1em;
+        }
+        
+        .services-page .section-subtitle {
+            word-spacing: 0.05em;
+        }
         
         :root {
             --primary: #1E5CB8;
