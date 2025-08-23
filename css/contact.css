@@ -1079,7 +1079,7 @@ body.dark-mode .faq-answer p {
 }
 
 .footer-tagline {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8) !important;
     line-height: 1.6;
 }
 
@@ -1090,14 +1090,14 @@ body.dark-mode .faq-answer p {
     margin-top: 1rem;
 }
 
-.contact-item {
+.footer-contact-info .contact-item {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
     color: rgba(255, 255, 255, 0.8);
 }
 
-.contact-item i {
+.footer-contact-info .contact-item i {
     color: #1E5CB8;
     margin-top: 0.2rem;
 }
@@ -1109,7 +1109,7 @@ body.dark-mode .faq-answer p {
 .social-title {
     font-size: 1rem;
     margin-bottom: 1rem;
-    color: #fff;
+    color: #fff !important;
 }
 
 .social-links {
@@ -1150,7 +1150,7 @@ body.dark-mode .faq-answer p {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #fff;
+    color: #fff !important;
     position: relative;
     padding-bottom: 0.5rem;
 }
@@ -1173,7 +1173,7 @@ body.dark-mode .faq-answer p {
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7) !important;
     text-decoration: none;
     transition: all 0.3s ease;
     display: flex;
@@ -1206,7 +1206,7 @@ body.dark-mode .faq-answer p {
 }
 
 .copyright {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6) !important;
     font-size: 0.85rem;
 }
 
