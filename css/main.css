@@ -110,13 +110,7 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     
-    body.dark-mode .logo-subtext {
-        color: #9CA3AF;
-    }
-    
-    body.dark-mode .logo:hover .logo-subtext {
-        color: var(--gray);
-    }
+
     
     
     nav * {
@@ -151,41 +145,16 @@
         text-decoration: none;
     }
     
-    .logo-text-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+
     
-    .logo img {
+    .logo img, .logo-img {
         height: 40px;
         width: auto;
+        transition: all 0.3s ease;
     }
     
-    .logo-text {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--primary);
-        transition: all 0.3s;
-        line-height: 1.2;
-    }
-    
-    .logo-subtext {
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: var(--dark-gray);
-        margin-top: -2px;
-        transition: all 0.3s;
-        line-height: 1.1;
-    }
-    
-    .logo:hover .logo-text {
-        color: var(--primary-dark);
-    }
-    
-    .logo:hover .logo-subtext {
-        color: var(--secondary);
+    .logo:hover .logo-img {
+        transform: scale(1.05);
     }
     
     .nav-links {
@@ -1670,16 +1639,8 @@
             min-height: 60px;
         }
         
-        .logo img {
+        .logo img, .logo-img {
             height: 32px;
-        }
-        
-        .logo-text {
-            font-size: 1.2rem;
-        }
-        
-        .logo-subtext {
-            font-size: 0.7rem;
         }
         
         .theme-toggle {
@@ -1736,16 +1697,8 @@
             min-height: 55px;
         }
         
-        .logo img {
+        .logo img, .logo-img {
             height: 28px;
-        }
-        
-        .logo-text {
-            font-size: 1.1rem;
-        }
-        
-        .logo-subtext {
-            font-size: 0.65rem;
         }
         
         .theme-toggle, .mobile-menu-btn {
