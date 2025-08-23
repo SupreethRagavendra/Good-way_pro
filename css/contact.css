@@ -1717,8 +1717,20 @@ body.dark-mode .contact-text h4 {
 
 
 @media (max-width: 768px) {
+    .location-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .map-container {
+        height: 300px;
+        margin-top: 2rem;
+        order: 2;
+    }
+    
     .contact-info {
         padding: 1.5rem 1rem;
+        order: 1;
     }
     
     .contact-info h3 {
@@ -1750,6 +1762,17 @@ body.dark-mode .contact-text h4 {
 }
 
 @media (max-width: 480px) {
+    .location-container {
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .map-container {
+        height: 250px;
+        margin-top: 1.5rem;
+        border-radius: 10px;
+    }
+    
     .contact-info {
         padding: 1.25rem 0.75rem;
     }
