@@ -129,7 +129,6 @@
         align-items: center;
         z-index: 1000;
         background-color: var(--brand-white);
-        border-bottom: 3px solid var(--brand-blue);
         box-shadow: var(--shadow-brand-blue);
         transition: all 0.3s ease;
         opacity: 1;
@@ -582,16 +581,7 @@
     }
     
     /* Add subtle brand color accents to text parts */
-    .text-part.left::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: linear-gradient(90deg, var(--brand-green), var(--brand-blue));
-        border-radius: 2px;
-    }
+    /* Removed underline from GOOD WAY text */
     
     .hero-subtitle {
         font-size: clamp(1rem, 2vw, 1.2rem);
