@@ -226,7 +226,7 @@
 
     
     .logo img, .logo-img {
-        height: 40px;
+        height: 55px;
         width: auto;
         transition: all 0.3s ease;
     }
@@ -1763,8 +1763,8 @@
 
     .footer-logo img {
         width: auto;
-        height: 60px;
-        max-width: 120px;
+        height: 80px;
+        max-width: 150px;
         object-fit: contain;
         border: none;
         border-radius: 0;
@@ -2138,6 +2138,11 @@
             align-items: flex-start;
         }
         
+        .footer-logo img {
+            height: 70px;
+            max-width: 130px;
+        }
+        
         
         nav {
             padding: 0.5rem 4%;
@@ -2145,7 +2150,7 @@
         }
         
         .logo img, .logo-img {
-            height: 32px;
+            height: 45px;
         }
         
         .theme-toggle {
@@ -2196,6 +2201,11 @@
             grid-template-columns: 1fr;
         }
         
+        .footer-logo img {
+            height: 60px;
+            max-width: 110px;
+        }
+        
         
         nav {
             padding: 0.4rem 3%;
@@ -2203,7 +2213,7 @@
         }
         
         .logo img, .logo-img {
-            height: 28px;
+            height: 40px;
         }
         
         .theme-toggle, .mobile-menu-btn {
