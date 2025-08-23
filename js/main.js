@@ -247,9 +247,9 @@
                     // Stats counter animation
                     if (target.classList.contains('section') && 
                         target.querySelector('.stats-container')) {
-                        animateCounter('ticketsCounter', 3000);
-                        animateCounter('documentsCounter', 5700);
-                        animateCounter('yearsCounter', 3);
+                        animateCounter('ticketsCounter', 15000);
+                        animateCounter('documentsCounter', 20000);
+                        animateCounter('yearsCounter', 10);
                     }
 
                     observer.unobserve(target);
