@@ -12,19 +12,19 @@
     "categories": ["travel", "business", "productivity"],
     "icons": [
         {
-            "src": "/logo3.png",
+            "src": "/assets/Images/logo.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "maskable any"
         },
         {
-            "src": "/logo3.png",
+            "src": "/assets/Images/logo.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable any"
         },
         {
-            "src": "/logo3.png",
+            "src": "/assets/Images/logo.png",
             "sizes": "180x180",
             "type": "image/png"
         }
@@ -37,7 +37,7 @@
             "url": "/services.html#train-booking",
             "icons": [
                 {
-                    "src": "/logo3.png",
+                    "src": "/assets/Images/logo.png",
                     "sizes": "96x96"
                 }
             ]
@@ -49,7 +49,7 @@
             "url": "/services.html#government-services",
             "icons": [
                 {
-                    "src": "/logo3.png",
+                    "src": "/assets/Images/logo.png",
                     "sizes": "96x96"
                 }
             ]
@@ -61,7 +61,7 @@
             "url": "/inquiry.html",
             "icons": [
                 {
-                    "src": "/logo3.png",
+                    "src": "/assets/Images/logo.png",
                     "sizes": "96x96"
                 }
             ]
