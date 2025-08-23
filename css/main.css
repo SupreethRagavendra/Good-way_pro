@@ -2,19 +2,39 @@
 
 
     :root {
-        --primary: #1E5CB8;
-        --primary-light: #2563EB;
-        --primary-dark: #174EA6;
-        --secondary: #1F2937;
-        --secondary-light: #374151;
-        --accent: #15803D;
-        --light: #FFFFFF;
-        --dark: #1F2937;
+        /* Official Brand Colors from Logo */
+        --brand-green: #228B22;
+        --brand-green-light: #32CD32;
+        --brand-green-dark: #006400;
+        
+        --brand-blue: #1E90FF;
+        --brand-blue-light: #4169E1;
+        --brand-blue-dark: #0080FF;
+        
+        --brand-red-orange: #FF4500;
+        --brand-red-orange-light: #FF6347;
+        --brand-red-orange-dark: #DC143C;
+        
+        --brand-black: #2F2F2F;
+        --brand-black-light: #404040;
+        --brand-black-dark: #1A1A1A;
+        
+        --brand-white: #FFFFFF;
+        
+        /* Legacy variables for compatibility */
+        --primary: var(--brand-blue);
+        --primary-light: var(--brand-blue-light);
+        --primary-dark: var(--brand-blue-dark);
+        --secondary: var(--brand-black);
+        --secondary-light: var(--brand-black-light);
+        --accent: var(--brand-green);
+        --light: var(--brand-white);
+        --dark: var(--brand-black);
         --gray: #F8FAFC;
         --dark-gray: #4B5563;
-        --success: #22C55E;
-        --warning: #F59E0B;
-        --error: #DC2626;
+        --success: var(--brand-green);
+        --warning: var(--brand-red-orange);
+        --error: var(--brand-red-orange-dark);
         
         --text-xs: 0.75rem;
         --text-sm: 0.875rem;
@@ -31,17 +51,38 @@
         --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         
-        --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-        --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+        /* Brand color shadows */
+        --shadow-brand-green: 0 4px 15px rgba(34, 139, 34, 0.3);
+        --shadow-brand-blue: 0 4px 15px rgba(30, 144, 255, 0.3);
+        --shadow-brand-red-orange: 0 4px 15px rgba(255, 69, 0, 0.3);
+        --shadow-brand-black: 0 4px 15px rgba(47, 47, 47, 0.3);
+        
+        /* NO GRADIENTS - Use solid colors only */
+        --gradient-primary: var(--brand-blue);
+        --gradient-secondary: var(--brand-black);
     }
 
     /* Brand utilities for additional accents */
-    .text-brand-green { color: var(--accent) !important; }
-    .bg-brand-green { background-color: var(--accent) !important; }
-    .border-brand-green { border-color: var(--accent) !important; }
-    .text-brand-red { color: var(--error) !important; }
-    .bg-brand-red { background-color: var(--error) !important; }
-    .border-brand-red { border-color: var(--error) !important; }
+    .text-brand-green { color: var(--brand-green) !important; }
+    .bg-brand-green { background-color: var(--brand-green) !important; }
+    .border-brand-green { border-color: var(--brand-green) !important; }
+    
+    .text-brand-blue { color: var(--brand-blue) !important; }
+    .bg-brand-blue { background-color: var(--brand-blue) !important; }
+    .border-brand-blue { border-color: var(--brand-blue) !important; }
+    
+    .text-brand-red-orange { color: var(--brand-red-orange) !important; }
+    .bg-brand-red-orange { background-color: var(--brand-red-orange) !important; }
+    .border-brand-red-orange { border-color: var(--brand-red-orange) !important; }
+    
+    .text-brand-black { color: var(--brand-black) !important; }
+    .bg-brand-black { background-color: var(--brand-black) !important; }
+    .border-brand-black { border-color: var(--brand-black) !important; }
+    
+    /* Legacy utilities for compatibility */
+    .text-brand-red { color: var(--brand-red-orange) !important; }
+    .bg-brand-red { background-color: var(--brand-red-orange) !important; }
+    .border-brand-red { border-color: var(--brand-red-orange) !important; }
 
     * {
         margin: 0;
@@ -87,10 +128,10 @@
         justify-content: space-between;
         align-items: center;
         z-index: 1000;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: var(--shadow-sm);
-        transition: none;
+        background-color: var(--brand-white);
+        border-bottom: 3px solid var(--brand-blue);
+        box-shadow: var(--shadow-brand-blue);
+        transition: all 0.3s ease;
         opacity: 1;
         visibility: visible;
         
@@ -164,17 +205,45 @@
     
     .nav-links a {
         text-decoration: none;
-        color: var(--secondary);
+        color: var(--brand-black);
         font-weight: 600;
         font-size: var(--text-lg);
-        transition: color 0.2s ease;
+        transition: all 0.3s ease;
         position: relative;
         opacity: 1;
         visibility: visible;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
     }
     
     body.dark-mode .nav-links a {
-        color: var(--gray);
+        color: var(--brand-white);
+    }
+    
+    /* Brand color navigation links */
+    .nav-links a[href="index.html"]:hover {
+        color: var(--brand-blue);
+        background-color: rgba(30, 144, 255, 0.1);
+    }
+    
+    .nav-links a[href="services.html"]:hover {
+        color: var(--brand-green);
+        background-color: rgba(34, 139, 34, 0.1);
+    }
+    
+    .nav-links a[href="inquiry.html"]:hover {
+        color: var(--brand-red-orange);
+        background-color: rgba(255, 69, 0, 0.1);
+    }
+    
+    .nav-links a[href="about.html"]:hover {
+        color: var(--brand-black);
+        background-color: rgba(47, 47, 47, 0.1);
+    }
+    
+    .nav-links a[href="contact.html"]:hover {
+        color: var(--brand-red-orange);
+        background-color: rgba(255, 69, 0, 0.1);
     }
     
     .nav-links a::after {
@@ -183,9 +252,28 @@
         bottom: -5px;
         left: 0;
         width: 0;
-        height: 2px;
-        background-color: var(--primary);
-        transition: width 0.3s ease;
+        height: 3px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links a[href="index.html"]::after {
+        background-color: var(--brand-blue);
+    }
+    
+    .nav-links a[href="services.html"]::after {
+        background-color: var(--brand-green);
+    }
+    
+    .nav-links a[href="inquiry.html"]::after {
+        background-color: var(--brand-red-orange);
+    }
+    
+    .nav-links a[href="about.html"]::after {
+        background-color: var(--brand-black);
+    }
+    
+    .nav-links a[href="contact.html"]::after {
+        background-color: var(--brand-red-orange);
     }
     
     .nav-links a:hover::after,
@@ -194,8 +282,27 @@
     }
     
     .nav-links a.active {
-        color: var(--primary);
         font-weight: 700;
+    }
+    
+    .nav-links a[href="index.html"].active {
+        color: var(--brand-blue);
+    }
+    
+    .nav-links a[href="services.html"].active {
+        color: var(--brand-green);
+    }
+    
+    .nav-links a[href="inquiry.html"].active {
+        color: var(--brand-red-orange);
+    }
+    
+    .nav-links a[href="about.html"].active {
+        color: var(--brand-black);
+    }
+    
+    .nav-links a[href="contact.html"].active {
+        color: var(--brand-red-orange);
     }
     
     body.dark-mode .nav-links a.active {
@@ -234,8 +341,8 @@
     
     .nav-cta {
         padding: 0.75rem 1.5rem;
-        background: var(--gradient-primary);
-        color: white;
+        background: var(--brand-red-orange);
+        color: var(--brand-white);
         text-decoration: none;
         border: none;
         border-radius: 50px;
@@ -243,12 +350,30 @@
         font-size: var(--text-base);
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(30, 92, 184, 0.2);
+        box-shadow: var(--shadow-brand-red-orange);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .nav-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
     }
     
     .nav-cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(30, 92, 184, 0.3);
+        box-shadow: 0 8px 20px rgba(255, 69, 0, 0.4);
+        background: var(--brand-red-orange-dark);
+    }
+    
+    .nav-cta:hover::before {
+        left: 100%;
     }
     
     .mobile-menu-btn {
@@ -280,7 +405,7 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background-color: var(--light);
+        background-color: var(--brand-black);
         z-index: 9999;
         display: flex;
         flex-direction: column;
@@ -292,7 +417,7 @@
     }
     
     body.dark-mode .mobile-menu {
-        background-color: var(--dark);
+        background-color: var(--brand-black-dark);
     }
     
     .mobile-menu.active {
@@ -338,9 +463,43 @@
         font-size: 1.25rem;
         font-weight: 600;
         text-decoration: none;
-        color: var(--secondary);
-        transition: color 0.3s ease;
-        padding: 0.5rem 1rem;
+        color: var(--brand-white);
+        transition: all 0.3s ease;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .mobile-menu-links a[href="index.html"]:hover {
+        color: var(--brand-blue);
+        background-color: rgba(30, 144, 255, 0.1);
+        transform: translateX(10px);
+    }
+    
+    .mobile-menu-links a[href="services.html"]:hover {
+        color: var(--brand-green);
+        background-color: rgba(34, 139, 34, 0.1);
+        transform: translateX(10px);
+    }
+    
+    .mobile-menu-links a[href="inquiry.html"]:hover {
+        color: var(--brand-red-orange);
+        background-color: rgba(255, 69, 0, 0.1);
+        transform: translateX(10px);
+    }
+    
+    .mobile-menu-links a[href="about.html"]:hover {
+        color: var(--brand-white);
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateX(10px);
+    }
+    
+    .mobile-menu-links a[href="contact.html"]:hover {
+        color: var(--brand-red-orange);
+        background-color: rgba(255, 69, 0, 0.1);
+        transform: translateX(10px);
+    }
         border-radius: 8px;
         width: 100%;
         text-align: center;
@@ -1745,6 +1904,271 @@
             flex-direction: column;
             gap: 0.75rem;
         }
+    }
+    
+    /* Brand Color Animations */
+    @keyframes brandColorPulse {
+        0% { background-color: var(--brand-blue); }
+        33% { background-color: var(--brand-green); }
+        66% { background-color: var(--brand-red-orange); }
+        100% { background-color: var(--brand-blue); }
+    }
+    
+    @keyframes brandColorGlow {
+        0% { box-shadow: 0 0 5px var(--brand-blue); }
+        33% { box-shadow: 0 0 15px var(--brand-green); }
+        66% { box-shadow: 0 0 15px var(--brand-red-orange); }
+        100% { box-shadow: 0 0 5px var(--brand-blue); }
+    }
+    
+    @keyframes brandColorSlide {
+        0% { transform: translateX(-100%); background-color: var(--brand-blue); }
+        25% { transform: translateX(0%); background-color: var(--brand-green); }
+        50% { transform: translateX(100%); background-color: var(--brand-red-orange); }
+        75% { transform: translateX(0%); background-color: var(--brand-black); }
+        100% { transform: translateX(-100%); background-color: var(--brand-blue); }
+    }
+    
+    /* Interactive Hover Effects */
+    .interactive-element {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .interactive-element:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-brand-blue);
+    }
+    
+    .interactive-element::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .interactive-element:hover::before {
+        left: 100%;
+    }
+    
+    /* Brand Color State Changes */
+    .service-card:hover .service-icon {
+        animation: brandColorPulse 2s infinite;
+    }
+    
+    .service-card:hover .service-category {
+        animation: brandColorGlow 1.5s infinite;
+    }
+    
+    /* Quick Service Access Bar */
+    .quick-service-bar {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1000;
+    }
+    
+    .quick-service-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--brand-white);
+        box-shadow: var(--shadow-brand-blue);
+    }
+    
+    .quick-service-btn.travel {
+        background-color: var(--brand-green);
+    }
+    
+    .quick-service-btn.government {
+        background-color: var(--brand-red-orange);
+    }
+    
+    .quick-service-btn.contact {
+        background-color: var(--brand-blue);
+    }
+    
+    .quick-service-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Interactive Statistics Dashboard */
+    .stats-dashboard {
+        background: var(--brand-white);
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: var(--shadow-brand-blue);
+        margin: 2rem 0;
+        border-left: 5px solid var(--brand-blue);
+    }
+    
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .stat-item:hover {
+        transform: translateX(10px);
+        background-color: rgba(30, 144, 255, 0.1);
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--brand-white);
+    }
+    
+    .stat-icon.travel {
+        background-color: var(--brand-green);
+    }
+    
+    .stat-icon.government {
+        background-color: var(--brand-red-orange);
+    }
+    
+    .stat-icon.contact {
+        background-color: var(--brand-blue);
+    }
+    
+    /* Smart Contact Integration */
+    .contact-methods {
+        display: flex;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .contact-method {
+        flex: 1;
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+    
+    .contact-method.phone {
+        background-color: rgba(30, 144, 255, 0.1);
+        border-color: var(--brand-blue);
+    }
+    
+    .contact-method.email {
+        background-color: rgba(34, 139, 34, 0.1);
+        border-color: var(--brand-green);
+    }
+    
+    .contact-method.whatsapp {
+        background-color: rgba(255, 69, 0, 0.1);
+        border-color: var(--brand-red-orange);
+    }
+    
+    .contact-method:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-brand-blue);
+    }
+    
+    /* Enhanced Trust Section */
+    .trust-badges {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        margin: 2rem 0;
+    }
+    
+    .trust-badge {
+        padding: 1rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+    
+    .trust-badge:hover {
+        transform: scale(1.05);
+        box-shadow: var(--shadow-brand-green);
+    }
+    
+    .trust-badge.csc {
+        background-color: rgba(34, 139, 34, 0.1);
+        border-color: var(--brand-green);
+    }
+    
+    .trust-badge.tnega {
+        background-color: rgba(255, 69, 0, 0.1);
+        border-color: var(--brand-red-orange);
+    }
+    
+    /* Interactive FAQ Section */
+    .faq-item {
+        border: 2px solid transparent;
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 1rem 0;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .faq-item.travel {
+        border-color: var(--brand-green);
+    }
+    
+    .faq-item.government {
+        border-color: var(--brand-red-orange);
+    }
+    
+    .faq-item.general {
+        border-color: var(--brand-blue);
+    }
+    
+    .faq-item:hover {
+        transform: translateX(10px);
+        background-color: rgba(30, 144, 255, 0.05);
+    }
+    
+    /* Brand Color Loading Animation */
+    .brand-loader {
+        width: 50px;
+        height: 50px;
+        border: 3px solid var(--brand-blue);
+        border-top: 3px solid transparent;
+        border-radius: 50%;
+        animation: brandColorSpin 1s linear infinite;
+    }
+    
+    @keyframes brandColorSpin {
+        0% { transform: rotate(0deg); border-color: var(--brand-blue); }
+        25% { transform: rotate(90deg); border-color: var(--brand-green); }
+        50% { transform: rotate(180deg); border-color: var(--brand-red-orange); }
+        75% { transform: rotate(270deg); border-color: var(--brand-black); }
+        100% { transform: rotate(360deg); border-color: var(--brand-blue); }
+    }
         
         .btn-primary, .btn-secondary {
             padding: 0.75rem 1.5rem;

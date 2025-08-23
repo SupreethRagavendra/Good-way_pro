@@ -6,27 +6,35 @@
 
 
 :root {
-    
-    --bs-primary: var(--primary, #1E5CB8);
-    --bs-primary-rgb: 30, 92, 184;
-    --bs-secondary: var(--secondary, #2D3748);
-    --bs-secondary-rgb: 45, 55, 72;
-    --bs-success: var(--success, #22C55E);
-    --bs-success-rgb: 34, 197, 94;
-    --bs-warning: var(--warning, #F59E0B);
-    --bs-warning-rgb: 245, 158, 11;
-    --bs-danger: var(--error, #EF4444);
-    --bs-danger-rgb: 239, 68, 68;
-    --bs-info: #06B6D4;
-    --bs-info-rgb: 6, 182, 212;
-    --bs-light: var(--light, #FFFFFF);
+    /* Bootstrap Brand Color Integration */
+    --bs-primary: var(--brand-blue, #1E90FF);
+    --bs-primary-rgb: 30, 144, 255;
+    --bs-secondary: var(--brand-black, #2F2F2F);
+    --bs-secondary-rgb: 47, 47, 47;
+    --bs-success: var(--brand-green, #228B22);
+    --bs-success-rgb: 34, 139, 34;
+    --bs-warning: var(--brand-red-orange, #FF4500);
+    --bs-warning-rgb: 255, 69, 0;
+    --bs-danger: var(--brand-red-orange-dark, #DC143C);
+    --bs-danger-rgb: 220, 20, 60;
+    --bs-info: var(--brand-blue-light, #4169E1);
+    --bs-info-rgb: 65, 105, 225;
+    --bs-light: var(--brand-white, #FFFFFF);
     --bs-light-rgb: 255, 255, 255;
-    --bs-dark: var(--dark, #1F2937);
-    --bs-dark-rgb: 31, 41, 55;
+    --bs-dark: var(--brand-black, #2F2F2F);
+    --bs-dark-rgb: 47, 47, 47;
     
+    /* Brand-specific Bootstrap colors */
+    --bs-brand-green: var(--brand-green, #228B22);
+    --bs-brand-green-rgb: 34, 139, 34;
+    --bs-brand-blue: var(--brand-blue, #1E90FF);
+    --bs-brand-blue-rgb: 30, 144, 255;
+    --bs-brand-red-orange: var(--brand-red-orange, #FF4500);
+    --bs-brand-red-orange-rgb: 255, 69, 0;
+    --bs-brand-black: var(--brand-black, #2F2F2F);
+    --bs-brand-black-rgb: 47, 47, 47;
     
     --bs-font-sans-serif: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    
     
     --bs-box-shadow: var(--shadow);
     --bs-box-shadow-sm: var(--shadow-sm);
@@ -48,30 +56,76 @@
 }
 
 .btn-primary {
-    background: var(--gradient-primary, linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%));
+    background: var(--brand-blue);
     border: none;
-    color: white;
-    box-shadow: var(--shadow-sm);
+    color: var(--brand-white);
+    box-shadow: var(--shadow-brand-blue);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
 }
 
 .btn-primary:hover {
-    background: var(--primary-dark, #174EA6);
+    background: var(--brand-blue-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    color: white;
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.4);
+    color: var(--brand-white);
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 .btn-outline-primary {
-    border: 2px solid var(--primary);
-    color: var(--primary);
+    border: 2px solid var(--brand-blue);
+    color: var(--brand-blue);
     background: transparent;
 }
 
 .btn-outline-primary:hover {
-    background: var(--primary);
-    color: white;
+    background: var(--brand-blue);
+    color: var(--brand-white);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-brand-blue);
+}
+
+/* Brand-specific button variants */
+.btn-brand-green {
+    background: var(--brand-green);
+    border: none;
+    color: var(--brand-white);
+    box-shadow: var(--shadow-brand-green);
+}
+
+.btn-brand-green:hover {
+    background: var(--brand-green-dark);
+    color: var(--brand-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(34, 139, 34, 0.4);
+}
+
+.btn-brand-red-orange {
+    background: var(--brand-red-orange);
+    border: none;
+    color: var(--brand-white);
+    box-shadow: var(--shadow-brand-red-orange);
+}
+
+.btn-brand-red-orange:hover {
+    background: var(--brand-red-orange-dark);
+    color: var(--brand-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 69, 0, 0.4);
 }
 
 
@@ -80,13 +134,47 @@
     border-radius: 12px;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
-    background: var(--light);
+    background: var(--brand-white);
     overflow: hidden;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--brand-blue);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-brand-blue);
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Brand-specific card variants */
+.card-brand-green::before {
+    background: var(--brand-green);
+}
+
+.card-brand-green:hover {
+    box-shadow: var(--shadow-brand-green);
+}
+
+.card-brand-red-orange::before {
+    background: var(--brand-red-orange);
+}
+
+.card-brand-red-orange:hover {
+    box-shadow: var(--shadow-brand-red-orange);
 }
 
 .card-body {
@@ -98,6 +186,24 @@
     border: 2px solid #E5E7EB;
     border-radius: 8px;
     padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 0.2rem rgba(30, 144, 255, 0.25);
+    outline: none;
+}
+
+.form-control.is-valid {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 0.2rem rgba(34, 139, 34, 0.25);
+}
+
+.form-control.is-invalid {
+    border-color: var(--brand-red-orange);
+    box-shadow: 0 0 0 0.2rem rgba(255, 69, 0, 0.25);
+}
     font-size: var(--text-base);
     transition: all 0.3s ease;
 }
@@ -250,26 +356,27 @@
 
 
 body.dark-mode {
-    --bs-body-bg: var(--dark);
-    --bs-body-color: var(--gray);
+    --bs-body-bg: var(--brand-black);
+    --bs-body-color: var(--brand-white);
     --bs-border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .card {
-    background: var(--secondary);
-    color: var(--gray);
+    background: var(--brand-black-light);
+    color: var(--brand-white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .form-control {
-    background: var(--secondary);
+    background: var(--brand-black-light);
     border-color: rgba(255, 255, 255, 0.2);
-    color: var(--gray);
+    color: var(--brand-white);
 }
 
 body.dark-mode .form-control:focus {
-    background: var(--secondary);
-    border-color: var(--primary);
-    color: var(--gray);
+    background: var(--brand-black-light);
+    border-color: var(--brand-blue);
+    color: var(--brand-white);
 }
 
 
@@ -338,6 +445,140 @@ body.dark-mode .form-control:focus {
 
 .tooltip {
     font-family: var(--bs-font-sans-serif);
+}
+
+/* Brand Color Utilities for Bootstrap Components */
+.bg-brand-green {
+    background-color: var(--brand-green) !important;
+}
+
+.bg-brand-blue {
+    background-color: var(--brand-blue) !important;
+}
+
+.bg-brand-red-orange {
+    background-color: var(--brand-red-orange) !important;
+}
+
+.bg-brand-black {
+    background-color: var(--brand-black) !important;
+}
+
+.text-brand-green {
+    color: var(--brand-green) !important;
+}
+
+.text-brand-blue {
+    color: var(--brand-blue) !important;
+}
+
+.text-brand-red-orange {
+    color: var(--brand-red-orange) !important;
+}
+
+.text-brand-black {
+    color: var(--brand-black) !important;
+}
+
+.border-brand-green {
+    border-color: var(--brand-green) !important;
+}
+
+.border-brand-blue {
+    border-color: var(--brand-blue) !important;
+}
+
+.border-brand-red-orange {
+    border-color: var(--brand-red-orange) !important;
+}
+
+.border-brand-black {
+    border-color: var(--brand-black) !important;
+}
+
+/* Brand Color Alert Variants */
+.alert-brand-green {
+    background-color: rgba(34, 139, 34, 0.1);
+    border-color: var(--brand-green);
+    color: var(--brand-green-dark);
+}
+
+.alert-brand-blue {
+    background-color: rgba(30, 144, 255, 0.1);
+    border-color: var(--brand-blue);
+    color: var(--brand-blue-dark);
+}
+
+.alert-brand-red-orange {
+    background-color: rgba(255, 69, 0, 0.1);
+    border-color: var(--brand-red-orange);
+    color: var(--brand-red-orange-dark);
+}
+
+/* Brand Color Badge Variants */
+.badge-brand-green {
+    background-color: var(--brand-green);
+    color: var(--brand-white);
+}
+
+.badge-brand-blue {
+    background-color: var(--brand-blue);
+    color: var(--brand-white);
+}
+
+.badge-brand-red-orange {
+    background-color: var(--brand-red-orange);
+    color: var(--brand-white);
+}
+
+.badge-brand-black {
+    background-color: var(--brand-black);
+    color: var(--brand-white);
+}
+
+/* Brand Color Progress Bar Variants */
+.progress-bar-brand-green {
+    background-color: var(--brand-green);
+}
+
+.progress-bar-brand-blue {
+    background-color: var(--brand-blue);
+}
+
+.progress-bar-brand-red-orange {
+    background-color: var(--brand-red-orange);
+}
+
+/* Brand Color List Group Variants */
+.list-group-item-brand-green {
+    background-color: rgba(34, 139, 34, 0.05);
+    border-left: 4px solid var(--brand-green);
+}
+
+.list-group-item-brand-blue {
+    background-color: rgba(30, 144, 255, 0.05);
+    border-left: 4px solid var(--brand-blue);
+}
+
+.list-group-item-brand-red-orange {
+    background-color: rgba(255, 69, 0, 0.05);
+    border-left: 4px solid var(--brand-red-orange);
+}
+
+/* Brand Color Table Variants */
+.table-brand-green thead th {
+    background-color: var(--brand-green);
+    color: var(--brand-white);
+}
+
+.table-brand-blue thead th {
+    background-color: var(--brand-blue);
+    color: var(--brand-white);
+}
+
+.table-brand-red-orange thead th {
+    background-color: var(--brand-red-orange);
+    color: var(--brand-white);
 }
 
 
