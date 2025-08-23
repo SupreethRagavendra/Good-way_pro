@@ -1271,19 +1271,26 @@
     }
 
     .footer-logo {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
+        display: inline-block;
         text-decoration: none;
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: #fff;
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        padding: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .footer-logo:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
 
     .footer-logo img {
-        width: 50px;
-        height: 50px;
-        border-radius: 8px;
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
     }
 
     .footer-tagline {
