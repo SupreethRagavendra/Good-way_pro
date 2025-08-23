@@ -505,10 +505,30 @@
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
         }
         
         body.dark-mode .service-card:hover {
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        /* Category-specific hover effects */
+        .service-card[data-service*="ticket"]:hover,
+        .service-card[data-service="hajj-umrah"]:hover {
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(34, 139, 34, 0.15);
+        }
+        
+        .service-card[data-service*="passport"]:hover,
+        .service-card[data-service*="pan"]:hover,
+        .service-card[data-service*="aadhaar"]:hover,
+        .service-card[data-service*="voter"]:hover,
+        .service-card[data-service*="certificate"]:hover,
+        .service-card[data-service*="license"]:hover,
+        .service-card[data-service*="fssai"]:hover {
+            border-color: var(--error);
+            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.15);
         }
         
         .service-image {
@@ -517,7 +537,13 @@
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 1.5rem;
-            background-color: #f5f5f5; 
+            background-color: #f5f5f5;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-image {
+            transform: scale(1.02);
+            filter: brightness(1.1);
         }
         
         .service-icon {
@@ -529,6 +555,23 @@
         
         .service-card:hover .service-icon {
             transform: scale(1.1);
+            color: var(--primary);
+        }
+        
+        /* Category-specific icon hover colors */
+        .service-card[data-service*="ticket"]:hover .service-icon,
+        .service-card[data-service="hajj-umrah"]:hover .service-icon {
+            color: var(--accent);
+        }
+        
+        .service-card[data-service*="passport"]:hover .service-icon,
+        .service-card[data-service*="pan"]:hover .service-icon,
+        .service-card[data-service*="aadhaar"]:hover .service-icon,
+        .service-card[data-service*="voter"]:hover .service-icon,
+        .service-card[data-service*="certificate"]:hover .service-icon,
+        .service-card[data-service*="license"]:hover .service-icon,
+        .service-card[data-service*="fssai"]:hover .service-icon {
+            color: var(--error);
         }
         
         .service-title {
@@ -565,10 +608,33 @@
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 600;
+            transition: all 0.3s ease;
         }
         
         .feature-tag i {
             font-size: 0.7rem;
+        }
+        
+        .service-card:hover .feature-tag {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Category-specific feature tag hover colors */
+        .service-card[data-service*="ticket"]:hover .feature-tag,
+        .service-card[data-service="hajj-umrah"]:hover .feature-tag {
+            background: var(--accent);
+        }
+        
+        .service-card[data-service*="passport"]:hover .feature-tag,
+        .service-card[data-service*="pan"]:hover .feature-tag,
+        .service-card[data-service*="aadhaar"]:hover .feature-tag,
+        .service-card[data-service*="voter"]:hover .feature-tag,
+        .service-card[data-service*="certificate"]:hover .feature-tag,
+        .service-card[data-service*="license"]:hover .feature-tag,
+        .service-card[data-service*="fssai"]:hover .feature-tag {
+            background: var(--error);
         }
         
         .price {
@@ -600,10 +666,31 @@
         
         .service-link:hover {
             color: var(--primary-dark);
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
         
         .service-link:hover i {
             transform: translateX(5px);
+        }
+        
+        /* Category-specific button hover colors */
+        .service-card[data-service*="ticket"] .service-link:hover,
+        .service-card[data-service="hajj-umrah"] .service-link:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .service-card[data-service*="passport"] .service-link:hover,
+        .service-card[data-service*="pan"] .service-link:hover,
+        .service-card[data-service*="aadhaar"] .service-link:hover,
+        .service-card[data-service*="voter"] .service-link:hover,
+        .service-card[data-service*="certificate"] .service-link:hover,
+        .service-card[data-service*="license"] .service-link:hover,
+        .service-card[data-service*="fssai"] .service-link:hover {
+            background-color: var(--error);
+            color: white;
         }
         
         .service-category {
@@ -616,9 +703,15 @@
             font-size: 0.8rem;
             font-weight: 600;
             border-bottom-right-radius: 15px;
+            transition: all 0.3s ease;
         }
         .service-category.category-travel { background-color: var(--accent); }
         .service-category.category-government { background-color: var(--error); }
+        
+        .service-card:hover .service-category {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
         
         
         .process-timeline {
