@@ -515,9 +515,10 @@
         
         /* Category-specific hover effects */
         .service-card[data-service*="ticket"]:hover,
+        .service-card[data-service="air-ticket"]:hover,
         .service-card[data-service="hajj-umrah"]:hover {
-            border-color: var(--accent);
-            box-shadow: 0 15px 40px rgba(34, 139, 34, 0.15);
+            border-color: #228B22 !important;
+            box-shadow: 0 15px 40px rgba(34, 139, 34, 0.15) !important;
         }
         
         .service-card[data-service*="passport"]:hover,
@@ -527,8 +528,8 @@
         .service-card[data-service*="certificate"]:hover,
         .service-card[data-service*="license"]:hover,
         .service-card[data-service*="fssai"]:hover {
-            border-color: var(--error);
-            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.15);
+            border-color: #FF4500 !important;
+            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.15) !important;
         }
         
         .service-image {
@@ -560,8 +561,9 @@
         
         /* Category-specific icon hover colors */
         .service-card[data-service*="ticket"]:hover .service-icon,
+        .service-card[data-service="air-ticket"]:hover .service-icon,
         .service-card[data-service="hajj-umrah"]:hover .service-icon {
-            color: var(--accent);
+            color: #228B22 !important;
         }
         
         .service-card[data-service*="passport"]:hover .service-icon,
@@ -571,7 +573,7 @@
         .service-card[data-service*="certificate"]:hover .service-icon,
         .service-card[data-service*="license"]:hover .service-icon,
         .service-card[data-service*="fssai"]:hover .service-icon {
-            color: var(--error);
+            color: #FF4500 !important;
         }
         
         .service-title {
@@ -623,8 +625,9 @@
         
         /* Category-specific feature tag hover colors */
         .service-card[data-service*="ticket"]:hover .feature-tag,
+        .service-card[data-service="air-ticket"]:hover .feature-tag,
         .service-card[data-service="hajj-umrah"]:hover .feature-tag {
-            background: var(--accent);
+            background: #228B22 !important;
         }
         
         .service-card[data-service*="passport"]:hover .feature-tag,
@@ -634,7 +637,7 @@
         .service-card[data-service*="certificate"]:hover .feature-tag,
         .service-card[data-service*="license"]:hover .feature-tag,
         .service-card[data-service*="fssai"]:hover .feature-tag {
-            background: var(--error);
+            background: #FF4500 !important;
         }
         
         .price {
@@ -677,9 +680,10 @@
         
         /* Category-specific button hover colors */
         .service-card[data-service*="ticket"] .service-link:hover,
+        .service-card[data-service="air-ticket"] .service-link:hover,
         .service-card[data-service="hajj-umrah"] .service-link:hover {
-            background-color: var(--accent);
-            color: white;
+            background-color: #228B22 !important;
+            color: white !important;
         }
         
         .service-card[data-service*="passport"] .service-link:hover,
@@ -689,8 +693,8 @@
         .service-card[data-service*="certificate"] .service-link:hover,
         .service-card[data-service*="license"] .service-link:hover,
         .service-card[data-service*="fssai"] .service-link:hover {
-            background-color: var(--error);
-            color: white;
+            background-color: #FF4500 !important;
+            color: white !important;
         }
         
         .service-category {
