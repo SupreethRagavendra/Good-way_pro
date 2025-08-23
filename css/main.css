@@ -327,6 +327,11 @@
         align-items: center;
         justify-content: center;
         border-radius: 50%;
+        /* Touch-friendly improvements */
+        min-width: 44px;
+        min-height: 44px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
     
     body.dark-mode .theme-toggle {
@@ -336,6 +341,14 @@
     .theme-toggle:hover {
         background-color: rgba(30, 92, 184, 0.1);
         transform: rotate(30deg);
+    }
+    
+    /* Mobile-friendly hover alternative */
+    @media (hover: none) and (pointer: coarse) {
+        .theme-toggle:active {
+            background-color: rgba(30, 92, 184, 0.2);
+            transform: scale(0.95);
+        }
     }
     
     .nav-cta {
@@ -2128,7 +2141,10 @@
     
     @media (max-width: 360px) {
         .theme-toggle {
-            display: none;
+            display: flex;
+            width: 36px;
+            height: 36px;
+            font-size: 1.1rem;
         }
         
         nav {
@@ -2522,6 +2538,52 @@
         
         .rotating-text-item {
             font-size: 1rem;
+        }
+    }
+    
+    /* Samsung Galaxy S8+ specific optimizations (360 x 740) */
+    @media (max-width: 360px) and (min-height: 740px) {
+        .theme-toggle {
+            display: flex !important;
+            width: 38px;
+            height: 38px;
+            font-size: 1.2rem;
+        }
+        
+        .nav-actions {
+            gap: 0.75rem;
+        }
+        
+        .hero {
+            min-height: 85vh;
+            padding: 3.5rem 3% 2rem;
+        }
+        
+        .hero-content {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+        
+        .split-text-container {
+            font-size: clamp(1.8rem, 8.5vw, 2.8rem);
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-cta {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .btn-primary, .btn-secondary {
+            width: 100%;
+            max-width: 320px;
+            justify-content: center;
+            padding: 0.875rem 1.5rem;
+            font-size: 0.95rem;
         }
     }
     

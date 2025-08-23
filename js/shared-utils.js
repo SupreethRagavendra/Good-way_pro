@@ -55,9 +55,16 @@
             themeIcon.classList.replace('fa-moon', 'fa-sun');
         }
 
-        // Optimized theme toggle with better debouncing
+        // Enhanced theme toggle with mobile support and touch feedback
         const debouncedToggle = debounce(() => {
             console.log('Theme toggle clicked, current theme:', body.classList.contains('dark-mode') ? 'dark' : 'light');
+            
+            // Add touch feedback for mobile devices
+            themeToggle.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                themeToggle.style.transform = '';
+            }, 150);
+            
             body.classList.toggle('dark-mode');
             if (body.classList.contains('dark-mode')) {
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
@@ -70,7 +77,13 @@
             }
         }, 50);
         
+        // Add both click and touch events for better mobile support
         themeToggle.addEventListener('click', debouncedToggle, { passive: true });
+        themeToggle.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            debouncedToggle();
+        }, { passive: false });
+        
         console.log('Theme toggle event listener added');
     };
 

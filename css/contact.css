@@ -1491,7 +1491,10 @@ body.dark-mode .faq-answer p {
 
 @media (max-width: 360px) {
     .theme-toggle {
-        display: none;
+        display: flex;
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
     }
     
     nav {
