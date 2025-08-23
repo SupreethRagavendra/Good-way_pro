@@ -391,7 +391,7 @@ nav {
     }
     
     .btn-primary {
-        padding: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
         background: var(--brand-green);
         color: white;
         border: none;
@@ -430,7 +430,7 @@ nav {
     }
     
     .btn-secondary {
-        padding: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
         background-color: transparent;
         color: var(--brand-red-orange);
         border: 2px solid var(--brand-red-orange);
