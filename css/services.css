@@ -17,28 +17,7 @@
             word-spacing: 0.05em;
         }
         
-        .license-info {
-            text-align: center;
-            color: var(--brand-green);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: -1rem;
-            margin-bottom: 2rem;
-            padding: 0.5rem 1rem;
-            background: rgba(34, 139, 34, 0.1);
-            border-radius: 25px;
-            display: inline-block;
-            margin-left: auto;
-            margin-right: auto;
-            left: 50%;
-            transform: translateX(-50%);
-            position: relative;
-        }
-        
-        .license-info strong {
-            color: var(--brand-green);
-            font-weight: 600;
-        }
+
         
         :root {
             --primary: #1E5CB8;
