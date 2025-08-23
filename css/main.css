@@ -803,6 +803,29 @@
         flex-wrap: wrap;
     }
     
+    .hero-credentials {
+        margin-top: 2rem;
+        text-align: center;
+        padding: 1rem;
+        background: rgba(34, 139, 34, 0.1);
+        border-radius: 10px;
+        border: 1px solid rgba(34, 139, 34, 0.3);
+        width: 100%;
+    }
+    
+    .credentials-text {
+        color: var(--brand-green);
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .credentials-details {
+        color: var(--brand-green);
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    
     .stat-item {
         display: flex;
         align-items: center;
