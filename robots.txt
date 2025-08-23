@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://goodwaytravel.com/sitemap.xml
+Sitemap: https://good-way-travels.vercel.app/sitemap.xml
 
 # Disallow unnecessary files
 Disallow: /css/
