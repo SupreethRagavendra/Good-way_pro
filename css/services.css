@@ -541,28 +541,7 @@
             opacity: 1;
         }
         
-        .service-card::after {
-            content: 'Click to view details';
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(30, 92, 184, 0.9);
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-            z-index: 2;
-        }
-        
-        .service-card:hover::after {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
         
         body.dark-mode .service-card {
             background-color: var(--secondary);
