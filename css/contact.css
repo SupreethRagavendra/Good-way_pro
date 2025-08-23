@@ -259,6 +259,10 @@ body.dark-mode .hero {
     color: var(--primary);
 }
 
+body.dark-mode .text-part.left {
+    color: var(--primary);
+}
+
 .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--dark-gray);
@@ -267,7 +271,7 @@ body.dark-mode .hero {
 }
 
 body.dark-mode .hero-subtitle {
-    color: var(--gray);
+    color: #E5E7EB;
 }
 
 .rotating-text {

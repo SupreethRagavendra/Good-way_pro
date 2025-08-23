@@ -454,6 +454,15 @@
     
     .text-part.right {
         animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        color: var(--secondary);
+    }
+    
+    body.dark-mode .text-part.left {
+        color: var(--primary);
+    }
+    
+    body.dark-mode .text-part.right {
+        color: #E5E7EB;
     }
     
     .hero-subtitle {

@@ -1562,6 +1562,15 @@
 .text-part.right {
     transform: translateX(200%);
     animation-name: slide-in-right;
+    color: var(--secondary);
+}
+
+body.dark-mode .text-part.left {
+    color: var(--primary);
+}
+
+body.dark-mode .text-part.right {
+    color: #E5E7EB;
 }
 
 @keyframes slide-in-left {

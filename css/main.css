@@ -580,6 +580,14 @@
         color: var(--brand-black);
     }
     
+    body.dark-mode .text-part.left {
+        color: var(--brand-blue);
+    }
+    
+    body.dark-mode .text-part.right {
+        color: #E5E7EB;
+    }
+    
     /* Add subtle brand color accents to text parts */
     /* Removed underline from GOOD WAY text */
     
@@ -626,6 +634,10 @@
     .rotating-text-item:nth-child(4) { 
         animation-delay: 12s; 
         color: var(--brand-black);
+    }
+    
+    body.dark-mode .rotating-text-item:nth-child(4) { 
+        color: #E5E7EB;
     }
     
     @keyframes rotateText {
