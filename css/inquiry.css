@@ -155,7 +155,7 @@
     }
     
     .logo img {
-        height: 40px;
+        height: 55px;
         width: auto;
     }
     
@@ -1278,8 +1278,8 @@ body.dark-mode .template-btn:hover {
 
     .footer-logo img {
         width: auto;
-        height: 60px;
-        max-width: 120px;
+        height: 80px;
+        max-width: 150px;
         object-fit: contain;
         border: none;
         border-radius: 0;
@@ -1578,7 +1578,7 @@ body.dark-mode .template-btn:hover {
         }
         
         .logo img {
-            height: 32px;
+            height: 45px;
         }
         
         .logo-text {
@@ -1646,7 +1646,7 @@ body.dark-mode .template-btn:hover {
         }
         
         .logo img {
-            height: 28px;
+            height: 40px;
         }
         
         .logo-text {
