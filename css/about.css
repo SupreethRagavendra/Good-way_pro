@@ -112,6 +112,21 @@ nav {
     }
 }
     :root {
+        /* Official Brand Colors from Logo */
+        --brand-green: #228B22;
+        --brand-green-light: #32CD32;
+        --brand-green-dark: #006400;
+        --brand-blue: #1E90FF;
+        --brand-blue-light: #4169E1;
+        --brand-blue-dark: #0080FF;
+        --brand-red-orange: #FF4500;
+        --brand-red-orange-light: #FF6347;
+        --brand-red-orange-dark: #DC143C;
+        --brand-black: #2F2F2F;
+        --brand-black-light: #404040;
+        --brand-black-dark: #1A1A1A;
+        --brand-white: #FFFFFF;
+        
         --primary: #1E5CB8;
         --primary-light: #2563EB;
         --primary-dark: #174EA6;
