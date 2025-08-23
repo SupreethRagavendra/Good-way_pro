@@ -99,7 +99,7 @@
     }
     
     body.dark-mode {
-        color: var(--gray);
+        color: #E5E7EB;
         background-color: var(--dark);
     }
     
@@ -330,7 +330,7 @@
     }
     
     body.dark-mode .theme-toggle {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .theme-toggle:hover {
@@ -391,7 +391,7 @@
     }
     
     body.dark-mode .mobile-menu-btn {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .mobile-menu-btn:hover {
@@ -442,7 +442,7 @@
     }
     
     body.dark-mode .mobile-menu-close {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .mobile-menu-close:hover {
@@ -505,7 +505,7 @@
     }
     
     body.dark-mode .mobile-menu-links a {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .mobile-menu-links a:hover {
@@ -591,7 +591,7 @@
     }
     
     body.dark-mode .hero-subtitle {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .rotating-text {
@@ -1114,7 +1114,7 @@
     }
 
     body.dark-mode .section-subtitle {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .services-container {
@@ -1208,7 +1208,7 @@
     }
     
     body.dark-mode .service-description {
-        color: var(--gray);
+        color: #D1D5DB;
     }
     
     .service-link {
@@ -1399,7 +1399,7 @@
     }
     
     body.dark-mode .step-description {
-        color: var(--gray);
+        color: #D1D5DB;
     }
     
     .trust-container {
@@ -1578,7 +1578,7 @@
     }
     
     body.dark-mode .author-info p {
-        color: var(--gray);
+        color: #D1D5DB;
     }
     
     .cta-section {

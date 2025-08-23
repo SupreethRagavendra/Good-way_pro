@@ -66,7 +66,7 @@
     }
     
     body.dark-mode {
-        color: var(--gray);
+        color: #E5E7EB;
         background-color: var(--dark);
     }
     
@@ -220,7 +220,7 @@
     }
     
     body.dark-mode .nav-links a {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .nav-links a::after {
@@ -260,7 +260,7 @@
     }
     
     body.dark-mode .theme-toggle {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .theme-toggle:hover {
@@ -303,7 +303,7 @@
     }
     
     body.dark-mode .mobile-menu-btn {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .mobile-menu-btn:hover {
@@ -354,7 +354,7 @@
     }
     
     body.dark-mode .mobile-menu-close {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .mobile-menu-close:hover {
@@ -383,7 +383,7 @@
     }
     
     body.dark-mode .mobile-menu-links a {
-        color: var(--gray);
+        color: #E5E7EB;
     }
     
     .mobile-menu-links a:hover {

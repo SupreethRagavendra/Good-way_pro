@@ -51,7 +51,7 @@
         }
         
         body.dark-mode {
-            color: var(--gray);
+            color: #E5E7EB;
             background-color: var(--dark);
         }
         
@@ -169,7 +169,7 @@
         }
         
         body.dark-mode .nav-links a {
-            color: var(--gray);
+            color: #E5E7EB;
         }
         
         .nav-links a::after {
@@ -209,7 +209,7 @@
         }
         
         body.dark-mode .theme-toggle {
-            color: var(--gray);
+            color: #E5E7EB;
         }
         
         .theme-toggle:hover {
@@ -253,7 +253,7 @@
         }
         
         body.dark-mode .mobile-menu-btn {
-            color: var(--gray);
+            color: #E5E7EB;
         }
         
         .mobile-menu-btn:hover {
@@ -304,7 +304,7 @@
         }
         
         body.dark-mode .mobile-menu-close {
-            color: var(--gray);
+            color: #E5E7EB;
         }
         
         .mobile-menu-close:hover {
@@ -337,7 +337,7 @@
         }
         
         body.dark-mode .mobile-menu-links a {
-            color: var(--gray);
+            color: #E5E7EB;
         }
         
         .mobile-menu-links a:hover {
@@ -417,7 +417,7 @@
         
         body.dark-mode .filter-btn {
             background: var(--secondary);
-            color: var(--gray);
+            color: #E5E7EB;
             border-color: var(--secondary-light);
         }
         
@@ -462,7 +462,7 @@
         }
         
         body.dark-mode .section-subtitle {
-            color: var(--gray);
+            color: #E5E7EB;
         }
         
         
@@ -544,7 +544,7 @@
         }
         
         body.dark-mode .service-description {
-            color: var(--gray);
+            color: #D1D5DB;
         }
         
         
@@ -749,7 +749,7 @@
         }
         
         body.dark-mode .step-description {
-            color: var(--gray);
+            color: #D1D5DB;
         }
         
         
@@ -796,7 +796,7 @@
         }
         
         body.dark-mode .faq-question h4 {
-            color: var(--gray);
+            color: #E5E7EB;
         }
         
         .faq-question i {
@@ -826,7 +826,7 @@
         }
         
         body.dark-mode .faq-answer p {
-            color: var(--gray);
+            color: #D1D5DB;
         }
         
         
@@ -1403,7 +1403,7 @@
         }
         
         body.dark-mode .inquiry-hero-subtitle {
-            color: var(--gray);
+            color: #E5E7EB;
         }
         
         .breadcrumb {
@@ -1461,7 +1461,7 @@
         }
         
         body.dark-mode .section-subtitle {
-            color: var(--gray);
+            color: #E5E7EB;
         }
         
         @keyframes fadeInUp {
@@ -1583,7 +1583,7 @@
 }
 
 body.dark-mode .inquiry-hero-subtitle {
-    color: var(--gray);
+    color: #E5E7EB;
 }
 
 
