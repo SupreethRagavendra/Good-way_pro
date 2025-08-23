@@ -67,6 +67,44 @@
     .bg-brand-green { background-color: var(--brand-green) !important; }
     .border-brand-green { border-color: var(--brand-green) !important; }
     
+    /* Page-specific navbar consistency */
+    .home-page nav,
+    .services-page nav,
+    .about-page nav,
+    .contact-page nav,
+    .inquiry-page nav {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+    }
+    
+    body.dark-mode .home-page nav,
+    body.dark-mode .services-page nav,
+    body.dark-mode .about-page nav,
+    body.dark-mode .contact-page nav,
+    body.dark-mode .inquiry-page nav {
+        background-color: rgba(31, 41, 55, 0.95);
+    }
+    
+    /* Consistent mobile menu styling */
+    .home-page .mobile-menu,
+    .services-page .mobile-menu,
+    .about-page .mobile-menu,
+    .contact-page .mobile-menu,
+    .inquiry-page .mobile-menu {
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(15px);
+    }
+    
+    body.dark-mode .home-page .mobile-menu,
+    body.dark-mode .services-page .mobile-menu,
+    body.dark-mode .about-page .mobile-menu,
+    body.dark-mode .contact-page .mobile-menu,
+    body.dark-mode .inquiry-page .mobile-menu {
+        background-color: rgba(31, 41, 55, 0.98);
+    }
+    
     .text-brand-blue { color: var(--brand-blue) !important; }
     .bg-brand-blue { background-color: var(--brand-blue) !important; }
     .border-brand-blue { border-color: var(--brand-blue) !important; }
