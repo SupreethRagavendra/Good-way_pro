@@ -505,23 +505,10 @@
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
         }
         
         body.dark-mode .service-card:hover {
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary);
-        }
-        
-        /* Category-specific hover effects - matching index page */
-        .service-card.category-travel:hover {
-            border-color: #228B22 !important;
-            box-shadow: 0 15px 40px rgba(34, 139, 34, 0.15) !important;
-        }
-        
-        .service-card.category-government:hover {
-            border-color: #FF4500 !important;
-            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.15) !important;
         }
         
         .service-image {
@@ -534,10 +521,7 @@
             transition: all 0.3s ease;
         }
         
-        .service-card:hover .service-image {
-            transform: scale(1.02);
-            filter: brightness(1.1);
-        }
+
         
         .service-icon {
             font-size: 2.5rem;
@@ -546,21 +530,11 @@
             transition: all 0.3s ease;
         }
         
-        /* Brand-specific default icon colors */
-        .service-card.category-travel .service-icon {
-            color: #228B22;
-        }
-        
-        .service-card.category-government .service-icon {
-            color: #FF4500;
-        }
-        
         .service-card:hover .service-icon {
             transform: scale(1.1);
-            color: var(--primary);
         }
         
-        /* Category-specific icon hover colors - matching index page */
+        /* ONLY icon color changes on hover */
         .service-card.category-travel:hover .service-icon {
             color: #228B22 !important;
         }
@@ -610,9 +584,7 @@
             font-size: 0.7rem;
         }
         
-        .service-card:hover .feature-tag {
-            transform: translateY(-1px);
-        }
+
         
         .price {
             font-weight: 700;
@@ -637,15 +609,6 @@
             min-height: 44px; 
         }
         
-        /* Brand-specific default link colors */
-        .service-card.category-travel .service-link {
-            color: #228B22;
-        }
-        
-        .service-card.category-government .service-link {
-            color: #FF4500;
-        }
-        
         .service-link i {
             transition: transform 0.3s ease;
         }
@@ -656,15 +619,6 @@
         
         .service-link:hover i {
             transform: translateX(5px);
-        }
-        
-        /* Category-specific link hover colors - matching index page */
-        .service-card.category-travel .service-link:hover {
-            color: #006400 !important;
-        }
-        
-        .service-card.category-government .service-link:hover {
-            color: #DC143C !important;
         }
         
         .service-category {
@@ -682,10 +636,7 @@
         .service-category.category-travel { background-color: var(--accent); }
         .service-category.category-government { background-color: var(--error); }
         
-        .service-card:hover .service-category {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
+
         
         
         .process-timeline {
