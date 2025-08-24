@@ -714,6 +714,7 @@
         min-height: 60vh;
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         padding: 6rem 5% 4rem;
         position: relative;
         overflow: hidden;
