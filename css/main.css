@@ -556,7 +556,17 @@
     }
     
     body.dark-mode .mobile-menu-links a {
-        color: #FFFFFF;
+        color: #FFFFFF !important;
+    }
+    
+    /* Dark mode hover overrides to ensure white text */
+    body.dark-mode .mobile-menu-links a:hover,
+    body.dark-mode .mobile-menu-links a[href="index.html"]:hover,
+    body.dark-mode .mobile-menu-links a[href="services.html"]:hover,
+    body.dark-mode .mobile-menu-links a[href="inquiry.html"]:hover,
+    body.dark-mode .mobile-menu-links a[href="about.html"]:hover,
+    body.dark-mode .mobile-menu-links a[href="contact.html"]:hover {
+        color: #FFFFFF !important;
     }
     
     .mobile-menu-links a:hover {
