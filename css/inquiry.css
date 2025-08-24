@@ -1636,6 +1636,31 @@ body.dark-mode .template-btn:hover {
             flex-direction: column;
             align-items: flex-start;
         }
+        
+        /* Mobile-specific dark mode text fixes */
+        body.dark-mode .hero-subtitle {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .section-subtitle {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .service-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .step-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .benefit-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .form-label {
+            color: #FFFFFF !important;
+        }
     }
 
     @media (max-width: 480px) {
@@ -1683,6 +1708,31 @@ body.dark-mode .template-btn:hover {
         
         .newsletter-btn {
             justify-content: center;
+        }
+        
+        /* Additional mobile-specific dark mode text fixes for smaller screens */
+        body.dark-mode .hero-subtitle {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .section-subtitle {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .service-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .step-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .benefit-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .form-label {
+            color: #FFFFFF !important;
         }
     }
 

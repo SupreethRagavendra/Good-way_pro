@@ -1339,6 +1339,27 @@
             .hero {
                 padding-top: 70px;
             }
+            
+            /* Mobile-specific dark mode text fixes */
+            body.dark-mode .hero-subtitle {
+                color: #FFFFFF !important;
+            }
+            
+            body.dark-mode .section-subtitle {
+                color: #FFFFFF !important;
+            }
+            
+            body.dark-mode .service-description {
+                color: #FFFFFF !important;
+            }
+            
+            body.dark-mode .step-description {
+                color: #FFFFFF !important;
+            }
+            
+            body.dark-mode .faq-answer p {
+                color: #FFFFFF !important;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1408,6 +1429,27 @@
             
             .hero {
                 padding-top: 65px;
+            }
+            
+            /* Additional mobile-specific dark mode text fixes for smaller screens */
+            body.dark-mode .hero-subtitle {
+                color: #FFFFFF !important;
+            }
+            
+            body.dark-mode .section-subtitle {
+                color: #FFFFFF !important;
+            }
+            
+            body.dark-mode .service-description {
+                color: #FFFFFF !important;
+            }
+            
+            body.dark-mode .step-description {
+                color: #FFFFFF !important;
+            }
+            
+            body.dark-mode .faq-answer p {
+                color: #FFFFFF !important;
             }
         }
         

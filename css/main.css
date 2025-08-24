@@ -2177,6 +2177,27 @@
         .hero {
             padding-top: 70px;
         }
+        
+        /* Mobile-specific dark mode text fixes */
+        body.dark-mode .hero-subtitle {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .section-subtitle {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .service-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .step-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .author-info p {
+            color: #FFFFFF !important;
+        }
     }
     
     @media (max-width: 480px) {
@@ -2214,6 +2235,27 @@
         
         .logo img, .logo-img {
             height: 40px;
+        }
+        
+        /* Additional mobile-specific dark mode text fixes for smaller screens */
+        body.dark-mode .hero-subtitle {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .section-subtitle {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .service-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .step-description {
+            color: #FFFFFF !important;
+        }
+        
+        body.dark-mode .author-info p {
+            color: #FFFFFF !important;
         }
         
         .theme-toggle, .mobile-menu-btn {
