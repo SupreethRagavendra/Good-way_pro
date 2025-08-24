@@ -513,7 +513,7 @@
         font-size: 1.25rem;
         font-weight: 600;
         text-decoration: none;
-        color: var(--brand-white);
+        color: var(--brand-black);
         transition: all 0.3s ease;
         padding: 0.75rem 1.5rem;
         border-radius: 8px;
@@ -556,7 +556,7 @@
     }
     
     body.dark-mode .mobile-menu-links a {
-        color: #E5E7EB;
+        color: #FFFFFF;
     }
     
     .mobile-menu-links a:hover {
