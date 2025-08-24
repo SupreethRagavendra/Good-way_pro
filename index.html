@@ -12,6 +12,85 @@
     <meta name="google" content="notranslate">
     <meta name="keywords" content="travel booking, train tickets, bus tickets, PAN card, Aadhaar services, government documents, certificate services">
     
+    <!-- Critical CSS Inlined for Above-the-Fold Content -->
+    <style>
+        /* Critical CSS for immediate rendering */
+        :root {
+            --brand-green: #228B22;
+            --brand-blue: #1E90FF;
+            --brand-red-orange: #FF4500;
+            --brand-black: #2F2F2F;
+            --brand-white: #FFFFFF;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--brand-black);
+            background: var(--brand-white);
+            overflow-x: hidden;
+        }
+        
+        /* Critical navbar styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            backface-visibility: hidden;
+        }
+        
+        /* Critical hero styles */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%);
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Critical loading states */
+        .loading { opacity: 0; }
+        .loaded { opacity: 1; transition: opacity 0.3s ease; }
+        
+        /* Prevent layout shift */
+        img { max-width: 100%; height: auto; }
+        .logo { width: 60px; height: 60px; }
+    </style>
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://good-way-travels.vercel.app/">
@@ -34,30 +113,35 @@
     <link rel="canonical" href="https://good-way-travels.vercel.app/">
     <link rel="icon" type="image/webp" href="assets/Images/logo.webp">
 
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://img.icons8.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <!-- DNS Prefetch and Preconnect for Critical Resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="assets/Images/logo.webp" as="image" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="assets/Images/logo.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="preload" href="css/main.css" as="style">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
     
-    <!-- Load main CSS immediately to prevent FOUC -->
+    <!-- Load Critical CSS Immediately -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-integration.css">
     <link rel="stylesheet" href="css/main.css">
     
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Load Fonts with Performance Optimization -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
     
-    <!-- Load Font Awesome immediately for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="all">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <!-- Load Font Awesome with Performance Optimization -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <!-- Structured Data -->
     <script type="application/ld+json">
