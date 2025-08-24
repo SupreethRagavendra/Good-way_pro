@@ -571,9 +571,19 @@
     
     /* Dark mode override */
     body.dark-mode .mobile-menu-links a {
-        color: var(--brand-white) !important;
+        color: #FFFFFF !important;
         opacity: 1 !important;
         visibility: visible !important;
+    }
+    
+    /* Dark mode hover overrides to ensure white text */
+    body.dark-mode .mobile-menu-links a:hover,
+    body.dark-mode .mobile-menu-links a[href="index.html"]:hover,
+    body.dark-mode .mobile-menu-links a[href="services.html"]:hover,
+    body.dark-mode .mobile-menu-links a[href="inquiry.html"]:hover,
+    body.dark-mode .mobile-menu-links a[href="about.html"]:hover,
+    body.dark-mode .mobile-menu-links a[href="contact.html"]:hover {
+        color: #FFFFFF !important;
     }
     
     /* Dark mode hover effects */

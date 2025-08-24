@@ -1433,6 +1433,12 @@
             position: relative;
         }
         
+        .services-hero-content {
+            max-width: 600px;
+            z-index: 2;
+            position: relative;
+        }
+        
         .inquiry-hero-title {
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;

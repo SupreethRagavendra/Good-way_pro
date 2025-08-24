@@ -714,6 +714,7 @@
         min-height: 60vh;
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         padding: 6rem 5% 4rem;
         position: relative;
         overflow: hidden;
@@ -725,11 +726,12 @@
     }
     
     .inquiry-hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
+        max-width: 600px;
         z-index: 2;
         position: relative;
+        margin-left: 0;
+        margin-right: auto;
+        text-align: left;
     }
     
     .inquiry-hero-title {
@@ -1785,6 +1787,13 @@ body.dark-mode .template-btn:hover {
         
         .inquiry-hero {
             min-height: 50vh;
+            justify-content: flex-start;
+        }
+        
+        .inquiry-hero-content {
+            margin-left: 0;
+            margin-right: auto;
+            text-align: left;
         }
         
         .inquiry-form-container {
@@ -1799,6 +1808,13 @@ body.dark-mode .template-btn:hover {
         
         .inquiry-hero {
             padding: 5rem 5% 3rem;
+            justify-content: flex-start;
+        }
+        
+        .inquiry-hero-content {
+            margin-left: 0;
+            margin-right: auto;
+            text-align: left;
         }
         
         .inquiry-hero-title {
@@ -1823,6 +1839,13 @@ body.dark-mode .template-btn:hover {
         .inquiry-hero {
             min-height: 40vh;
             padding: 4rem 5% 2rem;
+            justify-content: flex-start;
+        }
+        
+        .inquiry-hero-content {
+            margin-left: 0;
+            margin-right: auto;
+            text-align: left;
         }
         
         .inquiry-form-container {

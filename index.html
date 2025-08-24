@@ -41,15 +41,37 @@
     <link rel="preconnect" href="https://img.icons8.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     
+    <!-- Critical CSS inlined for immediate rendering -->
+    <style>
+        /* Critical CSS for above-the-fold content */
+        :root {
+            --brand-green: #228B22;
+            --brand-blue: #1E90FF;
+            --brand-black: #2F2F2F;
+            --brand-white: #FFFFFF;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--brand-black); background: var(--brand-white); }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: var(--shadow-sm); padding: 1rem 0; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%); color: var(--brand-white); }
+        .hero-title { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: clamp(1rem, 2vw, 1.25rem); margin-bottom: 2rem; opacity: 0.9; }
+        .hero-cta { display: inline-block; background: var(--brand-white); color: var(--brand-blue); padding: 1rem 2rem; text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; }
+        @media (max-width: 768px) { .navbar-nav { display: none; } .mobile-menu-btn { display: block; } }
+    </style>
+    
     <!-- Preload critical resources -->
     <link rel="preload" href="assets/Images/logo.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="css/critical.css" as="style">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style">
     
-    <!-- Load main CSS immediately to prevent FOUC -->
+    <!-- Load critical CSS immediately -->
+    <link rel="stylesheet" href="css/critical.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-integration.css">
-    <link rel="stylesheet" href="css/main.css">
     
     <!-- Preload critical fonts -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -556,10 +578,49 @@
         </div>
     </div>
 
-    <!-- Load Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-    <!-- Load JavaScript asynchronously -->
-    <script src="js/shared-utils.js"></script>
-    <script src="js/main.js" defer></script>
+    <!-- Register Service Worker for caching and offline support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered successfully:', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Load core JavaScript immediately -->
+    <script src="js/performance-optimizer.js"></script>
+    <script src="js/performance-monitor.js"></script>
+    <script src="js/core.js"></script>
+    
+    <!-- Load non-critical resources asynchronously -->
+    <script>
+        // Load non-critical CSS and JS after page load
+        window.addEventListener('load', function() {
+            // Load main CSS
+            const mainCSS = document.createElement('link');
+            mainCSS.rel = 'stylesheet';
+            mainCSS.href = 'css/main.css';
+            mainCSS.media = 'print';
+            mainCSS.onload = function() { this.media = 'all'; };
+            document.head.appendChild(mainCSS);
+            
+            // Load Bootstrap JS
+            const bootstrapJS = document.createElement('script');
+            bootstrapJS.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';
+            bootstrapJS.async = true;
+            document.head.appendChild(bootstrapJS);
+            
+            // Load page-specific JavaScript
+            if (window.PerformanceOptimizer) {
+                window.PerformanceOptimizer.loadResource('js/main-optimized.js', 'script', 'low');
+            }
+        });
+    </script>
 </body>
 </html>
