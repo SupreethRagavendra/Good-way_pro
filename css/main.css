@@ -137,7 +137,7 @@
     }
     
     body.dark-mode {
-        color: #E5E7EB;
+        color: #FFFFFF;
         background-color: var(--dark);
     }
     
@@ -373,7 +373,7 @@
     }
     
     body.dark-mode .theme-toggle {
-        color: #E5E7EB;
+        color: #FFFFFF;
     }
     
     .theme-toggle:hover {
@@ -431,7 +431,7 @@
         background: none;
         border: none;
         font-size: 1.5rem;
-        color: var(--secondary);
+        color: #1A1A1A;
         cursor: pointer;
         width: 40px;
         height: 40px;
@@ -442,20 +442,22 @@
     }
     
     body.dark-mode .mobile-menu-btn {
-        color: #E5E7EB;
+        color: #FFFFFF;
     }
     
     .mobile-menu-btn:hover {
         background-color: rgba(30, 92, 184, 0.1);
     }
     
+    /* Mobile menu background fix */
     .mobile-menu {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
-        background-color: var(--brand-black);
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(15px);
         z-index: 9999;
         display: flex;
         flex-direction: column;
@@ -467,7 +469,8 @@
     }
     
     body.dark-mode .mobile-menu {
-        background-color: var(--brand-black-dark);
+        background-color: rgba(26, 26, 26, 0.98) !important;
+        backdrop-filter: blur(15px);
     }
     
     .mobile-menu.active {
@@ -481,7 +484,7 @@
         background: none;
         border: none;
         font-size: 1.75rem;
-        color: var(--secondary);
+        color: #000000 !important;
         cursor: pointer;
         width: 40px;
         height: 40px;
@@ -493,7 +496,7 @@
     }
     
     body.dark-mode .mobile-menu-close {
-        color: #E5E7EB;
+        color: #FFFFFF !important;
     }
     
     .mobile-menu-close:hover {
@@ -509,44 +512,55 @@
         width: 100%;
     }
     
+    /* Mobile Menu Links Fix for Light Theme */
     .mobile-menu-links a {
         font-size: 1.25rem;
         font-weight: 600;
         text-decoration: none;
-        color: var(--brand-black);
+        color: var(--brand-blue); /* Blue text for mobile menu in light mode */
         transition: all 0.3s ease;
         padding: 0.75rem 1.5rem;
         border-radius: 8px;
         position: relative;
         overflow: hidden;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Ensure proper contrast in light mode */
+    .mobile-menu-links a {
+        color: var(--brand-blue) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
+        /* Brand-specific hover effects for mobile menu */
     .mobile-menu-links a[href="index.html"]:hover {
-        color: var(--brand-blue);
+        color: var(--brand-blue) !important;
         background-color: rgba(30, 144, 255, 0.1);
         transform: translateX(10px);
     }
-    
+
     .mobile-menu-links a[href="services.html"]:hover {
-        color: var(--brand-green);
+        color: var(--brand-green) !important;
         background-color: rgba(34, 139, 34, 0.1);
         transform: translateX(10px);
     }
-    
+
     .mobile-menu-links a[href="inquiry.html"]:hover {
-        color: var(--brand-red-orange);
+        color: var(--brand-red-orange) !important;
         background-color: rgba(255, 69, 0, 0.1);
         transform: translateX(10px);
     }
-    
+
     .mobile-menu-links a[href="about.html"]:hover {
-        color: var(--brand-white);
-        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--brand-black) !important;
+        background-color: rgba(47, 47, 47, 0.1);
         transform: translateX(10px);
     }
-    
+
     .mobile-menu-links a[href="contact.html"]:hover {
-        color: var(--brand-red-orange);
+        color: var(--brand-red-orange) !important;
         background-color: rgba(255, 69, 0, 0.1);
         transform: translateX(10px);
     }
@@ -555,13 +569,22 @@
         text-align: center;
     }
     
+    /* Dark mode override */
     body.dark-mode .mobile-menu-links a {
-        color: #FFFFFF;
+        color: var(--brand-white) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
-    .mobile-menu-links a:hover {
-        color: var(--primary);
-        background-color: rgba(30, 92, 184, 0.1);
+    /* Dark mode hover effects */
+    body.dark-mode .mobile-menu-links a[href="about.html"]:hover {
+        color: var(--brand-white) !important;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateX(10px);
+    }
+
+    body.dark-mode .mobile-menu-links a:hover {
+        background-color: rgba(30, 92, 184, 0.1) !important;
     }
     
     .hero {
@@ -638,7 +661,7 @@
     }
     
     body.dark-mode .text-part.right {
-        color: #E5E7EB;
+        color: #FFFFFF;
     }
     
     /* Add subtle brand color accents to text parts */
@@ -652,7 +675,7 @@
     }
     
     body.dark-mode .hero-subtitle {
-        color: #E5E7EB;
+        color: #FFFFFF;
     }
     
     .rotating-text {
@@ -690,7 +713,7 @@
     }
     
     body.dark-mode .rotating-text-item:nth-child(4) { 
-        color: #E5E7EB;
+        color: #FFFFFF;
     }
     
     @keyframes rotateText {
@@ -1202,7 +1225,7 @@
     }
 
     body.dark-mode .section-subtitle {
-        color: #E5E7EB;
+        color: #FFFFFF;
     }
     
     .services-container {
@@ -2691,4 +2714,5 @@
             top: 15%;
         }
     }
+
 
